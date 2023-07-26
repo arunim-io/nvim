@@ -49,26 +49,25 @@ return {
       telescope.load_extension 'adjacent'
       telescope.load_extension "undo"
     end,
-    --keys = function()
-    --  local builtins = require 'telescope.builtin'
-    --  return {
-    --    { '<leader>b',   function() builtins.buffers() end,    desc = 'Open buffers with Telescope' },
-    --    { '<leader>pfr', function() builtins.find_files() end, desc = 'Open root directory with Telescope' },
-    --    {
-    --     '<leader>ps',
-    --      function() builtins.grep_string { search = vim.fn.input 'Grep > ' } end,
-    --      desc = 'Search in root directory with Telescope',
-    --    },
-    --    {
-    --      "<leader>pfa",
-    --      "<cmd>Telescope adjacent<cr>",
-    --      noremap = true,
-    --      silent = false,
-    --      desc = 'Open adjacent files with Telescope',
-    --    },
-    --    { "<leader>u",  "<cmd>Telescope undo<cr>",   desc = 'Open undotree with Telescope' },
-    --    { '<leader>pa', "<cmd>Telescope aerial<cr>", desc = "Open Aerial with Telescope" },
-    --  }
-    --end,
+    keys = function()
+      return {
+        { '<leader>b',   function() require('telescope.builtin').buffers() end,    desc = 'Open buffers with Telescope' },
+        { '<leader>pfr', function() require('telescope.builtin').find_files() end, desc = 'Open root directory with Telescope' },
+        {
+          '<leader>ps',
+          function() require('telescope.builtin').grep_string { search = vim.fn.input 'Grep > ' } end,
+          desc = 'Search in root directory with Telescope',
+        },
+        {
+          "<leader>pfa",
+          "<cmd>Telescope adjacent<cr>",
+          noremap = true,
+          silent = false,
+          desc = 'Open adjacent files with Telescope',
+        },
+        { "<leader>u",  "<cmd>Telescope undo<cr>",   desc = 'Open undotree with Telescope' },
+        { '<leader>pa', "<cmd>Telescope aerial<cr>", desc = "Open Aerial with Telescope" },
+      }
+    end,
   },
 }
