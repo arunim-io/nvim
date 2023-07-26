@@ -6,6 +6,12 @@ map("v", "<A-Down>", ":m '>+1<CR>gv=gv", { desc = 'Move selected line up' })
 map("n", "<A-Up>", ":m .-2<CR>==", { desc = 'Move current line up' })
 map("n", "<A-Down>", ":m .+1<CR>==", { desc = 'Move current line down' })
 
+-- Tab/Shift+tab to indent/dedent
+map("v", "<Tab>", ">gv")
+map("n", "<Tab>", "v><C-\\><C-N>")
+map("v", "<S-Tab>", "<gv")
+map("n", "<S-Tab>", "v<<C-\\><C-N>")
+
 -- delete word backkward
 map('n', '<C-Bs>', 'db', { desc = "Delete previous word", noremap = true, silent = true })
 
@@ -31,12 +37,6 @@ map("n", "<leader>Y", [["+Y]])
 
 -- prevents from exiting
 map("n", "Q", "<nop>")
-
--- quick list
-map("n", "<C-k>", "<cmd>cnext<CR>zz")
-map("n", "<C-j>", "<cmd>cprev<CR>zz")
-map("n", "<leader>k", "<cmd>lnext<CR>zz")
-map("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 -- replace the word under current cursor
 map(
