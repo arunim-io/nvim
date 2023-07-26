@@ -3,7 +3,7 @@ return {
   {
     'stevearc/oil.nvim',
     lazy = false,
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    dependencies = "nvim-tree/nvim-web-devicons",
     config = function(_, opts)
       vim.g.loaded_netrw = 1
       vim.g.loaded_netrwPlugin = 1
@@ -51,8 +51,12 @@ return {
     end,
     keys = function()
       return {
-        { '<leader>b',   function() require('telescope.builtin').buffers() end,    desc = 'Open buffers with Telescope' },
-        { '<leader>pfr', function() require('telescope.builtin').find_files() end, desc = 'Open root directory with Telescope' },
+        { '<leader>b', function() require('telescope.builtin').buffers() end, desc = 'Open buffers with Telescope' },
+        {
+          '<leader>pfr',
+          function() require('telescope.builtin').find_files() end,
+          desc = 'Open root directory with Telescope'
+        },
         {
           '<leader>ps',
           function() require('telescope.builtin').grep_string { search = vim.fn.input 'Grep > ' } end,
@@ -61,12 +65,11 @@ return {
         {
           "<leader>pfa",
           "<cmd>Telescope adjacent<cr>",
+          desc = 'Open adjacent files with Telescope',
           noremap = true,
           silent = false,
-          desc = 'Open adjacent files with Telescope',
         },
-        { "<leader>u",  "<cmd>Telescope undo<cr>",   desc = 'Open undotree with Telescope' },
-        { '<leader>pa', "<cmd>Telescope aerial<cr>", desc = "Open Aerial with Telescope" },
+        { "<leader>u", "<cmd>Telescope undo<cr>",                             desc = 'Open undotree with Telescope' },
       }
     end,
   },
