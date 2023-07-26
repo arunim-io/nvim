@@ -4,18 +4,10 @@ return {
     'stevearc/oil.nvim',
     lazy = false,
     dependencies = "nvim-tree/nvim-web-devicons",
-    config = function(_, opts)
-      vim.g.loaded_netrw = 1
-      vim.g.loaded_netrwPlugin = 1
-
-      require("oil").setup(opts)
-    end,
     opts = {
       delete_to_trash = true,
       trash_command = 'trash',
-      view_options = {
-        show_hidden = true,
-      },
+      view_options = { show_hidden = true },
     },
     keys = {
       { '<leader>pv', '<cmd>Oil<cr>', desc = 'Open current directory with Oil' },
@@ -72,5 +64,31 @@ return {
         { "<leader>u", "<cmd>Telescope undo<cr>",                             desc = 'Open undotree with Telescope' },
       }
     end,
+  },
+  -- Commenting support
+  { 'numToStr/Comment.nvim', config = true },
+  -- Helper for viewing which keybind you are using
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    config = true,
+    init = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+    end,
+  },
+  -- Helps in acessing most accessed files
+  {
+    'ThePrimeagen/harpoon',
+    dependencies = 'nvim-lua/plenary.nvim',
+    opts = { global_settings = { save_on_toggle = true } },
+    keys = {
+      { '<leader>hm', function() require("harpoon.mark").add_file() end, desc = 'Mark current file to harpoon' },
+      {
+        '<leader>hl',
+        function() require("harpoon.ui").toggle_quick_menu() end,
+        desc = 'Show list of marked files with harpoon',
+      },
+    },
   },
 }

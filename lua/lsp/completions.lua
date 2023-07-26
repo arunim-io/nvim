@@ -1,6 +1,5 @@
 local luasnip = require 'luasnip'
 local cmp = require "cmp"
-local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
 local function has_words_before()
   unpack = unpack or table.unpack
@@ -39,13 +38,10 @@ cmp.setup {
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
-    --{ name = 'codeium' },
   }, { { name = 'buffer' } }),
   mapping = {
     ["<CR>"] = cmp.mapping.confirm { select = true },
     ["<C-Space>"] = cmp.mapping.complete(),
-    ["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
-    ["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
     ["<Tab>"] = cmp.mapping(cmp_tab_completion, { "i", "s" }),
     ["<S-Tab>"] = cmp.mapping(cmp_shift_tab_completion, { "i", "s" }),
   },
