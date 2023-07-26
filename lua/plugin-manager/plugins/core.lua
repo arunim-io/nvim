@@ -8,7 +8,7 @@ return {
       vim.g.loaded_netrw = 1
       vim.g.loaded_netrwPlugin = 1
 
-      require("oil").setup(opts) 
+      require("oil").setup(opts)
     end,
     opts = {
       delete_to_trash = true,
