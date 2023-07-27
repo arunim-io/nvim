@@ -49,7 +49,13 @@ return {
     end,
   },
   -- Useful when configuring neovim
-  { "folke/neodev.nvim",    config = true },
+  { "folke/neodev.nvim",               config = true },
   -- JSON Schema support
-  { "b0o/schemastore.nvim", ft = { 'json', 'jsonc', 'toml', 'yaml', 'yml' } },
+  { "b0o/schemastore.nvim",            ft = { 'json', 'jsonc', 'toml', 'yaml', 'yml' } },
+  -- Rust support
+  {
+    'simrat39/rust-tools.nvim',
+    ft = { 'rust' },
+    dependencies = { 'neovim/nvim-lspconfig', 'nvim-lua/plenary.nvim', 'mfussenegger/nvim-dap' },
+  },
 }
