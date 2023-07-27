@@ -1,6 +1,4 @@
 return {
-  -- git status support
-  { 'lewis6991/gitsigns.nvim',         config = true },
   -- LSP provider
   {
     'VonHeikemen/lsp-zero.nvim',
