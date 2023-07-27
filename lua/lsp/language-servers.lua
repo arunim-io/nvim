@@ -20,10 +20,6 @@ lspconfig.yamlls.setup {
   },
 }
 
-lspconfig.ruff_lsp.setup {
-  single_file_support = false,
-}
-
 lspconfig.cssls.setup {}
 
 lspconfig.eslint.setup {}
@@ -31,6 +27,8 @@ lspconfig.eslint.setup {}
 lspconfig.nil_ls.setup {}
 
 lspconfig.taplo.setup {}
+
+lspconfig.pyright.setup {}
 
 require('rust-tools').setup {
   server = {

@@ -7,9 +7,11 @@ null_ls.setup {
     builtins.diagnostics.djlint,
     builtins.diagnostics.dotenv_linter,
     builtins.diagnostics.editorconfig_checker,
+    builtins.diagnostics.ruff,
     builtins.formatting.black,
     builtins.formatting.djlint,
     builtins.formatting.nixpkgs_fmt,
     builtins.formatting.prettierd,
-  }
+    builtins.formatting.ruff,
+  },
 }
