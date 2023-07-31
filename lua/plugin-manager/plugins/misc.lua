@@ -1,4 +1,5 @@
 return {
+  -- Tmux support
   {
     "aserowy/tmux.nvim",
     lazy = false,
@@ -15,4 +16,6 @@ return {
       }
     end,
   },
+  -- Colour highlighting
+  { 'brenoprata10/nvim-highlight-colors', opts = { enable_tailwind = true } },
 }
