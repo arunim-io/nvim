@@ -11,7 +11,8 @@ null_ls.setup {
     builtins.formatting.black,
     builtins.formatting.djlint,
     builtins.formatting.nixpkgs_fmt,
-    builtins.formatting.prettierd,
+    builtins.formatting.prettier,
     builtins.formatting.ruff,
+    require "typescript.extensions.null-ls.code-actions",
   },
 }

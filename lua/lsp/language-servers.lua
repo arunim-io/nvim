@@ -20,6 +20,13 @@ lspconfig.yamlls.setup {
   },
 }
 
+require("rust-tools").setup {
+  server = {
+    on_attach = function(_, bufnr)
+      vim.keymap.set('n', '<leader>ca', '<cmd>RustCodeAction<cr>', { buffer = bufnr })
+    end,
+  },
+}
 
 lspconfig.cssls.setup {}
 
@@ -32,3 +39,5 @@ lspconfig.taplo.setup {}
 lspconfig.pyright.setup {}
 
 lspconfig.dockerls.setup {}
+
+lspconfig.svelte.setup {}
