@@ -1,3 +1,6 @@
 require 'config'
-require 'plugin-manager'
-require 'lsp'
+
+if not vim.g.vscode then
+  require 'lsp'
+  require 'plugin-manager'
+end
