@@ -30,6 +30,8 @@ require("rust-tools").setup {
 
 lspconfig.cssls.setup {}
 
+lspconfig.tailwindcss.setup {}
+
 lspconfig.eslint.setup {}
 
 lspconfig.nil_ls.setup {}

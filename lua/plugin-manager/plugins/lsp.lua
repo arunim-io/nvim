@@ -59,14 +59,13 @@ return {
     dependencies = { 'neovim/nvim-lspconfig', 'nvim-lua/plenary.nvim', 'mfussenegger/nvim-dap' },
   },
   -- JavaScript & TypeScript support
-  'jose-elias-alvarez/typescript.nvim',
   {
     "pmizio/typescript-tools.nvim",
-    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig", 'jose-elias-alvarez/typescript.nvim' },
     ft = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact' },
     config = true,
     opts = {
       complete_function_calls = true,
     },
-  }
+  },
 }
