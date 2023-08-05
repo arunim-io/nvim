@@ -55,7 +55,7 @@ return {
   -- Rust support
   {
     'simrat39/rust-tools.nvim',
-    ft = { 'rust' },
+    ft = 'rust',
     dependencies = { 'neovim/nvim-lspconfig', 'nvim-lua/plenary.nvim', 'mfussenegger/nvim-dap' },
   },
   -- JavaScript & TypeScript support
@@ -67,5 +67,11 @@ return {
     opts = {
       complete_function_calls = true,
     },
+  },
+  {
+    'akinsho/flutter-tools.nvim',
+    lazy = false,
+    ft = 'dart',
+    dependencies = { 'nvim-lua/plenary.nvim', 'stevearc/dressing.nvim' },
   },
 }
