@@ -30,8 +30,6 @@ require("rust-tools").setup {
 
 local function setup_flutter_tools(lsp)
   require('flutter-tools').setup {
-    -- flutter_path = "/home/arunim/.nix-profile/bin",
-    flutter_lookup_cmd = "dirname $(which flutter)",
     lsp = {
       capabilities = lsp.build_options('dartls', {}).capabilities,
     }
