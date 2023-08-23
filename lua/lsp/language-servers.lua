@@ -54,4 +54,6 @@ lspconfig.dockerls.setup {}
 
 lspconfig.svelte.setup {}
 
+lspconfig.bashls.setup {}
+
 return { setup_flutter_tools = setup_flutter_tools }
