@@ -1,3 +1,6 @@
+local M = {}
+
+local utils = require 'config.utils'
 local lspconfig = require 'lspconfig'
 local schema_store = require 'schemastore'
 
@@ -28,7 +31,7 @@ require("rust-tools").setup {
   },
 }
 
-local function setup_flutter_tools(lsp)
+function M.setup_flutter_tools(lsp)
   require('flutter-tools').setup {
     lsp = {
       capabilities = lsp.build_options('dartls', {}).capabilities,
@@ -36,24 +39,22 @@ local function setup_flutter_tools(lsp)
   }
 end
 
-lspconfig.dartls.setup {}
+if utils.isNixOS then
+  lspconfig.cssls.setup {}
+  lspconfig.tailwindcss.setup {}
+  lspconfig.eslint.setup {}
+  lspconfig.nil_ls.setup {}
+  lspconfig.taplo.setup {}
+  lspconfig.pyright.setup {}
+  lspconfig.dockerls.setup {}
+  lspconfig.svelte.setup {}
+  lspconfig.bashls.setup {}
+end
 
-lspconfig.cssls.setup {}
+function M.setup_lsps(lsp)
+  if not utils.isNixOS then
+    lsp.ensure_installed { 'cssls', 'tailwindcss', 'eslint', 'taplo', 'pyright', 'dockerls', 'svelte', 'bashls' }
+  end
+end
 
-lspconfig.tailwindcss.setup {}
-
-lspconfig.eslint.setup {}
-
-lspconfig.nil_ls.setup {}
-
-lspconfig.taplo.setup {}
-
-lspconfig.pyright.setup {}
-
-lspconfig.dockerls.setup {}
-
-lspconfig.svelte.setup {}
-
-lspconfig.bashls.setup {}
-
-return { setup_flutter_tools = setup_flutter_tools }
+return M

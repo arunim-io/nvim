@@ -10,6 +10,10 @@ return {
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
       'saadparwaiz1/cmp_luasnip',
+      not require('config.utils').isNixOS and {
+        'williamboman/mason.nvim',
+        'williamboman/mason-lspconfig.nvim',
+      }
     },
   },
   -- Helper plugin to show when code actions are available
