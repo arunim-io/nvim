@@ -1,6 +1,6 @@
 local M = {}
 
-local utils = require 'config.utils'
+local isNixOS = require('config.utils').isNixOS
 local lspconfig = require 'lspconfig'
 local schema_store = require 'schemastore'
 
@@ -39,7 +39,7 @@ function M.setup_flutter_tools(lsp)
   }
 end
 
-if utils.isNixOS then
+if isNixOS then
   lspconfig.cssls.setup {}
   lspconfig.tailwindcss.setup {}
   lspconfig.eslint.setup {}
@@ -52,7 +52,7 @@ if utils.isNixOS then
 end
 
 function M.setup_lsps(lsp)
-  if not utils.isNixOS then
+  if not isNixOS then
     lsp.ensure_installed { 'cssls', 'tailwindcss', 'eslint', 'taplo', 'pyright', 'dockerls', 'svelte', 'bashls' }
   end
 end

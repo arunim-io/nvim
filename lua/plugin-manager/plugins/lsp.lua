@@ -1,3 +1,5 @@
+local loadMason = not require('config.utils').isNixOS
+
 return {
   -- LSP provider
   {
@@ -10,10 +12,8 @@ return {
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
       'saadparwaiz1/cmp_luasnip',
-      not require('config.utils').isNixOS and {
-        'williamboman/mason.nvim',
-        'williamboman/mason-lspconfig.nvim',
-      }
+      { 'williamboman/mason.nvim',           enabled = loadMason },
+      { 'williamboman/mason-lspconfig.nvim', enabled = loadMason },
     },
   },
   -- Helper plugin to show when code actions are available
