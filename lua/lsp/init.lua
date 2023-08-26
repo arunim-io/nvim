@@ -8,10 +8,10 @@ end)
 
 require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
 
+require('lsp.language-servers').setup_lsps(lsp)
 lsp.setup()
 
 require 'lsp.language-servers'
-require('lsp.language-servers').setup_lsps(lsp)
 require('lsp.language-servers').setup_flutter_tools(lsp)
 require 'lsp.completions'
 require 'lsp.null-ls'

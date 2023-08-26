@@ -15,7 +15,9 @@ local function check_distro(distro_name)
   end
 end
 
+local isArchLinux = vim.fn.executable('pacman') == 1
+
 ---Is neovim running on NixOS?
-local isNixOS = check_distro('NixOS')
+local isNixOS = check_distro('NixOS') and not isArchLinux
 
 return { isNixOS = isNixOS }
