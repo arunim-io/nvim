@@ -9,7 +9,6 @@ null_ls.setup {
     builtins.diagnostics.dotenv_linter,
     builtins.diagnostics.editorconfig_checker,
     builtins.diagnostics.fish,
-    builtins.diagnostics.ruff,
     builtins.diagnostics.shellcheck,
     builtins.formatting.black,
     builtins.formatting.djlint,

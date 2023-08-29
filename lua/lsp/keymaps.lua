@@ -1,6 +1,6 @@
 local M = {}
 
-function M.handle_keymaps(lsp,client, bufnr)
+function M.handle_keymaps(lsp, client, bufnr)
   lsp.default_keymaps { buffer = bufnr, omit = { '<F2>', '<F3>', '<F4>', 'gl' } }
 
   local maps = vim.lsp.buf

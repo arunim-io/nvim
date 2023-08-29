@@ -46,6 +46,7 @@ if isNixOS then
   lspconfig.nil_ls.setup {}
   lspconfig.taplo.setup {}
   lspconfig.pyright.setup {}
+  lspconfig.ruff_lsp.setup {}
   lspconfig.dockerls.setup {}
   lspconfig.svelte.setup {}
   lspconfig.bashls.setup {}
@@ -53,7 +54,17 @@ end
 
 function M.setup_lsps(lsp)
   if not isNixOS then
-    lsp.ensure_installed { 'cssls', 'tailwindcss', 'eslint', 'taplo', 'pyright', 'dockerls', 'svelte', 'bashls' }
+    lsp.ensure_installed {
+      'cssls',
+      'tailwindcss',
+      'eslint',
+      'taplo',
+      'pyright',
+      'ruff_lsp',
+      'dockerls',
+      'svelte',
+      'bashls',
+    }
   end
 end
 
