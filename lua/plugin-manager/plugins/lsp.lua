@@ -14,6 +14,7 @@ return {
       'saadparwaiz1/cmp_luasnip',
       { 'williamboman/mason.nvim',           enabled = loadMason },
       { 'williamboman/mason-lspconfig.nvim', enabled = loadMason },
+      'creativenull/efmls-configs-nvim',
     },
   },
   -- Helper plugin to show when code actions are available
@@ -39,8 +40,6 @@ return {
       }
     end,
   },
-  -- Formatters & linters
-  { "jose-elias-alvarez/null-ls.nvim", dependencies = 'nvim-lua/plenary.nvim' },
   -- Helper for highlighting variables
   {
     'tzachar/local-highlight.nvim',
@@ -53,9 +52,9 @@ return {
     end,
   },
   -- Useful when configuring neovim
-  { "folke/neodev.nvim",               config = true },
+  { "folke/neodev.nvim",    config = true },
   -- JSON Schema support
-  { "b0o/schemastore.nvim",            ft = { 'json', 'jsonc', 'toml', 'yaml', 'yml' } },
+  { "b0o/schemastore.nvim", ft = { 'json', 'jsonc', 'toml', 'yaml', 'yml' } },
   -- Rust support
   {
     'simrat39/rust-tools.nvim',

@@ -14,4 +14,3 @@ lsp.setup()
 require 'lsp.language-servers'
 require('lsp.language-servers').setup_flutter_tools(lsp)
 require 'lsp.completions'
-require 'lsp.null-ls'

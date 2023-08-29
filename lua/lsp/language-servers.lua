@@ -64,6 +64,27 @@ lspconfig.ruff_lsp.setup {
   end
 }
 
+local shfmt = require('efmls-configs.formatters.shfmt')
+local shellcheck = require('efmls-configs.linters.shellcheck')
+
+lspconfig.efm.setup {
+  init_options = { documentFormatting = true },
+  settings = {
+    languages = {
+      ["="] = { require('efmls-configs.formatters.prettier_d') },
+      fish = {
+        require('efmls-configs.linters.fish'),
+        require('efmls-configs.formatters.fish_indent'),
+      },
+      bash = { shfmt, shellcheck },
+      sh = { shfmt, shellcheck },
+      python = { require('efmls-configs.formatters.black') },
+      nix = { { formatCommand = "nixpkgs-fmt", formatStdin = true },
+      },
+    },
+  },
+}
+
 if isNixOS then
   lspconfig.cssls.setup {}
   lspconfig.tailwindcss.setup {}
