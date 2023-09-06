@@ -2,6 +2,7 @@ return {
   -- Tmux support
   {
     "aserowy/tmux.nvim",
+    enabled = vim.env.TMUX ~= nil,
     lazy = false,
     opts = {
       navigation = { enable_default_keybindings = false },

@@ -64,7 +64,7 @@ return {
   -- JavaScript & TypeScript support
   {
     "pmizio/typescript-tools.nvim",
-    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig", 'jose-elias-alvarez/typescript.nvim' },
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
     ft = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact' },
     config = true,
     opts = {

@@ -53,9 +53,7 @@ lspconfig.ruff_lsp.setup {
     local function format()
       vim.lsp.buf.format()
       vim.lsp.buf.code_action {
-        context = {
-          only = { 'source.fixAll.ruff' }
-        },
+        context = { only = { 'source.fixAll.ruff' } },
         apply = true,
       }
     end
@@ -99,6 +97,7 @@ end
 function M.setup_lsps(lsp)
   if not isNixOS then
     lsp.ensure_installed {
+      'efm',
       'cssls',
       'tailwindcss',
       'eslint',
