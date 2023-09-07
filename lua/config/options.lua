@@ -18,7 +18,7 @@ options.wrap = true
 
 options.swapfile = false
 options.backup = false
-options.undodir = '~/.vim/undodir'
+options.undodir = vim.env.HOME .. '/.vim/undodir'
 options.undofile = true
 
 options.hlsearch = false
