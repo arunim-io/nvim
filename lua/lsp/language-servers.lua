@@ -1,4 +1,4 @@
-local M = {}
+local language_servers = {}
 
 local isNixOS = require('config.utils').isNixOS
 local lspconfig = require 'lspconfig'
@@ -31,7 +31,7 @@ require("rust-tools").setup {
   },
 }
 
-function M.setup_flutter_tools(lsp)
+function language_servers.setup_flutter_tools(lsp)
   require('flutter-tools').setup {
     lsp = {
       capabilities = lsp.build_options('dartls', {}).capabilities,
@@ -94,7 +94,7 @@ if isNixOS then
   lspconfig.bashls.setup {}
 end
 
-function M.setup_lsps(lsp)
+function language_servers.setup_lsps(lsp)
   if not isNixOS then
     lsp.ensure_installed {
       'efm',
@@ -111,4 +111,4 @@ function M.setup_lsps(lsp)
   end
 end
 
-return M
+return language_servers

@@ -1,55 +1,33 @@
-local map = vim.keymap.set
-
--- move selected text up and down
-map("v", "<A-Up>", ":m '<-2<CR>gv=gv", { desc = 'Move selected line down' })
-map("v", "<A-Down>", ":m '>+1<CR>gv=gv", { desc = 'Move selected line up' })
-map("n", "<A-Up>", ":m .-2<CR>==", { desc = 'Move current line up' })
-map("n", "<A-Down>", ":m .+1<CR>==", { desc = 'Move current line down' })
-
--- Tab/Shift+tab to indent/dedent
-map("v", "<Tab>", ">gv")
-map("n", "<Tab>", "v><C-\\><C-N>")
-map("v", "<S-Tab>", "<gv")
-map("n", "<S-Tab>", "v<<C-\\><C-N>")
-
--- delete word backkward
-map('n', '<C-Bs>', 'db', { desc = "Delete previous word", noremap = true, silent = true })
-
--- delete word forward
-map('n', '<C-Delete>', 'dw', { desc = "Delete next word", noremap = true, silent = true })
-
--- select all
-map('n', '<C-A>', 'ggVG', { desc = "Select all", noremap = true, silent = true })
-
--- append next line to the current one
-map("n", "J", "mzJ`z", { desc = 'Append next line to the current one' })
-
--- navigate while searching
-map("n", "n", "nzzzv")
-map("n", "N", "Nzzzv")
-
--- paste without losing current buffer
-map("x", "<leader>p", [["_dP]], { desc = 'Paste without losing buffer' })
-
--- paste to system clipboard
-map({ "n", "v" }, "<leader>y", [["+y]])
-map("n", "<leader>Y", [["+Y]])
-
--- prevents from exiting
-map("n", "Q", "<nop>")
-
--- replace the word under current cursor
-map(
-  "n",
-  "<leader>s",
-  [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-  { desc = 'Replace text under cursor with regex' }
-)
-
--- make a script executable
-map(
-  "n",
-  "<leader>x",
-  "<cmd>!chmod +x %<CR>",
-  { silent = true, desc = 'Make the script in current buffer executable' }
-)
+local keymaps = {
+  { "v",          "<A-Up>",     ":m '<-2<CR>gv=gv", { desc = 'Move selected line down' } },
+  { "v",          "<A-Down>",   ":m '>+1<CR>gv=gv", { desc = 'Move selected line up' } },
+  { "n",          "<A-Up>",     ":m .-2<CR>==",     { desc = 'Move current line up' } },
+  { "n",          "<A-Down>",   ":m .+1<CR>==",     { desc = 'Move current line down' } },
+  { "v",          "<Tab>",      ">gv",              { desc = 'indent by 1' } },
+  { "n",          "<Tab>",      "v><C-\\><C-N>",    { desc = 'indent by 1' } },
+  { "v",          "<S-Tab>",    "<gv",              { desc = 'indent by -1' } },
+  { "n",          "<S-Tab>",    "v<<C-\\><C-N>",    { desc = 'indent by -1' } },
+  { 'n',          '<C-Bs>',     'db',               { desc = "Delete previous word", noremap = true, silent = true } },
+  { 'n',          '<C-Delete>', 'dw',               { desc = "Delete next word", noremap = true, silent = true } },
+  { 'n',          '<C-A>',      'ggVG',             { desc = "Select all", noremap = true, silent = true } },
+  { "n",          "J",          "mzJ`z",            { desc = 'Append next line to the current one' } },
+  { "x",          "<leader>p",  [["_dP]],           { desc = 'Paste without losing buffer' } },
+  { { "n", "v" }, "<leader>y",  [["+y]],            { desc = 'copy to system clipboard' } },
+  { "n",          "<leader>Y",  [["+Y]],            { desc = 'copy to system clipboard' } },
+  { "n",          "Q",          "<nop>" },
+  {
+    "n",
+    "<leader>s",
+    [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+    { desc = 'Replace text under cursor with regex' }
+  },
+  {
+    "n",
+    "<leader>x",
+    "<cmd>!chmod +x %<CR>",
+    { silent = true, desc = 'Make the script in current buffer executable' }
+  }
+}
+for _, value in pairs(keymaps) do
+  vim.keymap.set(value[1], value[2], value[3], value[4])
+end

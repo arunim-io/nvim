@@ -18,8 +18,7 @@ options.wrap = true
 
 options.swapfile = false
 options.backup = false
----@diagnostic disable-next-line: assign-type-mismatch
-options.undodir = os.getenv('HOME') .. '/.vim/undodir'
+options.undodir = '~/.vim/undodir'
 options.undofile = true
 
 options.hlsearch = false
