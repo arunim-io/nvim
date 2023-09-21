@@ -18,9 +18,6 @@
         type = "app";
         program = "${packages.default}/bin/nvim";
       };
-      devShells.default = pkgs.mkShell {
-        buildInputs = [ packages.default ];
-      };
     };
   };
 }
