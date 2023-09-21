@@ -7,12 +7,12 @@
     };
   };
 
-  outputs = inputs@{ flake-parts, ... }: flake-parts.lib.mkFlake { inherit inputs; } {
-    systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" "x86_64-darwin" ];
+  outputs = inputs@{ flake-parts, neovim, ... }: flake-parts.lib.mkFlake { inherit inputs; } {
+    systems = [ "x86_64-linux" ];
     perSystem = { pkgs, system, ... }: rec {
       packages.default = import ./nix {
         inherit pkgs;
-        inherit (inputs.neovim.packages.${system}) neovim;
+        inherit (neovim.packages.${system}) neovim;
       };
       apps.default = {
         type = "app";
