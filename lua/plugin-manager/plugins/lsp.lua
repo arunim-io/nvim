@@ -61,16 +61,6 @@ return {
     ft = 'rust',
     dependencies = { 'neovim/nvim-lspconfig', 'nvim-lua/plenary.nvim', 'mfussenegger/nvim-dap' },
   },
-  -- JavaScript & TypeScript support
-  {
-    "pmizio/typescript-tools.nvim",
-    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-    ft = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact' },
-    config = true,
-    opts = {
-      complete_function_calls = true,
-    },
-  },
   {
     'akinsho/flutter-tools.nvim',
     lazy = false,

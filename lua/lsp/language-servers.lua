@@ -62,6 +62,8 @@ lspconfig.ruff_lsp.setup {
   end
 }
 
+lspconfig.tsserver.setup {}
+
 local shfmt = require('efmls-configs.formatters.shfmt')
 local shellcheck = require('efmls-configs.linters.shellcheck')
 
