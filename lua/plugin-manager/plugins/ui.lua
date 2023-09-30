@@ -8,8 +8,9 @@ return {
   },
   {
     "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
     opts = {
-      show_current_context = true,
+      indent = { char = '|' },
       show_current_context_start = true,
       space_char_blankline = " ",
     }
