@@ -10,9 +10,7 @@ return {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
     opts = {
-      indent = { char = '|' },
-      show_current_context_start = true,
-      space_char_blankline = " ",
+      indent = { char = '▏' },
     }
   },
   { 'nvim-tree/nvim-web-devicons', opts = { default = true, strict = true } },
