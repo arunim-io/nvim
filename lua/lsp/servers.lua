@@ -1,13 +1,9 @@
--- This is where all the LSP shenanigans will live
-local lsp_zero = require('lsp-zero')
-lsp_zero.extend_lspconfig()
+local lsp = require('lsp-zero')
 
-lsp_zero.on_attach(function(client, bufnr)
-  -- see :help lsp-zero-keybindings
-  -- to learn the available actions
-  lsp_zero.default_keymaps({ buffer = bufnr })
-end)
+lsp.extend_lspconfig()
 
--- (Optional) Configure lua language server for neovim
-local lua_opts = lsp_zero.nvim_lua_ls()
-require('lspconfig').lua_ls.setup(lua_opts)
+require('lsp.keymaps').setup_keymaps(lsp)
+
+local lspconfig = require 'lspconfig'
+
+lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
