@@ -2,10 +2,9 @@ return {
   {
     "EdenEast/nightfox.nvim",
     config=true,
-    init = function() vim.cmd "colorscheme nightfox" end,
+    init = function() vim.cmd "colorscheme carbonfox" end,
     opts = {
       options = {
-        transparent = true,
         dim_inactive = true,
       },
     },
