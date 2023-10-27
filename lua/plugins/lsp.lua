@@ -51,6 +51,7 @@ return {
       },
     },
   },
+  -- Linters
   {
     'mfussenegger/nvim-lint',
     event = 'BufReadPre',
@@ -67,4 +68,6 @@ return {
       }
     end,
   },
+  -- lsp helper for neovim
+  { "folke/neodev.nvim", config = true, ft = 'lua' },
 }

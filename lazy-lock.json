@@ -4,6 +4,7 @@
   "conform.nvim": { "branch": "master", "commit": "253878436e2b6d73dfd91ccf0ac12d04cc683d34" },
   "lazy.nvim": { "branch": "main", "commit": "16603c6917435d8446f7357cb61095138a417085" },
   "lsp-zero.nvim": { "branch": "v3.x", "commit": "c36c34c289e42f924760a6ea092329582d5f81b2" },
+  "neodev.nvim": { "branch": "main", "commit": "7b46fd0f81c9c9ef5d5898879e86ae271152c79f" },
   "nightfox.nvim": { "branch": "main", "commit": "6a6076bd678f825ffbe16ec97807793c3167f1a7" },
   "nvim-cmp": { "branch": "main", "commit": "51260c02a8ffded8e16162dcf41a23ec90cfba62" },
   "nvim-lint": { "branch": "master", "commit": "962a76877a4479a535b935bd7ef35ad41ba308b2" },
