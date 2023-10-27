@@ -21,12 +21,7 @@ local keymaps = {
     [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
     { desc = 'Replace text under cursor with regex' }
   },
-  {
-    "n",
-    "<leader>x",
-    "<cmd>!chmod +x %<CR>",
-    { silent = true, desc = 'Make the script in current buffer executable' }
-  }
+  {"n","<leader>pv","<cmd>Ex<cr>"},
 }
 for _, value in pairs(keymaps) do
   vim.keymap.set(value[1], value[2], value[3], value[4])

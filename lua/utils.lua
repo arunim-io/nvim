@@ -2,7 +2,7 @@
 --- @param distro_name string
 --- @return boolean
 local function check_distro(distro_name)
-  local out = vim.fn.system({ 'uname', '--all' })
+  local out = vim.fn.system { 'uname', '--all' }
   if out ~= nil then
     local exists = string.find(out, distro_name)
     if exists ~= nil then
@@ -15,10 +15,8 @@ local function check_distro(distro_name)
   end
 end
 
---- Is neovim running on ArchLinx?
-local isArchLinux = vim.fn.executable('pacman') == 1
 
 --- Is neovim running on NixOS?
-local isNixOS = check_distro('NixOS') and not isArchLinux
+local isNixOS = check_distro('NixOS')
 
 return { isNixOS = isNixOS }
