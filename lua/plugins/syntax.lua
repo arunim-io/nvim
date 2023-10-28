@@ -3,7 +3,8 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = function() require("nvim-treesitter.install").update({ with_sync = true })() end,
     config = function(_, opts) require('nvim-treesitter.configs').setup(opts) end,
-    dependencies = { 'JoosepAlviste/nvim-ts-context-commentstring' },
+    dependencies = 'JoosepAlviste/nvim-ts-context-commentstring',
+    event = 'BufReadPre',
     opts = {
       sync_install = true,
       highlight = { enable = true },
@@ -44,16 +45,29 @@ return {
       indent = { char = '▏' },
     }
   },
-  { 'numToStr/Comment.nvim', config = true },
+  { 'numToStr/Comment.nvim', config = true, event = 'BufRead' },
   {
     "danymat/neogen",
     dependencies = "nvim-treesitter/nvim-treesitter",
+    event = 'BufRead',
     config = true,
     opts = {
       snippet_engine = "luasnip",
     },
     keys = {
-      { "<leader>gds", function() require('neogen').generate() end, desc = 'Generate docstring', noremap = true, silent = true },
+      {
+        "<leader>gds",
+        function() require('neogen').generate() end,
+        desc = 'Generate docstring',
+        noremap = true,
+        silent = true
+      },
     },
+  },
+  {
+    "folke/todo-comments.nvim",
+    dependencies = "nvim-lua/plenary.nvim",
+    config = true,
+    event = 'BufRead',
   },
 }
