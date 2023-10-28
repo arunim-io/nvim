@@ -70,4 +70,23 @@ return {
   },
   -- lsp helper for neovim
   { "folke/neodev.nvim", config = true, ft = 'lua' },
+  {
+    "folke/trouble.nvim",
+    dependencies = "nvim-tree/nvim-web-devicons",
+    config = true,
+    keys = function()
+      local function set(map, cmd, desc) return { map, cmd, desc, silent = true, noremap = true } end
+
+      return {
+        set("<leader>d", "<cmd>TroubleToggle<cr>", 'Enable/disable Trouble'),
+        set("<leader>dd", "<cmd>TroubleToggle document_diagnostics<cr>", 'Show diagnostics for current buffer'),
+        set("<leader>dw", "<cmd>TroubleToggle workspace_diagnostics<cr>", "Show diagnostics for current workspace"),
+      }
+    end,
+  },
+  {
+    'kosayoda/nvim-lightbulb',
+    dependencies = 'antoinemadec/FixCursorHold.nvim',
+    opts = { autocmd = { enabled = true } },
+  },
 }
