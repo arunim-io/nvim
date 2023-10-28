@@ -3,13 +3,14 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = function() require("nvim-treesitter.install").update({ with_sync = true })() end,
     config = function(_, opts) require('nvim-treesitter.configs').setup(opts) end,
-    dependencies = 'JoosepAlviste/nvim-ts-context-commentstring',
+    dependencies = { 'JoosepAlviste/nvim-ts-context-commentstring', 'windwp/nvim-ts-autotag' },
     event = 'BufReadPre',
     opts = {
       sync_install = true,
       highlight = { enable = true },
       indent = { enable = true },
       context_commentstring = { enable = true },
+      autotag = { enable = true },
       ensure_installed = {
         "bash",
         "css",
