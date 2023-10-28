@@ -26,6 +26,7 @@ return {
   -- Formatters
   {
     'stevearc/conform.nvim',
+    event = "LspAttach",
     config = true,
     init = function() vim.o.formatexpr = "v:lua.require'conform'.formatexpr()" end,
     opts = {
@@ -54,7 +55,7 @@ return {
   -- Linters
   {
     'mfussenegger/nvim-lint',
-    event = 'BufReadPre',
+    event = "LspAttach",
     init = function()
       vim.api.nvim_create_autocmd({ "InsertLeave", "BufWritePost" }, {
         callback = function() require("lint").try_lint() end,
@@ -73,6 +74,7 @@ return {
   {
     "folke/trouble.nvim",
     dependencies = "nvim-tree/nvim-web-devicons",
+    event = "LspAttach",
     config = true,
     keys = function()
       local function set(map, cmd, desc) return { map, cmd, desc, silent = true, noremap = true } end
@@ -87,6 +89,13 @@ return {
   {
     'kosayoda/nvim-lightbulb',
     dependencies = 'antoinemadec/FixCursorHold.nvim',
+    event = "LspAttach",
     opts = { autocmd = { enabled = true } },
   },
+  {
+    "j-hui/fidget.nvim",
+    tag = "legacy",
+    event = "LspAttach",
+    config = true,
+  }
 }
