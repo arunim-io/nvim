@@ -45,4 +45,15 @@ return {
     }
   },
   { 'numToStr/Comment.nvim', config = true },
+  {
+    "danymat/neogen",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    config = true,
+    opts = {
+      snippet_engine = "luasnip",
+    },
+    keys = {
+      { "<leader>gds", function() require('neogen').generate() end, desc = 'Generate docstring', noremap = true, silent = true },
+    },
+  },
 }
