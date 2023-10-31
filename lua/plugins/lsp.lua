@@ -13,7 +13,7 @@ return {
   {
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
-    dependencies = { 'L3MON4D3/LuaSnip' },
+    dependencies = 'L3MON4D3/LuaSnip',
     config = function() require "lsp.cmp" end
   },
   -- LSP
@@ -21,7 +21,7 @@ return {
     'neovim/nvim-lspconfig',
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = { 'hrsh7th/cmp-nvim-lsp' },
-    config = function() require 'lsp.servers' end
+    config = function() require 'lsp' end
   },
   -- Formatters
   {
@@ -70,7 +70,8 @@ return {
     end,
   },
   -- lsp helper for neovim
-  { "folke/neodev.nvim", config = true, ft = 'lua' },
+  { "folke/neodev.nvim",    config = true,                                  ft = 'lua' },
+  -- diagnostics helper
   {
     "folke/trouble.nvim",
     dependencies = "nvim-tree/nvim-web-devicons",
@@ -86,16 +87,33 @@ return {
       }
     end,
   },
+  -- code action indicator
   {
     'kosayoda/nvim-lightbulb',
     dependencies = 'antoinemadec/FixCursorHold.nvim',
     event = "LspAttach",
     opts = { autocmd = { enabled = true } },
   },
+  -- lsp loading indicator
   {
     "j-hui/fidget.nvim",
     tag = "legacy",
     event = "LspAttach",
     config = true,
-  }
+  },
+  -- JSON Schema support
+  { "b0o/schemastore.nvim", ft = { 'json', 'jsonc', 'toml', 'yaml', 'yml' } },
+  {
+    'simrat39/rust-tools.nvim',
+    ft = 'rust',
+    dependencies = { 'neovim/nvim-lspconfig', 'nvim-lua/plenary.nvim', 'mfussenegger/nvim-dap' },
+    config = true,
+    opts = {
+      server = {
+        on_attach = function(_, bufnr)
+          vim.keymap.set('n', '<leader>ca', '<cmd>RustCodeAction<cr>', { buffer = bufnr })
+        end,
+      },
+    },
+  },
 }

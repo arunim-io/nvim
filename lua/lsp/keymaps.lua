@@ -1,16 +1,14 @@
-return {
-  setup_keymaps = function(lsp)
-    lsp.on_attach(function(client, bufnr)
-      lsp.default_keymaps { buffer = bufnr, omit = { '<F2>', '<F3>', '<F4>', 'gl' } }
+local lsp = require 'lsp-zero'
 
-      local maps = vim.lsp.buf
-      local map = vim.keymap.set
+lsp.on_attach(function(client, bufnr)
+  lsp.default_keymaps { buffer = bufnr, omit = { '<F2>', '<F3>', '<F4>', 'gl' } }
 
-      local function opts(desc) return { desc = desc, buffer = client.buf } end
+  local maps = vim.lsp.buf
+  local map = vim.keymap.set
 
-      map("n", "<leader>f", maps.format, opts 'Format current file')
-      map('n', '<leader>ca', maps.code_action, opts 'Open code action menu')
-      map('n', '<leader>rn', maps.rename, opts 'Rename current word')
-    end)
-  end
-}
+  local function opts(desc) return { desc = desc, buffer = client.buf } end
+
+  map("n", "<leader>f", maps.format, opts 'Format current file')
+  map('n', '<leader>ca', maps.code_action, opts 'Open code action menu')
+  map('n', '<leader>rn', maps.rename, opts 'Rename current word')
+end)
