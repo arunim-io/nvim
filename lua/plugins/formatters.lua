@@ -6,6 +6,7 @@ return {
 		{
 			"<leader>f",
 			function() require("conform").format({ async = true, lsp_fallback = true }) end,
+			mode = '',
 			desc = "Format buffer",
 		},
 	},
@@ -13,6 +14,7 @@ return {
 		formatters_by_ft = {
 			python = { "black" },
 			javascript = { "prettierd" },
+			nix = { "nixpkgs_fmt" },
 		},
 		format_on_save = { timeout_ms = 500, lsp_fallback = true },
 	},
