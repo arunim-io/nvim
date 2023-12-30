@@ -13,30 +13,43 @@ return {
 	{
 		'hrsh7th/nvim-cmp',
 		event = 'InsertEnter',
-		dependencies = { 'L3MON4D3/LuaSnip' },
+		dependencies = 'L3MON4D3/LuaSnip',
 		config = function() require('lsp_cmp') end
 	},
 	{
 		'neovim/nvim-lspconfig',
 		cmd = 'LspInfo',
 		event = { 'BufReadPre', 'BufNewFile' },
-		dependencies = { 'hrsh7th/cmp-nvim-lsp' },
+		dependencies = 'hrsh7th/cmp-nvim-lsp',
 		config = function() require('lsp') end
 	},
-	{ "folke/neodev.nvim", config = true,       ft = 'lua' },
+	{
+		"folke/trouble.nvim",
+		dependencies = "nvim-tree/nvim-web-devicons",
+		event = "LspAttach",
+		config = true,
+		keys = {
+			{
+				"<leader>dd",
+				"<cmd>TroubleToggle document_diagnostics<cr>",
+				desc = 'Show diagnostics for current buffer'
+			},
+			{
+				"<leader>dw",
+				"<cmd>TroubleToggle workspace_diagnostics<cr>",
+				desc = "Show diagnostics for current workspace"
+			}
+		},
+	},
+	{ "folke/neodev.nvim",    config = true,                                  ft = 'lua' },
 	{
 		'kosayoda/nvim-lightbulb',
 		dependencies = 'antoinemadec/FixCursorHold.nvim',
 		event = "LspAttach",
-		opts = { autocmd = { enabled = true } },
+		opts = {
+			autocmd = { enabled = true }
+		},
 	},
-	{ "j-hui/fidget.nvim", event = "LspAttach", config = true },
-	{
-		"jinzhongjia/LspUI.nvim",
-		branch = "main",
-		enabled = false,
-		config = true,
-		event = "LspAttach",
-	},
+	{ "j-hui/fidget.nvim",    event = "LspAttach",                            config = true },
 	{ "b0o/schemastore.nvim", ft = { 'json', 'jsonc', 'toml', 'yaml', 'yml' } },
 }
