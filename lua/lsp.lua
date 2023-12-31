@@ -17,6 +17,7 @@ end)
 local lspconfig = require('lspconfig')
 
 lspconfig.lua_ls.setup(lsp_zero.nvim_lua_ls())
+
 lspconfig.nil_ls.setup {}
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
