@@ -1,5 +1,4 @@
-require('globals')
-require 'options'
-require 'keymaps'
-
-require('load_lazy')
+require("globals")
+require("options")
+require("keymaps")
+require("load_lazy")

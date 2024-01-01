@@ -1,7 +1,7 @@
 return {
 	{
-		'VonHeikemen/lsp-zero.nvim',
-		branch = 'v3.x',
+		"VonHeikemen/lsp-zero.nvim",
+		branch = "v3.x",
 		lazy = true,
 		config = false,
 		init = function()
@@ -11,17 +11,21 @@ return {
 		end,
 	},
 	{
-		'hrsh7th/nvim-cmp',
-		event = 'InsertEnter',
-		dependencies = 'L3MON4D3/LuaSnip',
-		config = function() require('lsp_cmp') end
+		"hrsh7th/nvim-cmp",
+		event = "InsertEnter",
+		dependencies = "L3MON4D3/LuaSnip",
+		config = function()
+			require("lsp_cmp")
+		end,
 	},
 	{
-		'neovim/nvim-lspconfig',
-		cmd = 'LspInfo',
-		event = { 'BufReadPre', 'BufNewFile' },
-		dependencies = 'hrsh7th/cmp-nvim-lsp',
-		config = function() require('lsp') end
+		"neovim/nvim-lspconfig",
+		cmd = "LspInfo",
+		event = { "BufReadPre", "BufNewFile" },
+		dependencies = "hrsh7th/cmp-nvim-lsp",
+		config = function()
+			require("lsp")
+		end,
 	},
 	{
 		"folke/trouble.nvim",
@@ -32,24 +36,24 @@ return {
 			{
 				"<leader>dd",
 				"<cmd>TroubleToggle document_diagnostics<cr>",
-				desc = 'Show diagnostics for current buffer'
+				desc = "Show diagnostics for current buffer",
 			},
 			{
 				"<leader>dw",
 				"<cmd>TroubleToggle workspace_diagnostics<cr>",
-				desc = "Show diagnostics for current workspace"
-			}
+				desc = "Show diagnostics for current workspace",
+			},
 		},
 	},
-	{ "folke/neodev.nvim",    config = true,                                  ft = 'lua' },
+	{ "folke/neodev.nvim", config = true, ft = "lua" },
 	{
-		'kosayoda/nvim-lightbulb',
-		dependencies = 'antoinemadec/FixCursorHold.nvim',
+		"kosayoda/nvim-lightbulb",
+		dependencies = "antoinemadec/FixCursorHold.nvim",
 		event = "LspAttach",
 		opts = {
-			autocmd = { enabled = true }
+			autocmd = { enabled = true },
 		},
 	},
-	{ "j-hui/fidget.nvim",    event = "LspAttach",                            config = true },
-	{ "b0o/schemastore.nvim", ft = { 'json', 'jsonc', 'toml', 'yaml', 'yml' } },
+	{ "j-hui/fidget.nvim", event = "LspAttach", config = true },
+	{ "b0o/schemastore.nvim", ft = { "json", "jsonc", "toml", "yaml", "yml" } },
 }
