@@ -45,3 +45,19 @@ lspconfig.yamlls.setup({
 })
 
 lspconfig.taplo.setup({})
+
+lspconfig.astro.setup({})
+lspconfig.bashls.setup({})
+lspconfig.cssls.setup({ capabilities = capabilities })
+lspconfig.html.setup({ capabilities = capabilities })
+lspconfig.dockerls.setup({})
+lspconfig.eslint.setup({
+  on_attach = function(_, bufnr)
+    vim.api.nvim_create_autocmd("BufWritePre", { buffer = bufnr, command = "EslintFixAll" })
+  end,
+})
+lspconfig.pyright.setup({})
+lspconfig.ruff_lsp.setup({})
+lspconfig.statix.setup({})
+lspconfig.svelte.setup({})
+lspconfig.tailwindcss.setup({})

@@ -1,59 +1,81 @@
 return {
-	{
-		"VonHeikemen/lsp-zero.nvim",
-		branch = "v3.x",
-		lazy = true,
-		config = false,
-		init = function()
-			-- Disable automatic setup, we are doing it manually
-			vim.g.lsp_zero_extend_cmp = 0
-			vim.g.lsp_zero_extend_lspconfig = 0
-		end,
-	},
-	{
-		"hrsh7th/nvim-cmp",
-		event = "InsertEnter",
-		dependencies = "L3MON4D3/LuaSnip",
-		config = function()
-			require("lsp_cmp")
-		end,
-	},
-	{
-		"neovim/nvim-lspconfig",
-		cmd = "LspInfo",
-		event = { "BufReadPre", "BufNewFile" },
-		dependencies = "hrsh7th/cmp-nvim-lsp",
-		config = function()
-			require("lsp")
-		end,
-	},
-	{
-		"folke/trouble.nvim",
-		dependencies = "nvim-tree/nvim-web-devicons",
-		event = "LspAttach",
-		config = true,
-		keys = {
-			{
-				"<leader>dd",
-				"<cmd>TroubleToggle document_diagnostics<cr>",
-				desc = "Show diagnostics for current buffer",
-			},
-			{
-				"<leader>dw",
-				"<cmd>TroubleToggle workspace_diagnostics<cr>",
-				desc = "Show diagnostics for current workspace",
-			},
-		},
-	},
-	{ "folke/neodev.nvim", config = true, ft = "lua" },
-	{
-		"kosayoda/nvim-lightbulb",
-		dependencies = "antoinemadec/FixCursorHold.nvim",
-		event = "LspAttach",
-		opts = {
-			autocmd = { enabled = true },
-		},
-	},
-	{ "j-hui/fidget.nvim", event = "LspAttach", config = true },
-	{ "b0o/schemastore.nvim", ft = { "json", "jsonc", "toml", "yaml", "yml" } },
+  {
+    "VonHeikemen/lsp-zero.nvim",
+    branch = "v3.x",
+    lazy = true,
+    config = false,
+    init = function()
+      -- Disable automatic setup, we are doing it manually
+      vim.g.lsp_zero_extend_cmp = 0
+      vim.g.lsp_zero_extend_lspconfig = 0
+    end,
+  },
+  {
+    "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
+    dependencies = "L3MON4D3/LuaSnip",
+    config = function()
+      require("lsp_cmp")
+    end,
+  },
+  {
+    "neovim/nvim-lspconfig",
+    cmd = "LspInfo",
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = "hrsh7th/cmp-nvim-lsp",
+    config = function()
+      require("lsp")
+    end,
+  },
+  {
+    "folke/trouble.nvim",
+    dependencies = "nvim-tree/nvim-web-devicons",
+    event = "LspAttach",
+    config = true,
+    keys = {
+      {
+        "<leader>dd",
+        "<cmd>TroubleToggle document_diagnostics<cr>",
+        desc = "Show diagnostics for current buffer",
+      },
+      {
+        "<leader>dw",
+        "<cmd>TroubleToggle workspace_diagnostics<cr>",
+        desc = "Show diagnostics for current workspace",
+      },
+    },
+  },
+  {
+    "kosayoda/nvim-lightbulb",
+    dependencies = "antoinemadec/FixCursorHold.nvim",
+    event = "LspAttach",
+    opts = {
+      autocmd = { enabled = true },
+    },
+  },
+  { "j-hui/fidget.nvim", event = "LspAttach", config = true },
+  { "b0o/schemastore.nvim", ft = { "json", "jsonc", "toml", "yaml", "yml" } },
+  { "folke/neodev.nvim", config = true, ft = "lua" },
+  {
+    "mrcjkb/rustaceanvim",
+    version = "^3",
+    ft = "rust",
+    config = function()
+      vim.g.rustaceanvim = {
+        server = {
+          on_attach = function(_, bufnr)
+            vim.keymap.set("n", "<leader>ca", function()
+              vim.cmd.RustLsp("codeAction")
+            end, { silent = true, buffer = bufnr })
+          end,
+        },
+      }
+    end,
+  },
+  {
+    "saecki/crates.nvim",
+    event = "BufRead Cargo.toml",
+    dependencies = "nvim-lua/plenary.nvim",
+    config = true,
+  },
 }
