@@ -6,7 +6,7 @@ return {
     branch = "nightly",
     config = true,
     keys = {
-      { "<leader>g", "<cmd>Neogit<cr>", desc = "Open Neogit" },
+      { "<leader>gg", "<cmd>Neogit<cr>", desc = "Open Neogit" },
     },
   },
 }

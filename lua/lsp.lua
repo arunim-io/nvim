@@ -11,7 +11,7 @@ lsp_zero.on_attach(function(client, bufnr)
     return { desc = desc, buffer = client.buf }
   end
 
-  map("n", "<leader>f", maps.format, opts("Format current file"))
+  --map("n", "<leader>f", maps.format, opts("Format current file"))
   map("n", "<leader>ca", maps.code_action, opts("Open code action menu"))
   map("n", "<leader>rn", maps.rename, opts("Rename current word"))
 end)
@@ -58,6 +58,5 @@ lspconfig.eslint.setup({
 })
 lspconfig.pyright.setup({})
 lspconfig.ruff_lsp.setup({})
-lspconfig.statix.setup({})
 lspconfig.svelte.setup({})
 lspconfig.tailwindcss.setup({})

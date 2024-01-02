@@ -72,10 +72,15 @@ return {
       }
     end,
   },
+  { "saecki/crates.nvim", event = "BufRead Cargo.toml", dependencies = "nvim-lua/plenary.nvim", config = true },
   {
-    "saecki/crates.nvim",
-    event = "BufRead Cargo.toml",
-    dependencies = "nvim-lua/plenary.nvim",
-    config = true,
+    "pmizio/typescript-tools.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    opts = {
+      settings = {
+        complete_function_calls = true,
+        jsx_close_tags = { enable = true },
+      },
+    },
   },
 }
