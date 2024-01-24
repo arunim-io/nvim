@@ -13,7 +13,7 @@ return {
     event = "InsertEnter",
     dependencies = { "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip" },
     config = function()
-      require("lsp_cmp")
+      require("cmp")
     end,
   },
   { "lvimuser/lsp-inlayhints.nvim", config = true, event = "LspAttach" },
