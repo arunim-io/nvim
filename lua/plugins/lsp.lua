@@ -8,14 +8,6 @@ return {
       require("lsp")
     end,
   },
-  {
-    "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
-    dependencies = { "L3MON4D3/LuaSnip", "saadparwaiz1/cmp_luasnip" },
-    config = function()
-      require("cmp")
-    end,
-  },
   { "lvimuser/lsp-inlayhints.nvim", config = true, event = "LspAttach" },
   {
     "folke/trouble.nvim",
