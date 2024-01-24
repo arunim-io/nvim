@@ -1,32 +1,40 @@
-local lsp_zero = require("lsp-zero")
-lsp_zero.extend_lspconfig()
-
-lsp_zero.on_attach(function(client, bufnr)
-  lsp_zero.default_keymaps({ buffer = bufnr, omit = { "<F2>", "<F3>", "<F4>", "gl" } })
-
-  local maps = vim.lsp.buf
-  local map = vim.keymap.set
-
-  local function opts(desc)
-    return { desc = desc, buffer = client.buf }
-  end
-
-  --map("n", "<leader>f", maps.format, opts("Format current file"))
-  map("n", "<leader>ca", maps.code_action, opts("Open code action menu"))
-  map("n", "<leader>rn", maps.rename, opts("Rename current word"))
-end)
-
 local lspconfig = require("lspconfig")
 
-lspconfig.lua_ls.setup({})
+vim.api.nvim_create_autocmd("LspAttach", {
+  desc = "LSP actions",
+  callback = function(event)
+    local maps = vim.lsp.buf
+    local function set(keymap, cmd, desc)
+      vim.keymap.set("n", keymap, cmd, { buffer = event.buf, desc = desc })
+    end
 
-lspconfig.nil_ls.setup({})
+    set("K", maps.hover, "Show information about the symbol under the cursor")
+    set("gd", maps.definition, "Show definition for the symbol under the cursor")
+    set("gD", maps.declaration, "Go to the declaration of the symbol under the cursor")
+    set("gi", maps.implementation, "Show implementation of the symbol under the cursor")
+    set("gt", maps.type_definition, "Jump to definition of the symbol under the cursor")
+    set("gr", maps.references, "List all the references of the symbol under the cursor")
+    set("gs", maps.signature_help, "Show signature information about the symbol under the cursor")
+    set("<leader>ca", maps.code_action, "Open code action menu")
+    set("<leader>rn", maps.rename, "Rename current word")
+  end,
+})
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
+---@param lsp string
+---@param opts table|nil
+local function setup_lsp(lsp, opts)
+  opts = opts or {}
+  opts["capabilities"] = require("cmp_nvim_lsp").default_capabilities()
+  lspconfig[lsp].setup(opts)
+end
 
-lspconfig.jsonls.setup({
-  capabilities = capabilities,
+setup_lsp("lua_ls")
+setup_lsp("nil_ls")
+setup_lsp("taplo")
+setup_lsp("dockerls")
+setup_lsp("bashls")
+
+setup_lsp("jsonls", {
   settings = {
     json = {
       schemas = require("schemastore").json.schemas(),
@@ -35,7 +43,7 @@ lspconfig.jsonls.setup({
   },
 })
 
-lspconfig.yamlls.setup({
+setup_lsp("yamlls", {
   settings = {
     yaml = {
       schemaStore = { enable = false, url = "" },
@@ -44,19 +52,16 @@ lspconfig.yamlls.setup({
   },
 })
 
-lspconfig.taplo.setup({})
+setup_lsp("pyright")
+setup_lsp("ruff_lsp")
 
-lspconfig.astro.setup({})
-lspconfig.bashls.setup({})
-lspconfig.cssls.setup({ capabilities = capabilities })
-lspconfig.html.setup({ capabilities = capabilities })
-lspconfig.dockerls.setup({})
-lspconfig.eslint.setup({
+setup_lsp("astro")
+setup_lsp("cssls")
+setup_lsp("html")
+setup_lsp("eslint", {
   on_attach = function(_, bufnr)
     vim.api.nvim_create_autocmd("BufWritePre", { buffer = bufnr, command = "EslintFixAll" })
   end,
 })
-lspconfig.pyright.setup({})
-lspconfig.ruff_lsp.setup({})
-lspconfig.svelte.setup({})
-lspconfig.tailwindcss.setup({})
+setup_lsp("svelte")
+setup_lsp("tailwindcss")
