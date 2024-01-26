@@ -35,6 +35,7 @@
   nodePackages.typescript-language-server
   nodePackages."@astrojs/language-server"
   nodePackages."@tailwindcss/language-server"
+  biome
   # multi-lang formatter
   nodePackages.prettier
   # toml
