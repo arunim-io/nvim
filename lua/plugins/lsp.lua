@@ -53,6 +53,9 @@ return {
               vim.cmd.RustLsp("codeAction")
             end, { silent = true, buffer = bufnr })
           end,
+          settings = {
+            ["rust-analyzer"] = { check = { command = "clippy" } },
+          },
         },
       }
     end,

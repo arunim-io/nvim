@@ -55,13 +55,9 @@ setup_lsp("yamlls", {
 setup_lsp("pyright")
 setup_lsp("ruff_lsp")
 
-setup_lsp("astro")
-setup_lsp("cssls")
 setup_lsp("html")
-setup_lsp("eslint", {
-  on_attach = function(_, bufnr)
-    vim.api.nvim_create_autocmd("BufWritePre", { buffer = bufnr, command = "EslintFixAll" })
-  end,
-})
-setup_lsp("svelte")
+setup_lsp("cssls")
 setup_lsp("tailwindcss")
+setup_lsp("astro")
+setup_lsp("svelte")
+setup_lsp("biome")
