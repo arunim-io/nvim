@@ -15,6 +15,7 @@
   stylua
   # html,css,json
   vscode-langservers-extracted
+  emmet-language-server
   # shell
   nodePackages.bash-language-server
   shfmt

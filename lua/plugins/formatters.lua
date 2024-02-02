@@ -22,7 +22,7 @@ return {
       djangohtml = { "djlint" },
       lua = { "stylua" },
       nix = { "nixpkgs_fmt" },
-      python = { "black", "ruff_fix" },
+      python = { "ruff_format", "ruff_fix" },
       sh = { "shfmt" },
       toml = { "taplo" },
     },

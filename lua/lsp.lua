@@ -56,6 +56,7 @@ setup_lsp("pyright")
 setup_lsp("ruff_lsp")
 
 setup_lsp("html")
+setup_lsp("emmet_language_server")
 setup_lsp("cssls")
 setup_lsp("tailwindcss")
 setup_lsp("astro")

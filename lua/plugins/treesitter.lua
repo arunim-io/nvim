@@ -6,9 +6,11 @@ return {
     end,
     config = function()
       require("nvim-treesitter.configs").setup({
-        sync_install = true,
         auto_install = true,
         snippet_engine = "luasnip",
+        highlight = { enable = true },
+        incremental_selection = { enable = true },
+        indent = { enable = true },
       })
     end,
   },
