@@ -19,7 +19,7 @@ return {
     format_on_save = { timeout_ms = 500, lsp_fallback = true },
     formatters_by_ft = {
       ["_"] = { "prettier" },
-      djangohtml = { "djlint" },
+      htmldjango = { "djlint" },
       lua = { "stylua" },
       nix = { "nixpkgs_fmt" },
       python = { "ruff_format", "ruff_fix" },
