@@ -1,16 +1,15 @@
 local nightfox = {
-	"EdenEast/nightfox.nvim",
-	lazy = false,
-	priority = 1000,
-	config = function()
-		require("nightfox").setup({
-			options = {
-				transparent = true,
-				dim_inactive = true,
-			},
-		})
-		vim.cmd("colorscheme terafox")
-	end,
+  "EdenEast/nightfox.nvim",
+  lazy = false,
+  priority = 1000,
+  init = function()
+    vim.cmd("colorscheme terafox")
+  end,
+  opts = {
+    options = {
+      dim_inactive = true,
+    },
+  },
 }
 
 return { nightfox }

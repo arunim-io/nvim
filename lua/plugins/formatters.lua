@@ -24,6 +24,7 @@ return {
       nix = { "nixpkgs_fmt" },
       python = { "ruff_format", "ruff_fix" },
       sh = { "shfmt" },
+      fish = { "fish_indent" },
       toml = { "taplo" },
     },
   },
