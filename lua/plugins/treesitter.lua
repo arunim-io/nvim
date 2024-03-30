@@ -31,5 +31,9 @@ return {
       })
     end,
   },
-  { "calops/hmts.nvim", version = "*", ft = "nix", dependencies = "nvim-treesitter/nvim-treesitter" },
+  {
+    "calops/hmts.nvim",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    ft = "nix",
+  },
 }

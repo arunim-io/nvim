@@ -8,14 +8,24 @@ return {
     "debugloop/telescope-undo.nvim",
   },
   init = function()
-    require("telescope").load_extension("fzf")
-    require("telescope").load_extension("search_dir_picker")
-    require("telescope").load_extension("adjacent")
-    require("telescope").load_extension("undo")
+    local telescope = require("telescope")
+
+    telescope.load_extension("fzf")
+    telescope.load_extension("search_dir_picker")
+    telescope.load_extension("adjacent")
+    telescope.load_extension("undo")
   end,
   keys = {
-    { "<leader>pf", "<cmd>Telescope find_files<cr>", desc = "Open root directory with Telescope" },
-    { "<leader>b", "<cmd>Telescope buffers<cr>", desc = "Open buffers with Telescope" },
+    {
+      "<leader>pf",
+      "<cmd>Telescope find_files<cr>",
+      desc = "Open root directory with Telescope",
+    },
+    {
+      "<leader>b",
+      "<cmd>Telescope buffers<cr>",
+      desc = "Open buffers with Telescope",
+    },
     {
       "<leader>ps",
       function()
@@ -30,6 +40,10 @@ return {
       noremap = true,
       silent = false,
     },
-    { "<leader>u", "<cmd>Telescope undo<cr>", desc = "Use undotree with Telescope" },
+    {
+      "<leader>u",
+      "<cmd>Telescope undo<cr>",
+      desc = "Use undotree with Telescope",
+    },
   },
 }

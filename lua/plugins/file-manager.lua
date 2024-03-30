@@ -3,7 +3,7 @@ return {
   dependencies = "nvim-tree/nvim-web-devicons",
   lazy = false,
   keys = {
-    { "<leader>pv", "<cmd>Oil<cr>", desc = "Switch to Oil" },
+    { "<leader>pv", vim.cmd.Oil, desc = "Switch to Oil" },
   },
   opts = {
     delete_to_trash = true,

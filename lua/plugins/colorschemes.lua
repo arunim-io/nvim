@@ -1,4 +1,4 @@
-local nightfox = {
+return {
   "EdenEast/nightfox.nvim",
   lazy = false,
   priority = 1000,
@@ -9,5 +9,3 @@ local nightfox = {
     options = { dim_inactive = true },
   },
 }
-
-return { nightfox }

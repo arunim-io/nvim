@@ -8,7 +8,11 @@ return {
       require("lsp")
     end,
   },
-  { "lvimuser/lsp-inlayhints.nvim", config = true, event = "LspAttach" },
+  {
+    "lvimuser/lsp-inlayhints.nvim",
+    config = true,
+    event = "LspAttach",
+  },
   {
     "folke/trouble.nvim",
     dependencies = "nvim-tree/nvim-web-devicons",
@@ -60,10 +64,18 @@ return {
       }
     end,
   },
-  { "saecki/crates.nvim", event = "BufRead Cargo.toml", dependencies = "nvim-lua/plenary.nvim", config = true },
+  {
+    "saecki/crates.nvim",
+    event = "BufRead Cargo.toml",
+    dependencies = "nvim-lua/plenary.nvim",
+    config = true,
+  },
   {
     "pmizio/typescript-tools.nvim",
-    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "neovim/nvim-lspconfig",
+    },
     opts = {
       settings = {
         complete_function_calls = true,
