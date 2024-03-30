@@ -6,9 +6,7 @@ local nightfox = {
     vim.cmd("colorscheme terafox")
   end,
   opts = {
-    options = {
-      dim_inactive = true,
-    },
+    options = { dim_inactive = true },
   },
 }
 
