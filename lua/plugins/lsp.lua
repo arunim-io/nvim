@@ -40,7 +40,35 @@ return {
     },
   },
   { "j-hui/fidget.nvim", event = "LspAttach", config = true },
-  { "b0o/schemastore.nvim", ft = { "json", "jsonc", "toml", "yaml", "yml" } },
+  {
+    "b0o/schemastore.nvim",
+    ft = { "json", "jsonc", "toml", "yaml", "yml" },
+    dependencies = "neovim/nvim-lspconfig",
+    init = function()
+      local lspconfig = require("lspconfig")
+
+      lspconfig.jsonls.setup({
+        init_options = {
+          provideFormatter = false,
+        },
+        settings = {
+          json = {
+            schemas = require("schemastore").json.schemas(),
+            validate = { enable = true },
+          },
+        },
+      })
+
+      lspconfig.yamlls.setup({
+        settings = {
+          yaml = {
+            schemaStore = { enable = false, url = "" },
+            schemas = require("schemastore").yaml.schemas(),
+          },
+        },
+      })
+    end,
+  },
   { "folke/neodev.nvim", config = true, ft = "lua" },
   {
     "mrcjkb/rustaceanvim",
@@ -82,5 +110,19 @@ return {
         jsx_close_tags = { enable = true },
       },
     },
+  },
+  {
+    "ray-x/go.nvim",
+    dependencies = {
+      "ray-x/guihua.lua",
+      "neovim/nvim-lspconfig",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    event = { "CmdlineEnter" },
+    ft = { "go", "gomod" },
+    config = true,
+    init = function()
+      require("lspconfig").gopls.setup(require("go.lsp").config())
+    end,
   },
 }

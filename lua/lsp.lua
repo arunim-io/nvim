@@ -33,31 +33,8 @@ setup_lsp("nil_ls")
 setup_lsp("taplo")
 setup_lsp("dockerls")
 setup_lsp("bashls")
-
-setup_lsp("jsonls", {
-  init_options = {
-    provideFormatter = false,
-  },
-  settings = {
-    json = {
-      schemas = require("schemastore").json.schemas(),
-      validate = { enable = true },
-    },
-  },
-})
-
-setup_lsp("yamlls", {
-  settings = {
-    yaml = {
-      schemaStore = { enable = false, url = "" },
-      schemas = require("schemastore").yaml.schemas(),
-    },
-  },
-})
-
 setup_lsp("pyright")
 setup_lsp("ruff_lsp")
-
 setup_lsp("html", { filetypes = { "html", "htmldjango", "djangohtml" } })
 setup_lsp("emmet_language_server")
 setup_lsp("cssls", { filetypes = { "css", "scss", "less", "html", "htmldjango", "djangohtml" } })
