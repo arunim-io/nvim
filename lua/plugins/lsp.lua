@@ -118,7 +118,6 @@ return {
       "neovim/nvim-lspconfig",
       "nvim-treesitter/nvim-treesitter",
     },
-    event = { "CmdlineEnter" },
     ft = { "go", "gomod" },
     config = true,
     init = function()
