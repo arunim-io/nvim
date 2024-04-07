@@ -18,11 +18,10 @@ return {
   opts = {
     format_on_save = { timeout_ms = 500, lsp_fallback = true },
     formatters_by_ft = {
-      ["_"] = { "prettier" },
       go = { "gofumpt", "goimports", "golines" },
       htmldjango = { "djlint" },
       lua = { "stylua" },
-      nix = { "nixpkgs_fmt" },
+      nix = { "nixfmt" },
       python = { "ruff_format", "ruff_fix" },
       sh = { "shfmt" },
       fish = { "fish_indent" },
