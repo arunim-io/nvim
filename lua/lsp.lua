@@ -35,9 +35,11 @@ setup_lsp("dockerls")
 setup_lsp("bashls")
 setup_lsp("pyright")
 setup_lsp("ruff_lsp")
-setup_lsp("html", { filetypes = { "html", "htmldjango", "djangohtml" } })
+setup_lsp("html", {
+  filetypes = { "html", "htmldjango", "djangohtml" },
+})
 setup_lsp("emmet_language_server")
-setup_lsp("cssls", { filetypes = { "css", "scss", "less", "html", "htmldjango", "djangohtml" } })
+setup_lsp("cssls")
 setup_lsp("tailwindcss")
 setup_lsp("astro")
 setup_lsp("svelte")
