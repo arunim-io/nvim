@@ -118,10 +118,28 @@ return {
       "neovim/nvim-lspconfig",
       "nvim-treesitter/nvim-treesitter",
     },
+    event = { "CmdlineEnter" },
     ft = { "go", "gomod" },
-    config = true,
     init = function()
       require("lspconfig").gopls.setup(require("go.lsp").config())
     end,
+    opts = {
+      diagnostic = {
+        update_in_insert = true,
+      },
+      inlay_hints = {
+        style = "eol",
+      },
+      trouble = true,
+      luasnip = true,
+    },
+  },
+  {
+    "luckasRanarison/tailwind-tools.nvim",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "neovim/nvim-lspconfig",
+    },
+    config = true,
   },
 }
