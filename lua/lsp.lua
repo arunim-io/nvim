@@ -44,3 +44,25 @@ setup_lsp("tailwindcss")
 setup_lsp("astro")
 setup_lsp("svelte")
 setup_lsp("biome")
+
+local schemastore = require("schemastore")
+
+setup_lsp("jsonls", {
+  init_options = {
+    provideFormatter = false,
+  },
+  settings = {
+    json = {
+      schemas = schemastore.json.schemas(),
+      validate = { enable = true },
+    },
+  },
+})
+setup_lsp("yamlls", {
+  settings = {
+    yaml = {
+      schemaStore = { enable = false, url = "" },
+      schemas = schemastore.yaml.schemas(),
+    },
+  },
+})

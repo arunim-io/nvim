@@ -44,30 +44,6 @@ return {
     "b0o/schemastore.nvim",
     ft = { "json", "jsonc", "toml", "yaml", "yml" },
     dependencies = "neovim/nvim-lspconfig",
-    init = function()
-      local lspconfig = require("lspconfig")
-
-      lspconfig.jsonls.setup({
-        init_options = {
-          provideFormatter = false,
-        },
-        settings = {
-          json = {
-            schemas = require("schemastore").json.schemas(),
-            validate = { enable = true },
-          },
-        },
-      })
-
-      lspconfig.yamlls.setup({
-        settings = {
-          yaml = {
-            schemaStore = { enable = false, url = "" },
-            schemas = require("schemastore").yaml.schemas(),
-          },
-        },
-      })
-    end,
   },
   { "folke/neodev.nvim", config = true, ft = "lua" },
   {
@@ -114,7 +90,6 @@ return {
   {
     "ray-x/go.nvim",
     dependencies = {
-      "ray-x/guihua.lua",
       "neovim/nvim-lspconfig",
       "nvim-treesitter/nvim-treesitter",
     },
@@ -132,6 +107,9 @@ return {
       },
       trouble = true,
       luasnip = true,
+    },
+    keys = {
+      { "<leader>rn", "<cmd>GoRename", desc = "Rename current word" },
     },
   },
   {
