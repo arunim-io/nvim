@@ -14,7 +14,7 @@ local keymaps = {
   { "n", "Q", "<nop>" },
   {
     "n",
-    "<leader>s",
+    "<leader>rf",
     [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
     { desc = "Replace text under cursor with regex" },
   },
@@ -22,8 +22,8 @@ local keymaps = {
   { "n", "<C-Down>", "<C-w>j", { desc = "Move to bottom window", noremap = true, silent = true } },
   { "n", "<C-Up>", "<C-w>k", { desc = "Move to top window", noremap = true, silent = true } },
   { "n", "<C-Right>", "<C-w>l", { desc = "Move to right window", noremap = true, silent = true } },
-  { "n", "<leader>v", "<C-w>v", { desc = "Split window vertically", noremap = true, silent = true } },
-  { "n", "<leader>h", "<C-w>s", { desc = "Split window horizontally", noremap = true, silent = true } },
+  { "n", "<leader>sv", "<C-w>v", { desc = "Split window vertically", noremap = true, silent = true } },
+  { "n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally", noremap = true, silent = true } },
 }
 
 for _, value in ipairs(keymaps) do

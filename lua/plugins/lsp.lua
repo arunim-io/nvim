@@ -21,12 +21,12 @@ return {
     keys = {
       {
         "<leader>dd",
-        "<cmd>TroubleToggle document_diagnostics<cr>",
+        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
         desc = "Show diagnostics for current buffer",
       },
       {
         "<leader>dw",
-        "<cmd>TroubleToggle workspace_diagnostics<cr>",
+        "<cmd>Trouble diagnostics toggle<cr>",
         desc = "Show diagnostics for current workspace",
       },
     },
@@ -45,7 +45,16 @@ return {
     ft = { "json", "jsonc", "toml", "yaml", "yml" },
     dependencies = "neovim/nvim-lspconfig",
   },
-  { "folke/neodev.nvim", config = true, ft = "lua" },
+  {
+    "folke/lazydev.nvim",
+    ft = "lua",
+    dependencies = { "Bilal2453/luvit-meta" },
+    opts = {
+      library = {
+        { path = "luvit-meta/library", words = { "vim%.uv" } },
+      },
+    },
+  },
   {
     "mrcjkb/rustaceanvim",
     version = "^4",

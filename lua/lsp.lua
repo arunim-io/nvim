@@ -24,7 +24,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 ---@param opts table|nil
 local function setup_lsp(lsp, opts)
   opts = opts or {}
-  opts["capabilities"] = require("cmp_nvim_lsp").default_capabilities()
+  opts.capabilities = require("cmp_nvim_lsp").default_capabilities()
   lspconfig[lsp].setup(opts)
 end
 
@@ -35,9 +35,7 @@ setup_lsp("dockerls")
 setup_lsp("bashls")
 setup_lsp("pyright")
 setup_lsp("ruff_lsp")
-setup_lsp("html", {
-  filetypes = { "html", "htmldjango", "djangohtml" },
-})
+setup_lsp("html", { filetypes = { "html", "htmldjango", "djangohtml" } })
 setup_lsp("emmet_language_server")
 setup_lsp("cssls")
 setup_lsp("tailwindcss")

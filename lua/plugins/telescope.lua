@@ -3,7 +3,6 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-    "smilovanovic/telescope-search-dir-picker.nvim",
     "MaximilianLloyd/adjacent.nvim",
     "debugloop/telescope-undo.nvim",
   },
@@ -11,10 +10,21 @@ return {
     local telescope = require("telescope")
 
     telescope.load_extension("fzf")
-    telescope.load_extension("search_dir_picker")
     telescope.load_extension("adjacent")
     telescope.load_extension("undo")
   end,
+  opts = {
+    pickers = {
+      buffers = {
+        sort_mru = true,
+        mappings = {
+          i = {
+            ["<c-d>"] = "delete_buffer",
+          },
+        },
+      },
+    },
+  },
   keys = {
     {
       "<leader>pf",
