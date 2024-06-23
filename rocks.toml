@@ -1,0 +1,15 @@
+[rocks]
+
+[plugins]
+"rocks.nvim" = "2.31.3"
+"rocks-treesitter.nvim" = "scm"
+"rocks-git.nvim" = "scm"
+"rocks-config.nvim" = "2.0.0"
+"rocks-lazy.nvim" = "scm"
+
+[treesitter]
+auto_install = true
+sync_install = true
+highlight.enable=true
+incremental_selection.enable=true
+indent.enable=true
