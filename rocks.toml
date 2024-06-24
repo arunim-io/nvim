@@ -10,23 +10,9 @@ nvim-lspconfig = "0.1.8"
 "schemastore.nvim" = "0.2.0"
 cmp-nvim-lsp = "scm"
 
-[plugins."trouble.nvim"]
-version = "3.4.3"
-opt = true
-cmd = "Trouble"
-keys = [
-  { lhs = "<leader>dd", rhs = "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Show diagnostics for current buffer" },
-  { lhs = "<leader>dw", rhs = "<cmd>Trouble diagnostics toggle<cr>", desc = "Show diagnostics for current workspace" },
-]
-
 [plugins.nvim-lightbulb]
 version = "1.0.0"
-opt=true
-event="LspAttach"
 config.autocmd.enabled = true
-
-[plugins."lazydev.nvim"]
-git = "folke/lazydev.nvim"
 
 [treesitter]
 auto_install = true
@@ -38,7 +24,6 @@ indent.enable = true
 [bundles.lsp]
 items = [
   "nvim-lspconfig",
-  "trouble.nvim",
   "nvim-lightbulb",
   "schemastore.nvim",
   "cmp-nvim-lsp",
