@@ -1,3 +1,3 @@
-require('init_rocks')
+require("init_rocks")
 
-vim.g.mapleader=' '
+vim.g.mapleader = " "

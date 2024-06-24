@@ -15,6 +15,7 @@ cmp-path = "scm"
 cmp-cmdline = "scm"
 cmp-git = "scm"
 "plenary.nvim" = "scm"
+"conform.nvim" = "5.9.0"
 
 [plugins.nvim-cmp]
 git = "github:hrsh7th/nvim-cmp"
@@ -37,16 +38,11 @@ incremental_selection.enable = true
 indent.enable = true
 
 [bundles.lsp]
-items = [
-  "nvim-lspconfig",
-  "nvim-lightbulb",
-  "schemastore.nvim",
-  "cmp-nvim-lsp",
-]
+items = ["nvim-lspconfig", "nvim-lightbulb", "schemastore.nvim", "cmp-nvim-lsp"]
 config = "configs.lsp"
 
 [bundles.completion]
-items=[
+items = [
   "luasnip",
   "nvim-cmp",
   "cmp-nvim-lsp",
@@ -55,4 +51,4 @@ items=[
   "cmp-cmdline",
   "cmp-luasnip",
 ]
-config="configs.cmp"
+config = "configs.cmp"
