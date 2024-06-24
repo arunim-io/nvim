@@ -8,11 +8,26 @@
 "rocks-lazy.nvim" = "scm"
 nvim-lspconfig = "0.1.8"
 "schemastore.nvim" = "0.2.0"
+luasnip = "2.3.0"
 cmp-nvim-lsp = "scm"
+cmp-buffer = "scm"
+cmp-path = "scm"
+cmp-cmdline = "scm"
+cmp-git = "scm"
+"plenary.nvim" = "scm"
+
+[plugins.nvim-cmp]
+git = "github:hrsh7th/nvim-cmp"
 
 [plugins.nvim-lightbulb]
 version = "1.0.0"
 config.autocmd.enabled = true
+
+[plugins.cmp-luasnip]
+git = "github:saadparwaiz1/cmp_luasnip"
+
+[plugins.cmp-dotenv]
+git = "github:SergioRibera/cmp-dotenv"
 
 [treesitter]
 auto_install = true
@@ -29,3 +44,15 @@ items = [
   "cmp-nvim-lsp",
 ]
 config = "configs.lsp"
+
+[bundles.completion]
+items=[
+  "luasnip",
+  "nvim-cmp",
+  "cmp-nvim-lsp",
+  "cmp-buffer",
+  "cmp-path",
+  "cmp-cmdline",
+  "cmp-luasnip",
+]
+config="configs.cmp"
