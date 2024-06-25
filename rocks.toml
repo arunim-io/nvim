@@ -16,6 +16,7 @@ cmp-cmdline = "scm"
 cmp-git = "scm"
 "plenary.nvim" = "scm"
 "conform.nvim" = "5.9.0"
+nvim-lint = "scm"
 
 [plugins.nvim-cmp]
 git = "github:hrsh7th/nvim-cmp"

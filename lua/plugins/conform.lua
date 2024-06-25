@@ -1,8 +1,10 @@
 vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 
-vim.keymap.set({ "n", "v" }, "<leader>f", function()
+local function format()
   require("conform").format({ async = true, lsp_fallback = true })
-end, { desc = "Format current file" })
+end
+
+vim.keymap.set({ "n", "v" }, "<leader>f", format, { desc = "Format current file" })
 
 require("conform").setup({
   format_on_save = { timeout_ms = 500, lsp_fallback = true },
