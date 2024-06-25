@@ -15,8 +15,14 @@ cmp-path = "scm"
 cmp-cmdline = "scm"
 cmp-git = "scm"
 "plenary.nvim" = "scm"
-"conform.nvim" = "5.9.0"
-nvim-lint = "scm"
+
+
+[plugins."conform.nvim"]
+version = "5.9.0"
+config = "configs.formatters"
+
+[plugins.nvim-lint]
+version = "scm"
 
 [plugins.nvim-cmp]
 git = "github:hrsh7th/nvim-cmp"
@@ -51,5 +57,6 @@ items = [
   "cmp-path",
   "cmp-cmdline",
   "cmp-luasnip",
+  "cmp-dotenv",
 ]
 config = "configs.cmp"
