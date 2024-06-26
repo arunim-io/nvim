@@ -24,6 +24,12 @@ nvim-autopairs = "scm"
 nvim-cmp = "0.0.1"
 "which-key.nvim" = "2.1.0"
 
+[plugins.auto-session]
+version = "2.1.0"
+config.auto_session_create_enabled = true
+config.auto_save_enabled = true
+config.auto_restore_enabled = true
+
 [plugin.nvim-ts-autotag]
 version = "scm"
 config.opts.enable_close_on_slash = true
