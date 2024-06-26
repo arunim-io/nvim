@@ -43,3 +43,9 @@ require("nvim-autopairs").setup({
 })
 
 require("cmp").event:on("conform_done", require("nvim-autopairs.completion.cmp").on_confirm_done())
+
+require("coerce").setup()
+
+vim.o.timeout = true
+vim.o.timeoutlen = 300
+require("which-key").setup()

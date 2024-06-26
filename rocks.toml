@@ -22,6 +22,7 @@ neogit = "1.0.0"
 nvim-autopairs = "scm"
 "indent-blankline.nvim" = "3.7.0"
 nvim-cmp = "0.0.1"
+"which-key.nvim" = "2.1.0"
 
 [plugin.nvim-ts-autotag]
 version = "scm"
@@ -53,6 +54,13 @@ rev = "v0.9.0"
 git = "github:zeioth/garbage-day.nvim"
 rev = "v1.3.0"
 
+[plugins.nvim-puppeteer]
+git = "github:chrisgrieser/nvim-puppeteer"
+
+[plugins."coerce.nvim"]
+git = "github:gregorias/coerce.nvim"
+rev = "v2.1"
+
 [treesitter]
 snippet_engine = "luasnip"
 auto_install = true
@@ -62,7 +70,13 @@ incremental_selection.enable = true
 indent.enable = true
 
 [bundles.editing]
-items = ["indent-blankline.nvim", "rainbow-delimiters.nvim", "nvim-autopairs"]
+items = [
+  "indent-blankline.nvim",
+  "rainbow-delimiters.nvim",
+  "nvim-autopairs",
+  "nvim-puppeteer",
+  "coerce.nvim",
+]
 config = "configs.editing"
 
 [bundles.git]
