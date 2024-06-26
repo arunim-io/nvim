@@ -1,10 +1,10 @@
 [rocks]
 
 [plugins]
-"rocks.nvim" = "2.31.3"
+"rocks.nvim" = "2.32.0"
 "rocks-treesitter.nvim" = "scm"
 "rocks-git.nvim" = "1.5.1"
-"rocks-config.nvim" = "2.0.0"
+"rocks-config.nvim" = "2.1.1"
 "rocks-lazy.nvim" = "scm"
 nvim-lspconfig = "0.1.8"
 "schemastore.nvim" = "0.2.0"
@@ -18,17 +18,22 @@ cmp-git = "scm"
 neogit = "1.0.0"
 "diffview.nvim" = "scm"
 "fidget.nvim" = "1.4.1"
+"rainbow-delimiters.nvim" = "0.4.0"
+nvim-autopairs = "scm"
+"indent-blankline.nvim" = "3.7.0"
+nvim-cmp = "0.0.1"
+
+[plugin.nvim-ts-autotag]
+version = "scm"
+config.opts.enable_close_on_slash = true
 
 [plugins."conform.nvim"]
-version = "5.9.0"
+version = "6.0.0"
 config = "configs.formatters"
 
 [plugins.nvim-lint]
 version = "scm"
 config = "configs.linters"
-
-[plugins.nvim-cmp]
-git = "github:hrsh7th/nvim-cmp"
 
 [plugins.nvim-lightbulb]
 version = "1.0.0"
@@ -49,14 +54,19 @@ git = "github:zeioth/garbage-day.nvim"
 rev = "v1.3.0"
 
 [treesitter]
+snippet_engine = "luasnip"
 auto_install = true
 sync_install = true
 highlight.enable = true
 incremental_selection.enable = true
 indent.enable = true
 
+[bundles.editing]
+items = ["indent-blankline.nvim", "rainbow-delimiters.nvim", "nvim-autopairs"]
+config = "configs.editing"
+
 [bundles.git]
-items = ["gitsigns.nvim", "neogit"]
+items = ["gitsigns.nvim", "neogit", "diffview.nvim"]
 config = 'configs.git'
 
 [bundles.lsp]
@@ -66,6 +76,7 @@ items = [
   "schemastore.nvim",
   "cmp-nvim-lsp",
   "garbage-day.nvim",
+  "fidget.nvim",
 ]
 config = "configs.lsp"
 
