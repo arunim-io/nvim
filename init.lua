@@ -1,3 +1,4 @@
 require("init_rocks")
 
-vim.g.mapleader = " "
+require("configs.options")
+require("configs.keymaps")
