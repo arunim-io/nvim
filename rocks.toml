@@ -26,9 +26,11 @@ nvim-cmp = "0.0.1"
 
 [plugins.auto-session]
 version = "2.1.0"
-config.auto_session_create_enabled = true
-config.auto_save_enabled = true
-config.auto_restore_enabled = true
+
+[plugin.auto-session.config]
+auto_session_create_enabled = true
+auto_save_enabled = true
+auto_restore_enabled = true
 
 [plugin.nvim-ts-autotag]
 version = "scm"
@@ -66,6 +68,10 @@ git = "github:chrisgrieser/nvim-puppeteer"
 [plugins."coerce.nvim"]
 git = "github:gregorias/coerce.nvim"
 rev = "v2.1"
+
+[plugins."grug-far.nvim"]
+git = "github:MagicDuck/grug-far.nvim"
+config = "configs.search"
 
 [treesitter]
 snippet_engine = "luasnip"
