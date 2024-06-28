@@ -8,7 +8,7 @@ vim.keymap.set("n", "<leader>rw", grug_far.grug_far, { desc = "Search within wor
 
 vim.keymap.set(
   "n",
-  "<leader>s",
+  "<leader>rw",
   [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
   { desc = "Replace current word with regex" }
 )

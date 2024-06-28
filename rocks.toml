@@ -27,9 +27,17 @@ nvim-autopairs = "scm"
 "telescope.nvim" = "scm"
 "telescope-undo.nvim" = "scm"
 
+[plugins."lualine.nvim"]
+version = "scm"
+config = "configs.statusline"
+
 [plugins.auto-session]
 version = "2.1.0"
-config = { auto_session_create_enabled = true, auto_save_enabled = true, auto_restore_enabled = true }
+
+[plugins.auto-session.config]
+auto_session_create_enabled = true
+auto_save_enabled = true
+auto_restore_enabled = true
 
 [plugin.nvim-ts-autotag]
 version = "scm"
