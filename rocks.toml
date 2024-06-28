@@ -88,6 +88,11 @@ config = "configs.search"
 git = "github:nvim-telescope/telescope-fzf-native.nvim"
 build = "make"
 
+[plugins.url-open]
+git = "github:sontungexpt/url-open"
+rev = "v1.7.1"
+config = {}
+
 [treesitter]
 snippet_engine = "luasnip"
 auto_install = true
