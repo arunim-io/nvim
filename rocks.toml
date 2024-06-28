@@ -6,31 +6,30 @@
 "rocks-git.nvim" = "1.5.1"
 "rocks-config.nvim" = "2.1.1"
 "rocks-lazy.nvim" = "scm"
+"plenary.nvim" = "scm"
+nvim-web-devicons = "0.100"
 nvim-lspconfig = "0.1.8"
 "schemastore.nvim" = "0.2.0"
+"fidget.nvim" = "1.4.1"
 luasnip = "2.3.0"
+nvim-cmp = "0.0.1"
 cmp-nvim-lsp = "scm"
 cmp-buffer = "scm"
 cmp-path = "scm"
 cmp-cmdline = "scm"
 cmp-git = "scm"
-"plenary.nvim" = "scm"
 neogit = "1.0.0"
 "diffview.nvim" = "scm"
-"fidget.nvim" = "1.4.1"
-"rainbow-delimiters.nvim" = "0.4.0"
 nvim-autopairs = "scm"
+"rainbow-delimiters.nvim" = "0.4.0"
 "indent-blankline.nvim" = "3.7.0"
-nvim-cmp = "0.0.1"
 "which-key.nvim" = "2.1.0"
+"telescope.nvim" = "scm"
+"telescope-undo.nvim" = "scm"
 
 [plugins.auto-session]
 version = "2.1.0"
-
-[plugin.auto-session.config]
-auto_session_create_enabled = true
-auto_save_enabled = true
-auto_restore_enabled = true
+config = { auto_session_create_enabled = true, auto_save_enabled = true, auto_restore_enabled = true }
 
 [plugin.nvim-ts-autotag]
 version = "scm"
@@ -73,6 +72,10 @@ rev = "v2.1"
 git = "github:MagicDuck/grug-far.nvim"
 config = "configs.search"
 
+[plugins."telescope-fzf-native.nvim"]
+git = "github:nvim-telescope/telescope-fzf-native.nvim"
+build = "make"
+
 [treesitter]
 snippet_engine = "luasnip"
 auto_install = true
@@ -80,6 +83,10 @@ sync_install = true
 highlight.enable = true
 incremental_selection.enable = true
 indent.enable = true
+
+[bundles.telescope]
+items = ["telescope.nvim", "telescope-fzf-native.nvim", "telescope-undo.nvim"]
+config = "configs.telescope"
 
 [bundles.editing]
 items = [
