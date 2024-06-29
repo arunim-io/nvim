@@ -27,6 +27,10 @@ nvim-autopairs = "scm"
 "telescope.nvim" = "scm"
 "telescope-undo.nvim" = "scm"
 
+[plugins."trouble.nvim"]
+version = "3.4.3"
+config = 'configs.trouble'
+
 [plugins."dressing.nvim"]
 version = "2.2.2"
 config = {}
