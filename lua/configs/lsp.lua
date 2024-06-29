@@ -72,3 +72,9 @@ setup_lsp("yamlls", {
     },
   },
 })
+
+vim.api.nvim_create_autocmd("BufEnter", {
+  callback = function()
+    require("otter").activate()
+  end,
+})

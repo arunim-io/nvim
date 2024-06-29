@@ -5,7 +5,6 @@
 "rocks-treesitter.nvim" = "scm"
 "rocks-git.nvim" = "1.5.1"
 "rocks-config.nvim" = "2.1.1"
-"rocks-lazy.nvim" = "scm"
 "plenary.nvim" = "scm"
 nvim-web-devicons = "0.100"
 nvim-lspconfig = "0.1.8"
@@ -26,6 +25,8 @@ nvim-autopairs = "scm"
 "which-key.nvim" = "2.1.0"
 "telescope.nvim" = "scm"
 "telescope-undo.nvim" = "scm"
+"otter.nvim" = "1.15.1"
+tree-sitter-nix = "scm"
 
 [plugins."trouble.nvim"]
 version = "scm"
@@ -95,7 +96,8 @@ rev = "v1.6.0"
 
 [treesitter]
 snippet_engine = "luasnip"
-auto_install = true
+auto_highlight = "all"
+auto_install = "prompt"
 sync_install = true
 highlight.enable = true
 incremental_selection.enable = true
