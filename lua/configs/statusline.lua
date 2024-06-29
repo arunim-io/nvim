@@ -7,8 +7,7 @@ if pcall(require, "auto-session") then
 end
 
 if pcall(require, "trouble") then
-  local trouble = require("trouble")
-  local symbols = trouble.statusline({
+  local symbols = require("trouble").statusline({
     mode = "lsp_document_symbols",
     groups = {},
     title = false,
@@ -16,6 +15,7 @@ if pcall(require, "trouble") then
     format = "{kind_icon}{symbol.name:Normal}",
     hl_group = "lualine_c_normal",
   })
+
   table.insert(config.sections.lualine_c, {
     symbols.get,
     cond = symbols.has,

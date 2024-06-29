@@ -97,6 +97,10 @@ git = "github:sontungexpt/url-open"
 rev = "v1.7.1"
 config = {}
 
+[plugins."lazydev.nvim"]
+git = "github:folke/lazydev.nvim"
+rev = "v1.6.0"
+
 [treesitter]
 snippet_engine = "luasnip"
 auto_install = true
@@ -131,6 +135,7 @@ items = [
   "cmp-nvim-lsp",
   "garbage-day.nvim",
   "fidget.nvim",
+  "lazydev.nvim",
 ]
 config = "configs.lsp"
 

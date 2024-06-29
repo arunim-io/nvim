@@ -22,11 +22,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 ---@param lsp string
----@param opts table|nil
-local function setup_lsp(lsp, opts)
-  opts = opts or {}
-  opts.capabilities = require("cmp_nvim_lsp").default_capabilities()
-  lspconfig[lsp].setup(opts)
+---@param config lspconfig.Config?
+local function setup_lsp(lsp, config)
+  config = config or {}
+  config.capabilities = require("cmp_nvim_lsp").default_capabilities()
+  lspconfig[lsp].setup(config)
 end
 
 setup_lsp("lua_ls", {
@@ -38,6 +38,8 @@ setup_lsp("lua_ls", {
     },
   },
 })
+
+require("lazydev").setup()
 
 setup_lsp("nil_ls")
 setup_lsp("taplo")

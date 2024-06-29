@@ -7,11 +7,13 @@ cmp.setup({
     { name = "nvim_lsp" },
     { name = "luasnip" },
     { name = "dotenv" },
+    { name = "lazydev", group_index = 0 },
   }, {
     { name = "buffer" },
   }),
   mapping = cmp.mapping.preset.insert({
     ["<CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+    ---@diagnostic disable-next-line: missing-parameter
     ["<C-Space>"] = cmp.mapping.complete(),
   }),
   snippet = {
@@ -44,5 +46,6 @@ cmp.setup.cmdline(":", {
   }, {
     { name = "cmdline" },
   }),
+  ---@diagnostic disable-next-line: missing-fields
   matching = { disallow_symbol_nonprefix_matching = false },
 })
