@@ -1,7 +1,7 @@
-vim.keymap.set("v", "<A-Up>", ":m '<-2<CR>gv=gv", { desc = "Move selected line down" })
-vim.keymap.set("v", "<A-Down>", ":m '>+1<CR>gv=gv", { desc = "Move selected line up" })
-vim.keymap.set("n", "<A-Up>", ":m .-2<CR>==", { desc = "Move current line up" })
-vim.keymap.set("n", "<A-Down>", ":m .+1<CR>==", { desc = "Move current line down" })
+vim.keymap.set("v", "<C-S-Up>", ":m '<-2<CR>gv=gv", { desc = "Move selected line down" })
+vim.keymap.set("v", "<C-S-Down>", ":m '>+1<CR>gv=gv", { desc = "Move selected line up" })
+vim.keymap.set("n", "<C-S-Up>", ":m .-2<CR>==", { desc = "Move current line up" })
+vim.keymap.set("n", "<C-S-Down>", ":m .+1<CR>==", { desc = "Move current line down" })
 
 vim.keymap.set("v", "<Tab>", ">gv", { desc = "indent by 1" })
 vim.keymap.set("n", "<Tab>", "v><C-\\><C-N>", { desc = "indent by 1" })
