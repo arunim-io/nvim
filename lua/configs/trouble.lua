@@ -1,6 +1,8 @@
 local trouble = require("trouble")
 
-trouble.setup()
+trouble.setup({
+  auto_close = true,
+})
 
 vim.keymap.set("n", "<leader>dw", function()
   trouble.toggle("diagnostics")

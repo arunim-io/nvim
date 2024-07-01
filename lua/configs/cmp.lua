@@ -8,7 +8,6 @@ cmp.setup({
     { name = "luasnip" },
     { name = "dotenv" },
     { name = "lazydev", group_index = 0 },
-    { name = "otter" },
   }, {
     { name = "buffer" },
   }),

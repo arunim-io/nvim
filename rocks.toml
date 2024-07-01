@@ -1,7 +1,7 @@
 [rocks]
 
 [plugins]
-"rocks.nvim" = "2.32.0"
+"rocks.nvim" = "2.32.1"
 "rocks-treesitter.nvim" = "scm"
 "rocks-git.nvim" = "1.5.1"
 "rocks-config.nvim" = "2.1.1"
@@ -21,12 +21,13 @@ neogit = "1.0.0"
 "diffview.nvim" = "scm"
 nvim-autopairs = "scm"
 "rainbow-delimiters.nvim" = "0.4.0"
-"indent-blankline.nvim" = "3.7.0"
+"indent-blankline.nvim" = "3.7.1"
 "which-key.nvim" = "2.1.0"
 "telescope.nvim" = "scm"
 "telescope-undo.nvim" = "scm"
-"otter.nvim" = "1.15.1"
+"otter.nvim" = "2.0.3"
 tree-sitter-nix = "scm"
+tree-sitter-kdl = "scm"
 
 [plugins."trouble.nvim"]
 version = "scm"
