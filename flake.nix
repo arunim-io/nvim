@@ -5,12 +5,12 @@
   };
 
   outputs =
-    { self, nightly-overlay, ... }:
+    inputs@{ self, nightly-overlay, ... }:
     {
       overlays.default = nightly-overlay.overlays.default;
 
       homeManagerModule = self.homeManagerModules.default;
-      homeManagerModules.default = import ./module.nix;
+      homeManagerModules.default = import ./module.nix { inherit inputs; };
     };
 
   nixConfig = {

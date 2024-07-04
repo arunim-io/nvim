@@ -1,11 +1,7 @@
-{
-  pkgs,
-  lib,
-  config,
-  ...
-}:
+{ pkgs, inputs, ... }:
 {
   config.programs.neovim = {
+    package = inputs.nightly-overlay.${pkgs.system}.default;
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
