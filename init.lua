@@ -1,4 +1,3 @@
-require("init_rocks")
-
-require("configs.options")
-require("configs.keymaps")
+require("config.lazy")
+require("config.options")
+require("config.keymaps")

@@ -29,18 +29,7 @@ local function setup_lsp(lsp, config)
   lspconfig[lsp].setup(config)
 end
 
-setup_lsp("lua_ls", {
-  settings = {
-    Lua = {
-      runtime = { version = "LuaJIT" },
-      diagnostics = { globals = { "vim" } },
-      workspace = { library = { vim.env.VIMRUNTIME } },
-    },
-  },
-})
-
-require("lazydev").setup()
-
+setup_lsp("lua_ls")
 setup_lsp("nil_ls")
 setup_lsp("taplo")
 setup_lsp("dockerls")
@@ -55,29 +44,9 @@ setup_lsp("astro")
 setup_lsp("svelte")
 setup_lsp("biome")
 
-local schemastore = require("schemastore")
-
-setup_lsp("jsonls", {
-  init_options = { provideFormatter = false },
-  settings = { json = {
-    schemas = schemastore.json.schemas(),
-    validate = { enable = true },
-  } },
-})
-setup_lsp("yamlls", {
-  settings = {
-    yaml = {
-      schemaStore = { enable = false, url = "" },
-      schemas = schemastore.yaml.schemas(),
-    },
-  },
-})
-
 vim.api.nvim_create_autocmd("BufEnter", {
   pattern = { "*.nix", "*.md", "*.mdx" },
   callback = function()
     require("otter").activate()
   end,
 })
-
-require("typescript-tools").setup({})

@@ -17,3 +17,10 @@ vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "copy to system clip
 vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "copy to system clipboard" })
 
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+
+vim.keymap.set(
+  "n",
+  "<leader>rw",
+  [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+  { desc = "Replace current word with regex" }
+)
