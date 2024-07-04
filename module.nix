@@ -1,4 +1,5 @@
-{ pkgs, inputs, ... }:
+{ inputs }:
+{ pkgs, ... }:
 {
   config.programs.neovim = {
     package = inputs.nightly-overlay.${pkgs.system}.default;
