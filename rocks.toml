@@ -1,10 +1,10 @@
 [rocks]
 
 [plugins]
-"rocks.nvim" = "2.32.1"
+"rocks.nvim" = "2.34.0"
 "rocks-treesitter.nvim" = "scm"
 "rocks-git.nvim" = "1.5.1"
-"rocks-config.nvim" = "2.1.1"
+"rocks-config.nvim" = "2.1.2"
 "plenary.nvim" = "scm"
 nvim-web-devicons = "0.100"
 nvim-lspconfig = "0.1.8"
@@ -28,6 +28,7 @@ nvim-autopairs = "scm"
 "otter.nvim" = "2.0.3"
 tree-sitter-nix = "scm"
 tree-sitter-kdl = "scm"
+tree-sitter-json = "scm"
 
 [plugins."trouble.nvim"]
 version = "scm"
