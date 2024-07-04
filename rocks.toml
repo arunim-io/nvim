@@ -26,9 +26,15 @@ nvim-autopairs = "scm"
 "telescope.nvim" = "scm"
 "telescope-undo.nvim" = "scm"
 "otter.nvim" = "2.0.3"
+"typescript-tools.nvim" = "scm"
 tree-sitter-nix = "scm"
 tree-sitter-kdl = "scm"
 tree-sitter-json = "scm"
+tree-sitter-scss = "scm"
+tree-sitter-jsonc = "scm"
+tree-sitter-toml = "scm"
+tree-sitter-javascript = "scm"
+"onedarkpro.nvim" = "0.8.0"
 
 [plugins."trouble.nvim"]
 version = "scm"
@@ -132,6 +138,7 @@ items = [
   "garbage-day.nvim",
   "fidget.nvim",
   "lazydev.nvim",
+  "typescript-tools.nvim",
 ]
 config = "configs.lsp"
 

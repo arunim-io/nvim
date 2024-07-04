@@ -74,7 +74,10 @@ setup_lsp("yamlls", {
 })
 
 vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = { "*.nix", "*.md", "*.mdx" },
   callback = function()
     require("otter").activate()
   end,
 })
+
+require("typescript-tools").setup({})
