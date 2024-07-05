@@ -21,8 +21,6 @@ return {
     main = "ibl",
     event = "BufRead",
     config = function(_, opts)
-      require("ibl").setup(opts)
-
       local hooks = require("ibl.hooks")
 
       hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
@@ -35,6 +33,8 @@ return {
         vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
       end)
       hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
+
+      require("ibl").setup(opts)
     end,
     opts = {
       scope = { highlight = highlight },

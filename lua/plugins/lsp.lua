@@ -70,12 +70,19 @@ return {
   {
     "jmbuhr/otter.nvim",
     ft = { "nix", "md", "mdx" },
+    event = "LspAttach",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
+      "neovim/nvim-lspconfig",
     },
     config = true,
     init = function()
-      require("otter").activate()
+      vim.api.nvim_create_autocmd("BufEnter", {
+        pattern = { "*.nix", "*.md", "*.mdx" },
+        callback = function()
+          require("otter").activate()
+        end,
+      })
     end,
   },
   {
@@ -83,6 +90,7 @@ return {
     ft = "lua",
     opts = {
       library = {
+        "lazy.nvim",
         { path = "luvit-meta/library", words = { "vim%.uv" } },
       },
     },
