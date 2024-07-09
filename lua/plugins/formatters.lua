@@ -19,6 +19,10 @@ return {
     format_on_save = { timeout_ms = 500, lsp_fallback = true },
     formatters_by_ft = {
       ["_"] = { { "biome", "prettierd" } },
+      jsx = { "biome" },
+      tsx = { "biome" },
+      js = { "biome" },
+      ts = { "biome" },
       htmldjango = { "djlint" },
       lua = { "stylua" },
       nix = { "nixfmt" },
