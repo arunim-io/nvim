@@ -43,10 +43,3 @@ setup_lsp("tailwindcss")
 setup_lsp("astro")
 setup_lsp("svelte")
 setup_lsp("biome")
-
-vim.api.nvim_create_autocmd("BufEnter", {
-  pattern = { "*.nix", "*.md", "*.mdx" },
-  callback = function()
-    require("otter").activate()
-  end,
-})

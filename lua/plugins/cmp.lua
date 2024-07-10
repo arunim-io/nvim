@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
   {
     "L3MON4D3/LuaSnip",
@@ -22,7 +23,8 @@ return {
       "SergioRibera/cmp-dotenv",
       "petertriho/cmp-git",
     },
-    opts = function()
+    ---@param opts cmp.ConfigSchema
+    opts = function(_, opts)
       local cmp = require("cmp")
 
       cmp.setup.filetype("gitcommit", {
@@ -52,7 +54,8 @@ return {
         matching = { disallow_symbol_nonprefix_matching = false },
       })
 
-      return {
+      ---@type cmp.ConfigSchema
+      local config = {
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
           { name = "luasnip" },
@@ -72,6 +75,8 @@ return {
           end,
         },
       }
+
+      table.insert(opts, config)
     end,
   },
 }

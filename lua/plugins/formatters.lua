@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
   "stevearc/conform.nvim",
   cmd = "ConformInfo",
@@ -15,6 +16,7 @@ return {
       desc = "Format buffer in view",
     },
   },
+  ---@type conform.setupOpts
   opts = {
     format_on_save = { timeout_ms = 500, lsp_fallback = true },
     formatters_by_ft = {

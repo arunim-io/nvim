@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
   "nvim-telescope/telescope.nvim",
   dependencies = {
@@ -35,7 +36,7 @@ return {
     {
       "<leader>pws",
       function()
-        builtins.grep_string({ search = vim.fn.expand("<cword>") })
+        require("telescope.builtin").grep_string({ search = vim.fn.expand("<cword>") })
       end,
       desc = "Search current word using grep",
     },

@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
   {
     "neovim/nvim-lspconfig",
@@ -77,12 +78,7 @@ return {
     },
     config = true,
     init = function()
-      vim.api.nvim_create_autocmd("BufEnter", {
-        pattern = { "*.nix", "*.md", "*.mdx" },
-        callback = function()
-          require("otter").activate()
-        end,
-      })
+      require("otter").activate()
     end,
   },
   {
@@ -90,6 +86,7 @@ return {
     ft = "lua",
     opts = {
       library = {
+        "lazydev",
         "lazy.nvim",
         { path = "luvit-meta/library", words = { "vim%.uv" } },
       },
@@ -98,10 +95,7 @@ return {
   { "Bilal2453/luvit-meta", lazy = true },
   {
     "pmizio/typescript-tools.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "neovim/nvim-lspconfig",
-    },
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
     opts = {
       settings = {
         complete_function_calls = true,
