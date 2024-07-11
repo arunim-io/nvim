@@ -16,8 +16,6 @@ vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Paste without losing buffer
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "copy to system clipboard" })
 vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "copy to system clipboard" })
 
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
-
 vim.keymap.set(
   "n",
   "<leader>rw",

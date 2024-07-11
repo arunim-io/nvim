@@ -23,8 +23,7 @@ return {
       "SergioRibera/cmp-dotenv",
       "petertriho/cmp-git",
     },
-    ---@param opts cmp.ConfigSchema
-    opts = function(_, opts)
+    opts = function()
       local cmp = require("cmp")
 
       cmp.setup.filetype("gitcommit", {
@@ -55,7 +54,7 @@ return {
       })
 
       ---@type cmp.ConfigSchema
-      local config = {
+      return {
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
           { name = "luasnip" },
@@ -75,8 +74,6 @@ return {
           end,
         },
       }
-
-      table.insert(opts, config)
     end,
   },
 }
