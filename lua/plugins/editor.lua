@@ -65,5 +65,5 @@ return {
     config = true,
   },
   { "chrisgrieser/nvim-puppeteer", lazy = false },
-  { "gregorias/coerce.nvim", config = true },
+  { "gregorias/coerce.nvim", config = true, enabled = false },
 }

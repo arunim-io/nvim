@@ -103,4 +103,41 @@ return {
       },
     },
   },
+  {
+    "ray-x/go.nvim",
+    build = function()
+      require("go.install").update_all_sync()
+    end,
+    dependencies = {
+      "neovim/nvim-lspconfig",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    ft = { "go", "gomod" },
+    init = function()
+      local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        pattern = "*.go",
+        callback = function()
+          require("go.format").goimports()
+        end,
+        group = format_sync_grp,
+      })
+    end,
+    opts = {
+      diagnostic = { update_in_insert = true },
+      inlay_hints = { style = "eol" },
+      lsp_cfg = true,
+      trouble = true,
+      luasnip = true,
+    },
+    keys = {
+      {
+        "<leader>f",
+        function()
+          require("go.format").goimports()
+        end,
+      },
+      { "<leader>rn", "<cmd>GoRename" },
+    },
+  },
 }

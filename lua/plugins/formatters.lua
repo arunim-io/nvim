@@ -10,7 +10,7 @@ return {
     {
       "<leader>f",
       function()
-        require("conform").format({ async = true, lsp_fallback = true })
+        require("conform").format({ async = true, lsp_format = "fallback" })
       end,
       mode = { "n", "v" },
       desc = "Format buffer in view",
@@ -18,9 +18,12 @@ return {
   },
   ---@type conform.setupOpts
   opts = {
-    format_on_save = { timeout_ms = 500, lsp_fallback = true },
+    format_on_save = {
+      timeout_ms = 500,
+    },
     formatters_by_ft = {
-      ["_"] = { { "biome", "prettierd" } },
+      ["_"] = { "prettierd" },
+      css = { "biome" },
       jsx = { "biome" },
       tsx = { "biome" },
       js = { "biome" },
