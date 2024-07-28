@@ -2,7 +2,7 @@
 return {
   "stevearc/conform.nvim",
   cmd = "ConformInfo",
-  event = { "BufReadPre", "BufNewFile" },
+  event = "BufReadPre",
   init = function()
     vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
   end,
@@ -10,9 +10,8 @@ return {
     {
       "<leader>f",
       function()
-        require("conform").format({ async = true, lsp_format = "fallback" })
+        require("conform").format({ async = true })
       end,
-      mode = { "n", "v" },
       desc = "Format buffer in view",
     },
   },
@@ -21,8 +20,12 @@ return {
     format_on_save = {
       timeout_ms = 500,
     },
+    default_format_opts = {
+      timeout_ms = 500,
+      lsp_format = "fallback",
+    },
     formatters_by_ft = {
-      ["_"] = { "prettierd" },
+      go = { lsp_format = "prefer" },
       css = { "biome" },
       jsx = { "biome" },
       tsx = { "biome" },

@@ -131,13 +131,7 @@ return {
       luasnip = true,
     },
     keys = {
-      {
-        "<leader>f",
-        function()
-          require("go.format").goimports()
-        end,
-      },
-      { "<leader>rn", "<cmd>GoRename" },
+      { "<leader>rn", "<cmd>GoRename<cr>", remap = true },
     },
   },
 }
