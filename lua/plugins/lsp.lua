@@ -130,8 +130,27 @@ return {
       trouble = true,
       luasnip = true,
     },
-    keys = {
-      { "<leader>rn", "<cmd>GoRename<cr>", remap = true },
+  },
+  {
+    "mrcjkb/rustaceanvim",
+    version = "^5",
+    lazy = false,
+    config = function(_, opts)
+      vim.g.rustaceanvim = opts
+    end,
+    opts = {
+      inlay_hints = { highlight = "NonText" },
+      tools = { hover_actions = { auto_focus = true } },
+      server = {
+        on_attach = function(_, bufnr)
+          vim.keymap.set("n", "<leader>ca", function()
+            vim.cmd.RustLsp("codeAction")
+          end, { silent = true, buffer = bufnr })
+        end,
+        settings = {
+          ["rust-analyzer"] = { check = { command = "clippy" } },
+        },
+      },
     },
   },
 }
