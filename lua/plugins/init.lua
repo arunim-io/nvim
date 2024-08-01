@@ -17,7 +17,8 @@ return {
   },
   {
     "stevearc/oil.nvim",
-    dependencies = { "echasnovski/mini.icons" },
+    enabled = false,
+    dependencies = "echasnovski/mini.icons",
     keys = {
       { "<leader>pv", "<cmd>Oil<cr>", desc = "Show file explorer" },
     },
@@ -26,6 +27,28 @@ return {
       lsp_file_methods = { autosave_changes = true },
       watch_for_changes = true,
       view_options = { show_hidden = true },
+    },
+    {
+      "echasnovski/mini.files",
+      version = false,
+      keys = {
+        {
+          "<leader>pv",
+          function()
+            require("mini.files").open()
+          end,
+          desc = "Open file manager",
+        },
+      },
+      opts = {
+        mappings = {
+          synchronize = "s",
+          go_in = "<Right>",
+          go_out = "<Left>",
+          go_in_plus = "",
+          go_out_plus = "",
+        },
+      },
     },
   },
 }

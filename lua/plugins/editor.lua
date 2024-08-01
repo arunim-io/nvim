@@ -66,4 +66,47 @@ return {
   },
   { "chrisgrieser/nvim-puppeteer", lazy = false },
   { "gregorias/coerce.nvim", config = true, enabled = false },
+  {
+    "echasnovski/mini.trailspace",
+    version = false,
+    config = true,
+    init = function()
+      vim.api.nvim_create_autocmd("BufWrite", {
+        callback = function()
+          local plugin = require("mini.trailspace")
+
+          plugin.trim()
+          plugin.trim_last_lines()
+        end,
+      })
+    end,
+  },
+  {
+    "echasnovski/mini.splitjoin",
+    version = false,
+    config = true,
+    keys = {
+      {
+        "<leader>gst",
+        function()
+          require("mini.splitjoin").toggle()
+        end,
+        desc = "split if arguments are on single line, join otherwise.",
+      },
+      {
+        "<leader>gss",
+        function()
+          require("mini.splitjoin").split()
+        end,
+        desc = "make every argument separator be on end of separate line.",
+      },
+      {
+        "<leader>gsj",
+        function()
+          require("mini.splitjoin").join()
+        end,
+        desc = "make all arguments be on single line.",
+      },
+    },
+  },
 }
