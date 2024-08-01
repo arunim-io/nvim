@@ -35,11 +35,8 @@
               # dockerfile
               dockerfile-language-server-nodejs
               # python
-              python312
-              pyright
+              basedpyright
               ruff
-              ruff-lsp
-              black
               # javascript
               nodejs_20
               corepack_20

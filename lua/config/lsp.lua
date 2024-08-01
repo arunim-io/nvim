@@ -31,15 +31,52 @@ end
 
 setup_lsp("lua_ls")
 setup_lsp("nil_ls")
-setup_lsp("taplo")
+setup_lsp("taplo", {
+  settings = {
+    formatter = {
+      allowed_blank_lines = 1,
+    },
+  },
+})
 setup_lsp("dockerls")
 setup_lsp("bashls")
-setup_lsp("pyright")
 setup_lsp("ruff_lsp")
-setup_lsp("html", { filetypes = { "html", "htmldjango", "djangohtml" } })
+setup_lsp("html", {
+  filetypes = { "html", "htmldjango", "djangohtml" },
+  init_options = {
+    provideFormatter = false,
+  },
+})
 setup_lsp("emmet_language_server")
-setup_lsp("cssls")
+setup_lsp("cssls", {
+  init_options = {
+    provideFormatter = false,
+  },
+})
 setup_lsp("tailwindcss")
 setup_lsp("astro")
 setup_lsp("svelte")
 setup_lsp("biome")
+
+setup_lsp("basedpyright", {
+  settings = {
+    basedpyright = {
+      disableOrganizeImports = true,
+    },
+  },
+})
+setup_lsp("ruff")
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  desc = "LSP: Disable hover capability from Ruff",
+  group = vim.api.nvim_create_augroup("lsp_attach_disable_ruff_hover", { clear = true }),
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if client == nil then
+      return
+    end
+    if client.name == "ruff" then
+      client.server_capabilities.hoverProvider = false
+    end
+  end,
+})

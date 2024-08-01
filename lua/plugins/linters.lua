@@ -23,7 +23,6 @@ return {
   },
   opts = {
     bash = { "shellcheck" },
-    djangohtml = { "djlint" },
     lua = { "selene" },
     nix = { "statix" },
     sh = { "shellcheck" },
