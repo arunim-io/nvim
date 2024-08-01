@@ -16,6 +16,23 @@ return {
     end,
   },
   {
+    "coffebar/neovim-project",
+    lazy = false,
+    priority = 100,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+      "Shatur/neovim-session-manager",
+    },
+    init = function()
+      vim.opt.sessionoptions:append("globals")
+    end,
+    opts = {
+      projects = { "~/Projects/*", "~/.config/*" },
+      last_session_on_startup = false,
+    },
+  },
+  {
     "stevearc/oil.nvim",
     enabled = false,
     dependencies = "echasnovski/mini.icons",
@@ -31,6 +48,11 @@ return {
     {
       "echasnovski/mini.files",
       version = false,
+      lazy = false,
+      init = function()
+        vim.g.loaded_netrwPlugin = 1
+        vim.g.loaded_netrw = 1
+      end,
       keys = {
         {
           "<leader>pv",

@@ -71,7 +71,6 @@ return {
   {
     "jmbuhr/otter.nvim",
     ft = { "nix", "md", "mdx" },
-    event = "LspAttach",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "neovim/nvim-lspconfig",

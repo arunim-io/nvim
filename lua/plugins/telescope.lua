@@ -34,13 +34,6 @@ return {
       desc = "Search using grep",
     },
     {
-      "<leader>pws",
-      function()
-        require("telescope.builtin").grep_string({ search = vim.fn.expand("<cword>") })
-      end,
-      desc = "Search current word using grep",
-    },
-    {
       "<leader>u",
       "<cmd>Telescope undo<cr>",
       desc = "Use undotree with Telescope",
