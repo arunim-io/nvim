@@ -1,10 +1,7 @@
 ---@type LazySpec
 return {
   "nvim-lualine/lualine.nvim",
-  dependencies = {
-    "nvim-tree/nvim-web-devicons",
-    "folke/trouble.nvim",
-  },
+  dependencies = { "nvim-tree/nvim-web-devicons", "folke/trouble.nvim" },
   opts = function(_, opts)
     if opts.sections ~= nil then
       local symbols = require("trouble").statusline({

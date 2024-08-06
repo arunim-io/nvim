@@ -109,4 +109,57 @@ return {
       },
     },
   },
+  {
+    "jiaoshijie/undotree",
+    dependencies = "nvim-lua/plenary.nvim",
+    opts = {
+      position = "right",
+    },
+    keys = {
+      {
+        "<leader>u",
+        function()
+          require("undotree").toggle()
+        end,
+        desc = "open undotree",
+      },
+    },
+  },
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = "nvim-lua/plenary.nvim",
+    config = true,
+    keys = {
+      {
+        "<leader>hl",
+        function()
+          local harpoon = require("harpoon")
+          harpoon.ui:toggle_quick_menu(harpoon:list())
+        end,
+        desc = "harpooon list",
+      },
+      {
+        "<leader>ha",
+        function()
+          require("harpoon"):list():add()
+        end,
+        desc = "harpooon add to list",
+      },
+      {
+        "<C-p>",
+        function()
+          require("harpoon"):list():prev()
+        end,
+        desc = "harpooon previous item",
+      },
+      {
+        "<C-n>",
+        function()
+          require("harpoon"):list():next()
+        end,
+        desc = "harpooon next item",
+      },
+    },
+  },
 }

@@ -4,14 +4,12 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-    "debugloop/telescope-undo.nvim",
   },
   config = true,
   init = function()
     local telescope = require("telescope")
 
     telescope.load_extension("fzf")
-    telescope.load_extension("undo")
   end,
   keys = {
     { "<leader>pfr", "<cmd>Telescope find_files<cr>", desc = "Find files in the root directory" },
@@ -32,11 +30,6 @@ return {
         require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ") })
       end,
       desc = "Search using grep",
-    },
-    {
-      "<leader>u",
-      "<cmd>Telescope undo<cr>",
-      desc = "Use undotree with Telescope",
     },
   },
 }
