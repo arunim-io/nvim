@@ -40,7 +40,6 @@ setup_lsp("taplo", {
 })
 setup_lsp("dockerls")
 setup_lsp("bashls")
-setup_lsp("ruff_lsp")
 setup_lsp("html", {
   filetypes = { "html", "htmldjango", "djangohtml" },
   init_options = {

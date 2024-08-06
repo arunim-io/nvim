@@ -45,6 +45,7 @@ return {
   },
   {
     "zeioth/garbage-day.nvim",
+    enabled = false,
     dependencies = "neovim/nvim-lspconfig",
     event = { "VeryLazy", "LspAttach" },
     config = true,
@@ -101,6 +102,20 @@ return {
         jsx_close_tags = { enable = true },
       },
     },
+  },
+  {
+    "luckasRanarison/tailwind-tools.nvim",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    init = function()
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        desc = "Sort tailwind classes before format",
+        callback = function()
+          require("tailwind-tools.lsp").sort_classes()
+        end,
+      })
+    end,
+    ---@type TailwindTools.Option
+    opts = {},
   },
   {
     "ray-x/go.nvim",

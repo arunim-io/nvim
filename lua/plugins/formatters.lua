@@ -25,7 +25,7 @@ return {
       lsp_format = "fallback",
     },
     formatters_by_ft = {
-      go = { lsp_format = "prefer" },
+      ["_"] = { "prettierd" },
       lua = { "stylua" },
       nix = { "nixfmt" },
       sh = { "shfmt" },

@@ -20,7 +20,6 @@ return {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
-      "SergioRibera/cmp-dotenv",
       "petertriho/cmp-git",
     },
     opts = function()
@@ -58,7 +57,6 @@ return {
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
           { name = "luasnip" },
-          { name = "dotenv" },
           { name = "lazydev", group_index = 0 },
         }, {
           { name = "buffer" },
