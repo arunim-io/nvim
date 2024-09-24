@@ -34,24 +34,35 @@
           ...
         }:
         {
-          propagatedBuildInputs = {
-            general = with pkgs; [ ripgrep ];
+          propagatedBuildInputs = with pkgs; { };
+
+          lspsAndRuntimeDeps = with pkgs; {
+            base = [ ripgrep ];
+            language-support.treesitter = [
+              gnutar
+              curl
+              git
+              tree-sitter
+              nodejs_latest
+              zig
+            ];
           };
 
-          lspsAndRuntimeDeps = {
-            general = with pkgs; [ ];
-          };
-
-          startupPlugins = {
-            general = with pkgs.vimPlugins; [ ];
+          startupPlugins = with pkgs.vimPlugins; {
+            base = [ ];
+            language-support.treesitter = [
+              nvim-treesitter.withAllGrammars
+              nvim-treesitter-textobjects
+              nvim-ts-autotag
+            ];
           };
 
           optionalPlugins = {
-            general = with pkgs.vimPlugins; [ ];
+            base = with pkgs.vimPlugins; [ ];
           };
 
           sharedLibraries = {
-            general = with pkgs; [
+            base = with pkgs; [
               # libgit2
             ];
           };
@@ -77,7 +88,8 @@
               neovim-unwrapped = inputs.neovim-nightly-overlay.packages.${pkgs.system}.neovim;
             };
             categories = {
-              general = true;
+              base = true;
+              language-support.treesitter = true;
             };
           };
       };
@@ -135,4 +147,13 @@
         inherit (utils) templates;
       }
     );
+
+  nixConfig = {
+    extra-substituters = [
+      "https://nix-community.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
+  };
 }
