@@ -37,6 +37,10 @@
 
           lspsAndRuntimeDeps = with pkgs; {
             base = [ ripgrep ];
+            telescope = [
+              ripgrep
+              fd
+            ];
             language-support = {
               treesitter = [
                 gnutar
@@ -55,7 +59,15 @@
           };
 
           startupPlugins = with pkgs.vimPlugins; {
-            base = [ lualine-nvim which-key-nvim ];
+            base = [
+              lualine-nvim
+              which-key-nvim
+            ];
+            telescope = [
+              telescope-nvim
+              telescope-fzf-native-nvim
+              plenary-nvim
+            ];
             language-support = {
               treesitter = [
                 nvim-treesitter.withAllGrammars
@@ -105,8 +117,9 @@
               neovim-unwrapped = inputs.neovim-nightly-overlay.packages.${pkgs.system}.neovim;
             };
             categories = {
-              base = true;
               extras.nixpkgs = nixpkgs.outPath;
+              base = true;
+              telescope = true;
               language-support = {
                 treesitter = true;
                 lsp = true;
