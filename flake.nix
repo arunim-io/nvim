@@ -10,7 +10,6 @@
 
   outputs =
     {
-      self,
       nixpkgs,
       systems,
       nixCats,
@@ -46,6 +45,11 @@
               nodejs_latest
               zig
             ];
+            language-support.lsp = [
+              lua-language-server
+              nixd
+              nil
+            ];
           };
 
           startupPlugins = with pkgs.vimPlugins; {
@@ -55,10 +59,11 @@
               nvim-treesitter-textobjects
               nvim-ts-autotag
             ];
+            language-support.lsp = [ nvim-lspconfig ];
           };
 
-          optionalPlugins = {
-            base = with pkgs.vimPlugins; [ ];
+          optionalPlugins = with pkgs.vimPlugins; {
+            language-support.lsp = [ lazydev-nvim ];
           };
 
           sharedLibraries = {
@@ -90,6 +95,8 @@
             categories = {
               base = true;
               language-support.treesitter = true;
+              language-support.lsp = true;
+              extras.nixpkgs = nixpkgs.outPath;
             };
           };
       };
