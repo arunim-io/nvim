@@ -55,7 +55,7 @@
           };
 
           startupPlugins = with pkgs.vimPlugins; {
-            base = [ lualine-nvim ];
+            base = [ lualine-nvim which-key-nvim ];
             language-support = {
               treesitter = [
                 nvim-treesitter.withAllGrammars
