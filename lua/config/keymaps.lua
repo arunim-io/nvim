@@ -18,7 +18,7 @@ vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "copy to system clipboard" })
 
 if nixCats("language-support.lsp") then
 	vim.api.nvim_create_autocmd("LspAttach", {
-		group = require("config.ls.servers").lsp_augroup,
+		group = require("config.language-support.servers").lsp_augroup,
 		callback = function(event)
 			local function set(key, action, desc)
 				vim.keymap.set("n", key, action, { buffer = event.buf, desc = "LSP: " .. desc, noremap = true })

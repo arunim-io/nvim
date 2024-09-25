@@ -91,13 +91,17 @@ if isNix and nixCats("lspDebugMode") then
 	vim.lsp.set_log_level("debug")
 end
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 for name, config in pairs(servers) do
-	require("lspconfig")[name].setup({
-		settings = config,
-		filetypes = (config or {}).filetypes,
-		cmd = (config or {}).cmd,
-		root_pattern = (config or {}).root_pattern,
-	})
+	if nixCats("language-support.completion") then
+		config.capabilities = capabilities
+	end
+
+	require("lspconfig")[name].setup(config)
 end
 
 return { lsp_augroup = augroup }

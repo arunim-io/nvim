@@ -1,3 +1,3 @@
 require("config.options")
 require("config.keymaps")
-require("config.ls")
+require("config.language-support")

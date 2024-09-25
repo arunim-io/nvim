@@ -37,29 +37,41 @@
 
           lspsAndRuntimeDeps = with pkgs; {
             base = [ ripgrep ];
-            language-support.treesitter = [
-              gnutar
-              curl
-              git
-              tree-sitter
-              nodejs_latest
-              zig
-            ];
-            language-support.lsp = [
-              lua-language-server
-              nixd
-              nil
-            ];
+            language-support = {
+              treesitter = [
+                gnutar
+                curl
+                git
+                tree-sitter
+                nodejs_latest
+                zig
+              ];
+              lsp = [
+                lua-language-server
+                nixd
+                nil
+              ];
+            };
           };
 
           startupPlugins = with pkgs.vimPlugins; {
             base = [ ];
-            language-support.treesitter = [
-              nvim-treesitter.withAllGrammars
-              nvim-treesitter-textobjects
-              nvim-ts-autotag
-            ];
-            language-support.lsp = [ nvim-lspconfig ];
+            language-support = {
+              treesitter = [
+                nvim-treesitter.withAllGrammars
+                nvim-treesitter-textobjects
+                nvim-ts-autotag
+              ];
+              lsp = [ nvim-lspconfig ];
+              completion = [
+                nvim-cmp
+                cmp-nvim-lsp
+                cmp-buffer
+                cmp-path
+                cmp-cmdline
+                cmp-git
+              ];
+            };
           };
 
           optionalPlugins = with pkgs.vimPlugins; {
@@ -94,9 +106,12 @@
             };
             categories = {
               base = true;
-              language-support.treesitter = true;
-              language-support.lsp = true;
               extras.nixpkgs = nixpkgs.outPath;
+              language-support = {
+                treesitter = true;
+                lsp = true;
+                completion = true;
+              };
             };
           };
       };
