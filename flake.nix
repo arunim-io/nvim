@@ -66,6 +66,7 @@
               mini-files
               indent-blankline-nvim
               rainbow-delimiters-nvim
+              nvim-autopairs
             ];
             telescope = [
               telescope-nvim
