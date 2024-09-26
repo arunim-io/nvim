@@ -55,6 +55,7 @@
                 nixd
                 nil
               ];
+              formatters = [ prettierd ];
             };
           };
 
@@ -83,6 +84,8 @@
                 cmp-cmdline
                 cmp-git
               ];
+              formatters = [ conform-nvim ];
+              linters = [ nvim-lint ];
             };
           };
 
@@ -124,6 +127,8 @@
                 treesitter = true;
                 lsp = true;
                 completion = true;
+                formatters = true;
+                linters = true;
               };
             };
           };

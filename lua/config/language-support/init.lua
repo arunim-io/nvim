@@ -7,3 +7,9 @@ end
 if nixCats("language-support.completion") then
 	require("config.language-support.completion")
 end
+if nixCats("language-support.formatters") then
+	require("config.language-support.formatters")
+end
+if nixCats("language-support.linters") then
+	require("config.language-support.linters")
+end
