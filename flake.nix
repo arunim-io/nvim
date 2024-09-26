@@ -56,6 +56,7 @@
                 nil
               ];
               formatters = [ prettierd ];
+              linters = [ ];
             };
           };
 
@@ -77,7 +78,10 @@
                 nvim-treesitter-textobjects
                 nvim-ts-autotag
               ];
-              lsp = [ nvim-lspconfig ];
+              lsp = [
+                nvim-lspconfig
+                trouble-nvim
+              ];
               completion = [
                 nvim-cmp
                 cmp-nvim-lsp
@@ -95,11 +99,7 @@
             language-support.lsp = [ lazydev-nvim ];
           };
 
-          sharedLibraries = {
-            base = with pkgs; [
-              # libgit2
-            ];
-          };
+          sharedLibraries = { };
 
           environmentVariables = { };
 
