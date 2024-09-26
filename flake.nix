@@ -63,6 +63,8 @@
             base = [
               lualine-nvim
               which-key-nvim
+              mini-icons
+              mini-files
             ];
             telescope = [
               telescope-nvim

@@ -2,7 +2,7 @@ require("config.options")
 require("config.keymaps")
 require("config.language-support")
 require("config.ui")
-require("config.helpers")
+require("config.editor")
 
 if nixCats('telescope') then
   require("config.telescope")
