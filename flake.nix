@@ -25,13 +25,7 @@
       });
 
       categoryDefinitions =
-        {
-          pkgs,
-          settings,
-          categories,
-          name,
-          ...
-        }:
+        { pkgs, ... }:
         {
           propagatedBuildInputs = with pkgs; { };
 
@@ -55,7 +49,11 @@
                 nixd
                 nil
               ];
-              formatters = [ prettierd ];
+              formatters = [
+                prettierd
+                nixfmt-rfc-style
+                stylua
+              ];
               linters = [ ];
             };
           };
@@ -70,6 +68,7 @@
             telescope = [
               telescope-nvim
               telescope-fzf-native-nvim
+              telescope-ui-select-nvim
               plenary-nvim
             ];
             language-support = {

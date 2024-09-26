@@ -22,16 +22,9 @@ vim.api.nvim_create_autocmd("FileType", {
 servers.lua_ls = {
 	settings = {
 		Lua = {
-			formatters = {
-				ignoreComments = true,
+			format = {
+				enable = true,
 			},
-			signatureHelp = { enabled = true },
-			diagnostics = {
-				globals = { "nixCats" },
-				disable = { "missing-fields" },
-			},
-			telemetry = { enabled = false },
-			filetypes = { "lua" },
 		},
 	},
 }

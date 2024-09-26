@@ -15,21 +15,6 @@ local function first(bufnr, ...)
 	return select(1, ...)
 end
 
-conform.setup({
-	default_format_opts = {
-		lsp_format = "prefer",
-	},
-	format_on_save = {
-		timeout_ms = 500,
-	},
-	formatters_by_ft = {
-		["*"] = { "trim_newlines", "trim_whitespace" },
-		["_"] = function(bufnr)
-			return { first(bufnr, "prettierd", "prettier") }
-		end,
-	},
-})
-
 vim.keymap.set("n", "<leader>f", function()
 	conform.format({ async = true })
 end, { desc = "Run [F]ormatters" })
@@ -47,3 +32,15 @@ vim.api.nvim_create_user_command("ConformFormat", function(args)
 
 	conform.format({ async = true, range = range })
 end, { range = true })
+
+conform.setup({
+	default_format_opts = { lsp_format = "prefer" },
+	format_on_save = { timeout_ms = 500 },
+	formatters_by_ft = {
+		["*"] = { "trim_newlines", "trim_whitespace" },
+		["_"] = function(bufnr)
+			return { first(bufnr, "prettierd", "prettier") }
+		end,
+		lua = { "stylua" },
+	},
+})
