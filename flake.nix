@@ -64,6 +64,8 @@
               which-key-nvim
               mini-icons
               mini-files
+              indent-blankline-nvim
+              rainbow-delimiters-nvim
             ];
             telescope = [
               telescope-nvim
