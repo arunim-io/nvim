@@ -6,6 +6,10 @@
     nixCats.url = "github:BirdeeHub/nixCats-nvim?dir=nix";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     systems.url = "github:nix-systems/default";
+    plugins-cmp-luasnip = {
+      url = "github:saadparwaiz1/cmp_luasnip";
+      flake = false;
+    };
   };
 
   outputs =
@@ -20,9 +24,7 @@
       luaPath = "${./.}";
       eachSystem = utils.eachSystem (import systems);
       extra_pkg_config = { };
-      dependencyOverlays = eachSystem (system: {
-        dependencyOverlays = [ (utils.standardPluginOverlay inputs) ];
-      });
+      dependencyOverlays = [ (utils.standardPluginOverlay inputs) ];
 
       categoryDefinitions =
         { pkgs, ... }:
@@ -95,13 +97,18 @@
               lsp = [
                 nvim-lspconfig
                 trouble-nvim
+                cmp-nvim-lsp
               ];
               completion = [
                 nvim-cmp
-                cmp-nvim-lsp
                 cmp-buffer
                 cmp-path
                 cmp-cmdline
+              ];
+              snippets = [
+                luasnip
+                friendly-snippets
+                pkgs.neovimPlugins.cmp-luasnip
               ];
               formatters = [ conform-nvim ];
               linters = [ nvim-lint ];
@@ -144,6 +151,7 @@
                 treesitter = true;
                 lsp = true;
                 completion = true;
+                snippets = true;
                 formatters = true;
                 linters = true;
               };
