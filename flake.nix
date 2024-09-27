@@ -59,6 +59,8 @@
                 lua-language-server
                 nixd
                 nil
+                vscode-langservers-extracted
+                yaml-language-server
               ];
               formatters = [
                 prettierd
@@ -105,6 +107,7 @@
                 nvim-lspconfig
                 trouble-nvim
                 cmp-nvim-lsp
+                SchemaStore-nvim
               ];
               completion = [
                 nvim-cmp
