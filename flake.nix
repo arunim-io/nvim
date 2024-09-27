@@ -93,6 +93,8 @@
                 nvim-treesitter.withAllGrammars
                 nvim-treesitter-textobjects
                 nvim-ts-autotag
+                helpview-nvim
+                markview-nvim
               ];
               lsp = [
                 nvim-lspconfig
