@@ -31,6 +31,7 @@
 
           lspsAndRuntimeDeps = with pkgs; {
             base = [ ripgrep ];
+            git = [ git ];
             integrations.tmux = [
               tmux
               tmux-sessionizer
@@ -64,6 +65,7 @@
 
           startupPlugins = with pkgs.vimPlugins; {
             base = [
+              plenary-nvim
               lualine-nvim
               which-key-nvim
               mini-icons
@@ -72,12 +74,17 @@
               rainbow-delimiters-nvim
               nvim-autopairs
             ];
+            git = [
+              gitsigns-nvim
+              neogit
+              diffview-nvim
+              cmp-git
+            ];
             integrations.tmux = [ tmux-nvim ];
             telescope = [
               telescope-nvim
               telescope-fzf-native-nvim
               telescope-ui-select-nvim
-              plenary-nvim
             ];
             language-support = {
               treesitter = [
@@ -95,7 +102,6 @@
                 cmp-buffer
                 cmp-path
                 cmp-cmdline
-                cmp-git
               ];
               formatters = [ conform-nvim ];
               linters = [ nvim-lint ];
@@ -131,6 +137,7 @@
             categories = {
               extras.nixpkgs = nixpkgs.outPath;
               base = true;
+              git = true;
               integrations.tmux = true;
               telescope = true;
               language-support = {
