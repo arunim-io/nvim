@@ -102,12 +102,14 @@
                 helpview-nvim
                 markview-nvim
                 pkgs.neovimPlugins.nvim-puppeteer
+                otter-nvim
               ];
               lsp = [
                 nvim-lspconfig
                 trouble-nvim
                 cmp-nvim-lsp
                 SchemaStore-nvim
+                fidget-nvim
               ];
               completion = [
                 nvim-cmp
