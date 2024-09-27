@@ -10,6 +10,10 @@
       url = "github:saadparwaiz1/cmp_luasnip";
       flake = false;
     };
+    plugins-nvim-puppeteer = {
+      url = "github:chrisgrieser/nvim-puppeteer";
+      flake = false;
+    };
   };
 
   outputs =
@@ -95,6 +99,7 @@
                 nvim-ts-autotag
                 helpview-nvim
                 markview-nvim
+                pkgs.neovimPlugins.nvim-puppeteer
               ];
               lsp = [
                 nvim-lspconfig

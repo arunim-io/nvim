@@ -249,12 +249,29 @@
         "type": "github"
       }
     },
+    "plugins-nvim-puppeteer": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1726297702,
+        "narHash": "sha256-4Kmjs2St5uGDipTjDehavVcUWAxSOiXjm+K+PJwDxmc=",
+        "owner": "chrisgrieser",
+        "repo": "nvim-puppeteer",
+        "rev": "9cf15678c762c91d8da32397e79ab9ccbd477b0c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "chrisgrieser",
+        "repo": "nvim-puppeteer",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixCats": "nixCats",
         "nixpkgs": "nixpkgs_2",
         "plugins-cmp-luasnip": "plugins-cmp-luasnip",
+        "plugins-nvim-puppeteer": "plugins-nvim-puppeteer",
         "systems": "systems"
       }
     },
