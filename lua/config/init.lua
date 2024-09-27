@@ -5,5 +5,9 @@ require("config.ui")
 require("config.editor")
 
 if nixCats("telescope") then
-	require("config.telescope")
+  require("config.telescope")
+end
+
+if nixCats "integrations" then
+  require 'config.integrations'
 end

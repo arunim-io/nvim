@@ -31,6 +31,10 @@
 
           lspsAndRuntimeDeps = with pkgs; {
             base = [ ripgrep ];
+            integrations.tmux = [
+              tmux
+              tmux-sessionizer
+            ];
             telescope = [
               ripgrep
               fd
@@ -68,6 +72,7 @@
               rainbow-delimiters-nvim
               nvim-autopairs
             ];
+            integrations.tmux = [ tmux-nvim ];
             telescope = [
               telescope-nvim
               telescope-fzf-native-nvim
@@ -126,6 +131,7 @@
             categories = {
               extras.nixpkgs = nixpkgs.outPath;
               base = true;
+              integrations.tmux = true;
               telescope = true;
               language-support = {
                 treesitter = true;
