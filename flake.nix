@@ -5,6 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     systems.url = "github:nix-systems/default";
     treefmt.url = "github:numtide/treefmt-nix";
+    hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
     nixCats.url = "github:BirdeeHub/nixCats-nvim?dir=nix";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     plugins-cmp-luasnip = {
@@ -226,14 +227,31 @@
         inherit utils;
         inherit (utils) templates;
       }
-    );
+    )
+    // {
+      herculesCI = inputs.hercules-ci-effects.lib.mkHerculesCI { inherit inputs; } {
+        herculesCI.ciSystems = import systems;
+
+        hercules-ci.flake-update = {
+          enable = true;
+          baseMerge = {
+            enable = true;
+            method = "rebase";
+          };
+          autoMergeMethod = "rebase";
+          # Update everynight at midnight
+          when = {
+            hour = [ 0 ];
+            minute = 0;
+          };
+          createPullRequest = false;
+          commitSummary = "hercules-ci: update `flake.lock`";
+        };
+      };
+    };
 
   nixConfig = {
-    extra-substituters = [
-      "https://nix-community.cachix.org"
-    ];
-    extra-trusted-public-keys = [
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-    ];
+    extra-substituters = [ "https://arunim.cachix.org" ];
+    extra-trusted-public-keys = [ "arunim.cachix.org-1:J07zWDguRFHQSio/VmTT8us5EelRNlDTFkbNeFel0xM=" ];
   };
 }
