@@ -67,7 +67,7 @@
                 nixfmt-rfc-style
                 stylua
               ];
-              linters = [ ];
+              linters = [ selene ];
             };
           };
 
