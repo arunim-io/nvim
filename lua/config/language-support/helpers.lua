@@ -14,18 +14,15 @@ vim.keymap.set("n", "<leader>dw", function()
   trouble.toggle("diagnostics")
 end, { desc = "Show [D]iagnostics for current [W]orkspace" })
 
-require 'fidget'.setup({
-  ignore_done_already = true,
-  ignore_empty_message = true
-})
+require("fidget").setup({})
 
 local otter = require("otter")
 
 otter.setup({
   buffers = {
     set_filetype = true,
-    write_to_disk = true
-  }
+    write_to_disk = true,
+  },
 })
 
 vim.api.nvim_create_user_command("OtterActivate", function()
