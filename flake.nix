@@ -141,13 +141,16 @@
           extraLuaPackages = { };
         };
 
+      defaultPackageName = "neovim-config";
+
       packageDefinitions = {
-        nvim =
+        ${defaultPackageName} =
           { pkgs, ... }:
           {
             settings = {
               wrapRc = true;
               aliases = [
+                "nvim"
                 "vim"
                 "vi"
               ];
@@ -170,7 +173,6 @@
             };
           };
       };
-      defaultPackageName = "nvim";
     in
 
     eachSystem (
