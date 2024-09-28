@@ -9,7 +9,7 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 vim.keymap.set("n", "<leader>l", lint.try_lint, { desc = "Run [L]inters" })
 
 lint.linters_by_ft = {
-  lua = { 'selene' },
+  lua = { "selene" },
 }
 
 local function lint_progress()

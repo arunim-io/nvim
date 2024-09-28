@@ -39,7 +39,7 @@ if nixCats("language-support.lsp") then
     table.insert(sources, { name = "lazydev", group_index = 0 } --[[@as cmp.SourceConfig]])
   end
 end
-if nixCats('language-support.snippets') then
+if nixCats("language-support.snippets") then
   table.insert(sources, { name = "luasnip" } --[[@as cmp.SourceConfig]])
 end
 
@@ -52,18 +52,18 @@ local config = {
   }),
 }
 
-if nixCats('language-support.snippets') then
-  vim.tbl_deep_extend('force', config, {
+if nixCats("language-support.snippets") then
+  vim.tbl_deep_extend("force", config, {
     snippet = {
       expand = function(args)
-        require 'luasnip'.lsp_expand(args.body)
-      end
-    }
+        require("luasnip").lsp_expand(args.body)
+      end,
+    },
   } --[[@as cmp.ConfigSchema]])
 end
 
 cmp.setup(config)
 
-if nixCats 'language-support.snippets' then
+if nixCats("language-support.snippets") then
   require("luasnip.loaders.from_vscode").lazy_load()
 end

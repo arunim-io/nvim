@@ -66,19 +66,15 @@ if isNix then
       options = {
         -- (builtins.getFlake "<path_to_system_flake>").nixosConfigurations."<name>".options
         nixos = {
-          expr = [[(builtins.getFlake "]]
-              .. nixCats("extras.flake-path")
-              .. [[").nixosConfigurations."]]
-              .. nixCats("extras.systemCFGname")
-              .. [[".options]],
+          expr = [[(builtins.getFlake "]] .. nixCats("extras.flake-path") .. [[").nixosConfigurations."]] .. nixCats(
+            "extras.systemCFGname"
+          ) .. [[".options]],
         },
         -- (builtins.getFlake "<path_to_system_flake>").homeConfigurations."<name>".options
         ["home-manager"] = {
-          expr = [[(builtins.getFlake "]]
-              .. nixCats("extras.flake-path")
-              .. [[").homeConfigurations."]]
-              .. nixCats("extras.homeCFGname")
-              .. [[".options]],
+          expr = [[(builtins.getFlake "]] .. nixCats("extras.flake-path") .. [[").homeConfigurations."]] .. nixCats(
+            "extras.homeCFGname"
+          ) .. [[".options]],
         },
       },
     })
@@ -87,15 +83,15 @@ else
   servers.nil_ls = {}
 end
 
-local schemastore = require 'schemastore'
+local schemastore = require("schemastore")
 
 servers.jsonls = {
   settings = {
     json = {
       schemas = schemastore.json.schemas(),
-      validate = { enable = true }
-    }
-  }
+      validate = { enable = true },
+    },
+  },
 }
 
 servers.yamlls = {

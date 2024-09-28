@@ -8,10 +8,10 @@ if nixCats("telescope") then
   require("config.telescope")
 end
 
-if nixCats "integrations" then
-  require 'config.integrations'
+if nixCats("integrations") then
+  require("config.integrations")
 end
 
-if nixCats 'git' then
-  require 'config.git'
+if nixCats("git") then
+  require("config.git")
 end

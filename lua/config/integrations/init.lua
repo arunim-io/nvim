@@ -1,3 +1,3 @@
-if nixCats 'integrations.tmux' then
-  require 'config.integrations.tmux'
+if nixCats("integrations.tmux") then
+  require("config.integrations.tmux")
 end

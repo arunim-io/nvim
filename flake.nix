@@ -3,9 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    systems.url = "github:nix-systems/default";
+    treefmt.url = "github:numtide/treefmt-nix";
     nixCats.url = "github:BirdeeHub/nixCats-nvim?dir=nix";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-    systems.url = "github:nix-systems/default";
     plugins-cmp-luasnip = {
       url = "github:saadparwaiz1/cmp_luasnip";
       flake = false;
@@ -18,9 +19,12 @@
 
   outputs =
     {
+      self,
       nixpkgs,
       systems,
+      treefmt,
       nixCats,
+      neovim-nightly-overlay,
       ...
     }@inputs:
     let
@@ -154,7 +158,7 @@
                 "vim"
                 "vi"
               ];
-              neovim-unwrapped = inputs.neovim-nightly-overlay.packages.${pkgs.system}.neovim;
+              neovim-unwrapped = neovim-nightly-overlay.packages.${pkgs.system}.neovim;
             };
             categories = {
               extras.nixpkgs = nixpkgs.outPath;
@@ -188,16 +192,13 @@
         } categoryDefinitions packageDefinitions;
         defaultPackage = builder defaultPackageName;
         pkgs = import nixpkgs { inherit system; };
+        treefmtEval = treefmt.lib.evalModule pkgs ./treefmt.nix;
       in
       {
         packages = utils.mkAllWithDefault defaultPackage;
 
-        devShells.default = pkgs.mkShell {
-          name = defaultPackageName;
-          packages = [ defaultPackage ];
-          inputsFrom = [ ];
-          shellHook = '''';
-        };
+        formatter = treefmtEval.config.build.wrapper;
+        checks.formatting = treefmtEval.config.build.check self;
       }
     )
     // (

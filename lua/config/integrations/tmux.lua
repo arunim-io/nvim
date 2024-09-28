@@ -1,7 +1,7 @@
-require 'tmux'.setup {
+require("tmux").setup({
   navigation = { enable_default_keybindings = false },
   resize = { enable_default_keybindings = false },
-}
+})
 
 vim.keymap.set("n", "<C-Up>", require("tmux").move_top, { desc = "navigate [Up]" })
 vim.keymap.set("n", "<C-Down>", require("tmux").move_bottom, { desc = "navigate [Down]" })
