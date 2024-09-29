@@ -66,6 +66,16 @@
                 nil
                 vscode-langservers-extracted
                 yaml-language-server
+                basedpyright
+                ruff
+                htmx-lsp
+                emmet-language-server
+                basedpyright
+                svelte-language-server
+                astro-language-server
+                tailwindcss-language-server
+                biome
+                taplo
               ];
               formatters = [
                 prettierd

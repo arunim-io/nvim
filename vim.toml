@@ -4,3 +4,6 @@ name = 'vim'
 
 [vim]
 any = true
+
+[globals]
+nixCats={type="function",required=true}
