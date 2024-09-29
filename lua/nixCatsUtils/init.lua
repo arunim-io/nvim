@@ -3,7 +3,7 @@ local M = {}
 -- This directory is the luaUtils template.
 -- the other 3 files are intended to be independent, but may depend on this one.
 -- You will likely want at least something in this one,
--- but unless you use lazy.nvm or want to use pckr or rocks when not on nix, you wont need the other 2
+-- but unless you use lazy.nvim or want to use pckr or rocks when not on nix, you wont need the other 2
 
 ---@type boolean
 M.isNixCats = vim.g[ [[nixCats-special-rtp-entry-nixCats]] ] ~= nil

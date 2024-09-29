@@ -34,7 +34,7 @@ vim.api.nvim_create_user_command("ConformFormat", function(args)
 end, { range = true })
 
 conform.setup({
-  default_format_opts = { lsp_format = "prefer" },
+  default_format_opts = { lsp_format = "fallback" },
   format_on_save = { timeout_ms = 500 },
   formatters_by_ft = {
     ["*"] = { "trim_newlines", "trim_whitespace" },
