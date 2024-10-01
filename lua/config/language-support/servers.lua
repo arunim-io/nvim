@@ -12,6 +12,8 @@ if cmp_enabled then
   capabilities.textDocument.completion.completionItem.snippetSupport = true
 end
 
+--- @alias LSPOnAttach elem_or_list<fun(client: vim.lsp.Client, bufnr: integer)>
+
 --- @type table<string, lspconfig.Config>
 local servers = {}
 
@@ -172,28 +174,6 @@ servers.emmet_language_server = {}
 servers.cssls = {
   init_options = { provideFormatter = false },
 }
-servers.tailwindcss = {
-  root_dir = require("lspconfig.util").root_pattern(
-    "tailwind.config.js",
-    "tailwind.config.cjs",
-    "tailwind.config.mjs",
-    "tailwind.config.ts",
-    "postcss.config.js",
-    "postcss.config.cjs",
-    "postcss.config.mjs",
-    "postcss.config.ts"
-  ),
-  settings = {
-    tailwindCSS = {
-      experimental = {
-        classRegex = {
-          { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
-          { "cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
-        },
-      },
-    },
-  },
-}
 servers.astro = {}
 servers.svelte = {}
 servers.htmx = {}
@@ -246,5 +226,68 @@ for name, config in pairs(servers) do
 
   require("lspconfig")[name].setup(config)
 end
+
+require("typescript-tools").setup({
+  publish_diagnostic_on = "change",
+  complete_function_call = true,
+})
+
+require("tailwind-tools").setup({
+  server = {
+    --- @type LSPOnAttach
+    on_attach = function(_, bufnr)
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        buffer = bufnr,
+        command = "TailwindSortSync",
+      })
+    end,
+    settings = {
+      experimental = {
+        classRegex = {
+          { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+          { "cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+        },
+      },
+    },
+  },
+})
+
+vim.g.rustaceanvim = {
+  inlay_hints = { highlight = "NonText" },
+  tools = { hover_actions = { auto_focus = true } },
+  server = {
+    --- @type LSPOnAttach
+    on_attach = function(_, bufnr)
+      vim.keymap.set("n", "<leader>ca", function()
+        vim.cmd.RustLsp("codeAction")
+      end, { remap = true, silent = true, buffer = bufnr })
+    end,
+    settings = {
+      ["rust-analyzer"] = { check = { command = "clippy" } },
+    },
+  },
+}
+
+require("go").setup({
+  diagnostic = { update_in_insert = true },
+  luasnip = nixCats("language-support.snippets"),
+  trouble = true,
+  lsp_inlay_hints = { style = "eol" },
+  lsp_cfg = true,
+  --- @type LSPOnAttach
+  lsp_on_attach = function(_, bufnr)
+    local fmt_cmd = require("go.format").goimports
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = augroup,
+      buffer = bufnr,
+      callback = fmt_cmd,
+    })
+
+    vim.keymap.set("n", "<leader>f", fmt_cmd, { remap = true, silent = true, buffer = bufnr })
+    vim.keymap.set("n", "<leader>l", "<cmd>GoLint<cr>", { remap = true, silent = true, buffer = bufnr })
+    vim.keymap.set("n", "<leader>ca", "<cmd>GoCodeAction<cr>", { remap = true, silent = true, buffer = bufnr })
+    vim.keymap.set("n", "<leader>rn", "<cmd>GoRename<cr>", { remap = true, silent = true, buffer = bufnr })
+  end,
+})
 
 return { lsp_augroup = augroup }

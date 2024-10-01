@@ -76,6 +76,22 @@
                 tailwindcss-language-server
                 biome
                 taplo
+                typescript
+                rust-analyzer
+                gopls
+                gofumpt
+                golangci-lint
+                golines
+                gotools
+                gomodifytags
+                gotests
+                gotestsum
+                iferr
+                impl
+                reftools
+                ginkgo
+                richgo
+                govulncheck
               ];
               formatters = [
                 prettierd
@@ -125,6 +141,10 @@
                 cmp-nvim-lsp
                 SchemaStore-nvim
                 fidget-nvim
+                typescript-tools-nvim
+                tailwind-tools-nvim
+                rustaceanvim
+                go-nvim
               ];
               completion = [
                 nvim-cmp
