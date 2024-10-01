@@ -163,7 +163,10 @@
           };
 
           optionalPlugins = with pkgs.vimPlugins; {
-            language-support.lsp = [ lazydev-nvim ];
+            language-support.lsp = [
+              lazydev-nvim
+              luvit-meta
+            ];
           };
 
           sharedLibraries = { };
