@@ -97,8 +97,12 @@
                 prettierd
                 nixfmt-rfc-style
                 stylua
+                djlint
               ];
-              linters = [ selene ];
+              linters = [
+                selene
+                djlint
+              ];
             };
           };
 

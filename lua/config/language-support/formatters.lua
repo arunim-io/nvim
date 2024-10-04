@@ -42,5 +42,7 @@ conform.setup({
       return { first(bufnr, "prettierd", "prettier") }
     end,
     lua = { "stylua" },
+    djangohtml = { "djlint" },
+    htmldjango = { "djlint" },
   },
 })

@@ -10,6 +10,8 @@ vim.keymap.set("n", "<leader>l", lint.try_lint, { desc = "Run [L]inters" })
 
 lint.linters_by_ft = {
   lua = { "selene" },
+  djangohtml = { "djlint" },
+  htmldjango = { "djlint" },
 }
 
 local function lint_progress()
