@@ -5,9 +5,14 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     systems.url = "github:nix-systems/default";
     treefmt.url = "github:numtide/treefmt-nix";
-    hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
     nixCats.url = "github:BirdeeHub/nixCats-nvim?dir=nix";
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+
+    gh-actions = {
+      url = "github:nix-community/nix-github-actions";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     plugins-cmp-luasnip = {
       url = "github:saadparwaiz1/cmp_luasnip";
       flake = false;
@@ -26,6 +31,7 @@
       treefmt,
       nixCats,
       neovim-nightly-overlay,
+      gh-actions,
       ...
     }@inputs:
     let
@@ -183,7 +189,7 @@
           extraLuaPackages = { };
         };
 
-      defaultPackageName = "neovim-config";
+      defaultPackageName = "anc";
 
       packageDefinitions = {
         ${defaultPackageName} =
@@ -236,7 +242,8 @@
         packages = utils.mkAllWithDefault defaultPackage;
 
         formatter = treefmtEval.config.build.wrapper;
-        checks.formatting = treefmtEval.config.build.check self;
+
+        checks.${defaultPackageName} = self.packages.${system}.default;
       }
     )
     // (
@@ -263,29 +270,15 @@
 
         inherit utils;
         inherit (utils) templates;
-      }
-    )
-    // {
-      herculesCI = inputs.hercules-ci-effects.lib.mkHerculesCI { inherit inputs; } {
-        herculesCI.ciSystems = import systems;
 
-        hercules-ci.flake-update = {
-          enable = true;
-          baseMerge = {
-            enable = true;
-            method = "rebase";
-          };
-          autoMergeMethod = "rebase";
-          # Update everynight at midnight
-          when = {
-            hour = [ 0 ];
-            minute = 0;
-          };
-          createPullRequest = false;
-          commitSummary = "hercules-ci: update `flake.lock`";
+        githubActions = gh-actions.lib.mkGithubMatrix {
+          checks = nixpkgs.lib.getAttrs [
+            "x86_64-linux"
+            "x86_64-darwin"
+          ] self.checks;
         };
-      };
-    };
+      }
+    );
 
   nixConfig = {
     extra-substituters = [ "https://arunim.cachix.org" ];
