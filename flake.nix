@@ -18,6 +18,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    vscode-langservers-extracted.url = "github:arunim-io/vscode-langservers-extracted";
+
     gh-actions = {
       url = "github:nix-community/nix-github-actions";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -50,7 +52,10 @@
       luaPath = "${./.}";
       eachSystem = utils.eachSystem (import systems);
       extra_pkg_config = { };
-      dependencyOverlays = [ (utils.standardPluginOverlay inputs) ];
+      dependencyOverlays = [
+        (utils.standardPluginOverlay inputs)
+        inputs.vscode-langservers-extracted.overlays.default
+      ];
 
       categoryDefinitions =
         { pkgs, ... }:
@@ -283,10 +288,7 @@
         inherit (utils) templates;
 
         githubActions = gh-actions.lib.mkGithubMatrix {
-          checks = nixpkgs.lib.getAttrs [
-            "x86_64-linux"
-            "x86_64-darwin"
-          ] self.checks;
+          checks = nixpkgs.lib.getAttrs [ "x86_64-linux" ] self.checks;
         };
       }
     );
