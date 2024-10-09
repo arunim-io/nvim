@@ -3,10 +3,20 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+
     systems.url = "github:nix-systems/default";
-    treefmt.url = "github:numtide/treefmt-nix";
+
+    treefmt = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixCats.url = "github:BirdeeHub/nixCats-nvim?dir=nix";
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     gh-actions = {
       url = "github:nix-community/nix-github-actions";
@@ -17,6 +27,7 @@
       url = "github:saadparwaiz1/cmp_luasnip";
       flake = false;
     };
+
     plugins-nvim-puppeteer = {
       url = "github:chrisgrieser/nvim-puppeteer";
       flake = false;
