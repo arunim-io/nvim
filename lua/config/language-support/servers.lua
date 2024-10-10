@@ -56,7 +56,7 @@ servers.nixd = {
 
 local nixpkgs_path = nixCats("extras.nixpkgs")
 
-if isNix and nixpkgs_path then
+if nixpkgs_path ~= nil then
   vim.tbl_deep_extend("keep", servers.nixd.settings.nixd, {
     nixpkgs = {
       expr = string.format([[import (builtins.getFlake "%s") {}]], nixpkgs_path),

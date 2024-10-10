@@ -1,23 +1,20 @@
+--- This module contains the utils from [nixCats-nvim's luaUtils template](https://github.com/BirdeeHub/nixCats-nvim/blob/main/nix/templates/luaUtils), which is useful for configuring neovim.
 local M = {}
 
--- This directory is the luaUtils template.
--- the other 3 files are intended to be independent, but may depend on this one.
--- You will likely want at least something in this one,
--- but unless you use lazy.nvim or want to use pckr or rocks when not on nix, you wont need the other 2
-
----@type boolean
+-- Check if neovim is installed via nix. Useful for configuring package managers when not loaded via nix.
+--- @type boolean
 M.isNixCats = vim.g[ [[nixCats-special-rtp-entry-nixCats]] ] ~= nil
 
----@class nixCatsSetupOpts
----@field non_nix_value boolean|nil
+--- @class nixCatsSetupOpts
+--- @field non_nix_value boolean?
 
----defaults to true if non_nix_value is not provided or is not a boolean.
----@param v nixCatsSetupOpts
-function M.setup(v)
+--- defaults to true if non_nix_value is not provided or is not a boolean.
+--- @param opts nixCatsSetupOpts
+function M.setup(opts)
   if not M.isNixCats then
     local nixCats_default_value
-    if type(v) == "table" and type(v.non_nix_value) == "boolean" then
-      nixCats_default_value = v.non_nix_value
+    if type(opts) == "table" and type(opts.non_nix_value) == "boolean" then
+      nixCats_default_value = opts.non_nix_value
     else
       nixCats_default_value = true
     end
@@ -50,10 +47,11 @@ function M.setup(v)
   end
 end
 
----allows you to guarantee a boolean is returned, and also declare a different
----default value than specified in setup when not using nix to load the config
----@overload fun(v: string|string[]): boolean
----@overload fun(v: string|string[], default: boolean): boolean
+--- allows you to guarantee a boolean is returned, and also declare a different
+--- default value than specified in setup when not using nix to load the config
+--- @param v string|string[] Value to load when loaded via nix
+--- @param default boolean? Default value to use when not loaded via nix
+--- @return boolean
 function M.enableForCategory(v, default)
   if M.isNixCats or default == nil then
     if nixCats(v) then
@@ -66,11 +64,12 @@ function M.enableForCategory(v, default)
   end
 end
 
----if nix, return value of nixCats(v) else return default
----Exists to specify a different non_nix_value than the one in setup()
----@param v string|string[]
----@param default any
----@return any
+--- @generic D
+--- if nix, return value of nixCats(v) else return default
+--- Exists to specify a different non_nix_value than the one in setup()
+--- @param v string|string[]
+--- @param default D
+--- @return D
 function M.getCatOrDefault(v, default)
   if M.isNixCats then
     return nixCats(v)
@@ -79,12 +78,12 @@ function M.getCatOrDefault(v, default)
   end
 end
 
----for conditionally disabling build steps on nix, as they are done via nix
----I should probably have named it dontAddIfCats or something.
----@overload fun(v: any): any|nil
----Will return the second value if nix, otherwise the first
----@overload fun(v: any, o: any): any
-function M.lazyAdd(v, o)
+--- @generic V, O
+--- If loaded via nix, the 2nd param will be returned, otherwise return the 1st param.
+--- @param v V
+--- @param o O
+--- @return V|O
+function M.either_or(v, o)
   if M.isNixCats then
     return o
   else
@@ -92,9 +91,9 @@ function M.lazyAdd(v, o)
   end
 end
 
----Useful for things such as vim-startuptime which must reference the wrapper's actual path
----If not using nix, this will simply return vim.v.progpath
----@type string
+--- Useful for things such as vim-startuptime which must reference the wrapper's actual path
+--- If not using nix, this will simply return vim.v.progpath
+--- @type string
 M.packageBinPath = os.getenv("NVIM_WRAPPER_PATH_NIX") or vim.v.progpath
 
 return M
