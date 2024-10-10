@@ -44,5 +44,6 @@ conform.setup({
     lua = { "stylua" },
     djangohtml = { "djlint" },
     htmldjango = { "djlint" },
+    nix = { "nixfmt" },
   },
 })

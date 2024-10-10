@@ -42,12 +42,11 @@ servers.lua_ls = {
   },
 }
 
+servers.nil_ls = {}
+
 servers.nixd = {
   settings = {
     nixd = {
-      formatting = {
-        command = { "nixfmt" },
-      },
       diagnostic = {
         suppress = { "sema-escaping-with" },
       },
@@ -57,12 +56,10 @@ servers.nixd = {
 
 local nixpkgs_path = nixCats("extras.nixpkgs")
 
-servers.nil_ls = {}
-
 if isNix and nixpkgs_path then
   vim.tbl_deep_extend("keep", servers.nixd.settings.nixd, {
     nixpkgs = {
-      expr = [[import (builtins.getFlake "]] .. nixpkgs_path .. [[") { }   ]],
+      expr = string.format([[import (builtins.getFlake "%s") {}]], nixpkgs_path),
     },
   })
 end
