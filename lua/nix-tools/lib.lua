@@ -34,8 +34,8 @@ function lib:check_if_exists(dir)
 end
 
 --- Run `nix` command in a different process
----@param cmd string[] command args to pass to the `nix` command
----@return string?
+---@param cmd string[] command args to be passed to the `nix` command
+---@return string? out the output of the command
 function lib:run_cli_cmd(cmd)
   table.insert(cmd, 1, "nix")
 
@@ -50,7 +50,7 @@ function lib:run_cli_cmd(cmd)
 end
 
 --- Fetch metadata of current flake and set it to [`flake.metadata`](lua://NixFlake.metadata) field.
---- @return table?
+--- @return table? metadata the output parsed from the json
 function lib:fetch_metadata()
   local json = self:run_cli_cmd({ "flake", "metadata", "--json" })
 
@@ -59,25 +59,42 @@ function lib:fetch_metadata()
   end
 end
 
---- Get a list of inputs from the flake metadata.
----@return table?
+--- Get a table of inputs from the flake metadata.
+---@return table? inputs a table of inputs parsed from the flake metadata
 function lib:get_inputs()
   local metadata = self:fetch_metadata()
 
-  if metadata then
-    local nodes = metadata.locks.nodes
-
-    -- Remove non-flake inputs
-    for key, data in pairs(nodes) do
-      if data.flake ~= nil then
-        nodes[key] = nil
-      end
-    end
-
-    nodes.root = nil
-
-    return nodes
+  if not metadata then
+    return
   end
+
+  local nodes = metadata.locks.nodes
+
+  -- Remove non-flake inputs as they aren't needed.
+  for key, data in pairs(nodes) do
+    if data.flake ~= nil then
+      nodes[key] = nil
+    end
+  end
+
+  -- `nix flake metadata` command also returns the inputs of the inputs specified in `flake.nix`, so they need to be removed.
+  local main_inputs = {}
+
+  for _, input in ipairs(vim.tbl_keys(nodes.root.inputs)) do
+    main_inputs[input] = true
+  end
+
+  -- Here, if the input name doesn't match, it will be removed.
+  for node in pairs(nodes) do
+    if not main_inputs[node] then
+      nodes[node] = nil
+    end
+  end
+
+  -- Finally, remove the root node as it isn't needed in the return value.
+  nodes.root = nil
+
+  return nodes
 end
 
 --- Get the nix store paths of inputs.
@@ -85,19 +102,25 @@ end
 function lib:get_input_paths()
   local inputs = self:get_inputs()
 
-  if inputs then
-    local paths = {}
-
-    for input, node in pairs(inputs) do
-      local ref = node.locked
-
-      local expr = ([[ builtins.getFlake "%s:%s/%s/%s" ]]):format(ref.type, ref.owner, ref.repo, ref.rev)
-
-      paths[input] = self:run_cli_cmd({ "eval", "--impure", "--json", "--expr", expr })
-    end
-
-    return paths
+  if not inputs then
+    return
   end
+
+  local paths = {}
+
+  for input, node in pairs(inputs) do
+    local ref = node.locked
+
+    local expr = ([[ builtins.getFlake "%s:%s/%s/%s" ]]):format(ref.type, ref.owner, ref.repo, ref.rev)
+
+    local result = self:run_cli_cmd({ "eval", "--impure", "--json", "--expr", expr })
+
+    if result then
+      paths[input] = vim.trim(result):gsub('"', "")
+    end
+  end
+
+  return paths
 end
 
 return lib
