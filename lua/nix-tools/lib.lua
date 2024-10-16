@@ -59,9 +59,9 @@ function lib:fetch_metadata()
   end
 end
 
---- Get a table of inputs from the flake metadata.
+--- Get a table of metadata of inputs from the flake metadata.
 ---@return table? inputs a table of inputs parsed from the flake metadata
-function lib:get_inputs()
+function lib:get_input_metadata()
   local metadata = self:fetch_metadata()
 
   if not metadata then
@@ -97,10 +97,22 @@ function lib:get_inputs()
   return nodes
 end
 
+function lib:get_flake_ref(node)
+  local locked = node.locked
+
+  local ref = ("%s:%s/%s/%s"):format(locked.type, locked.owner, locked.repo, locked.rev)
+
+  if node.original.dir then
+    ref = ("%s?dir=%s"):format(ref, node.original.dir)
+  end
+
+  return ref
+end
+
 --- Get the nix store paths of inputs.
 ---@return table?
-function lib:get_input_paths()
-  local inputs = self:get_inputs()
+function lib:get_input_store_paths()
+  local inputs = self:get_input_metadata()
 
   if not inputs then
     return
@@ -109,9 +121,7 @@ function lib:get_input_paths()
   local paths = {}
 
   for input, node in pairs(inputs) do
-    local ref = node.locked
-
-    local expr = ([[ builtins.getFlake "%s:%s/%s/%s" ]]):format(ref.type, ref.owner, ref.repo, ref.rev)
+    local expr = ([[ builtins.getFlake "%s" ]]):format(self:get_flake_ref(node))
 
     local result = self:run_cli_cmd({ "eval", "--impure", "--json", "--expr", expr })
 
@@ -121,6 +131,29 @@ function lib:get_input_paths()
   end
 
   return paths
+end
+
+--- Get a table of inputs where each input contains its metadata & its store path.
+--- @return table? inputs a table of inputs.
+function lib:get_inputs()
+  local input_metadata, store_paths = self:get_input_metadata(), self:get_input_store_paths()
+
+  if not input_metadata or not store_paths then
+    return
+  end
+
+  local inputs = {}
+
+  for input, metadata in pairs(input_metadata) do
+    inputs[input] = {}
+    inputs[input].metadata = metadata
+  end
+
+  for input, path in pairs(store_paths) do
+    inputs[input].path = path
+  end
+
+  return inputs
 end
 
 return lib

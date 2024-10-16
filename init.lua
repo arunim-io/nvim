@@ -4,6 +4,6 @@ require("config")
 
 local flake_lib = require("nix-tools.lib")
 
-local input_paths = flake_lib:get_input_paths()
+local inputs = flake_lib:get_inputs()
 
-vim.print(input_paths)
+vim.print(inputs)
