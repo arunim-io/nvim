@@ -85,7 +85,6 @@
               lsp = [
                 lua-language-server
                 nixd
-                nil
                 vscode-langservers-extracted
                 yaml-language-server
                 basedpyright

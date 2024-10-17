@@ -42,8 +42,6 @@ servers.lua_ls = {
   },
 }
 
-servers.nil_ls = {}
-
 servers.nixd = {
   settings = {
     nixd = {
