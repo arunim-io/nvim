@@ -27,8 +27,8 @@ vim.api.nvim_create_autocmd("FileType", {
 
     require("lazydev").setup({
       library = {
+        "luvit-meta/library",
         { path = require("nixCats").nixCatsPath .. "/lua", words = { "nixCats" } },
-        { path = "luvit-meta/library", words = { "vim%.uv", "uv", "luv" } },
       },
     })
   end,
