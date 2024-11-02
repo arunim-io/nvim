@@ -11,7 +11,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixCats.url = "github:BirdeeHub/nixCats-nvim?dir=nix";
+    nixCats.url = "github:BirdeeHub/nixCats-nvim";
 
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
@@ -206,36 +206,34 @@
 
       defaultPackageName = "anc";
 
-      packageDefinitions = {
-        ${defaultPackageName} =
-          { pkgs, ... }:
-          {
-            settings = {
-              wrapRc = true;
-              aliases = [
-                "nvim"
-                "vim"
-                "vi"
-              ];
-              neovim-unwrapped = neovim-nightly-overlay.packages.${pkgs.system}.neovim;
-            };
-            categories = {
-              extras.nixpkgs = nixpkgs.outPath;
-              base = true;
-              git = true;
-              integrations.tmux = true;
-              telescope = true;
-              language-support = {
-                treesitter = true;
-                lsp = true;
-                completion = true;
-                snippets = true;
-                formatters = true;
-                linters = true;
-              };
+      packageDefinitions.${defaultPackageName} =
+        { pkgs, ... }:
+        {
+          settings = {
+            wrapRc = true;
+            aliases = [
+              "nvim"
+              "vim"
+              "vi"
+            ];
+            neovim-unwrapped = neovim-nightly-overlay.packages.${pkgs.system}.neovim;
+          };
+          categories = {
+            extras.nixpkgs = nixpkgs.outPath;
+            base = true;
+            git = true;
+            integrations.tmux = true;
+            telescope = true;
+            language-support = {
+              treesitter = true;
+              lsp = true;
+              completion = true;
+              snippets = true;
+              formatters = true;
+              linters = true;
             };
           };
-      };
+        };
     in
 
     eachSystem (
