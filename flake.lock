@@ -295,6 +295,22 @@
         "type": "github"
       }
     },
+    "plguins-snacks-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1731319755,
+        "narHash": "sha256-WkYz09wtfBn6QoWkWCAPldMveuLCRUdjG5BxTgXatB4=",
+        "owner": "folke",
+        "repo": "snacks.nvim",
+        "rev": "bc0cf370915ac4e8d5b1bd8188b5091a4a0ee22c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "folke",
+        "repo": "snacks.nvim",
+        "type": "github"
+      }
+    },
     "plugins-cmp-luasnip": {
       "flake": false,
       "locked": {
@@ -333,6 +349,7 @@
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixCats": "nixCats",
         "nixpkgs": "nixpkgs",
+        "plguins-snacks-nvim": "plguins-snacks-nvim",
         "plugins-cmp-luasnip": "plugins-cmp-luasnip",
         "plugins-nvim-puppeteer": "plugins-nvim-puppeteer",
         "systems": "systems",
