@@ -34,6 +34,11 @@
       url = "github:chrisgrieser/nvim-puppeteer";
       flake = false;
     };
+
+    plguins-snacks-nvim = {
+      url = "github:folke/snacks.nvim";
+      flake = false;
+    };
   };
 
   outputs =
@@ -63,9 +68,10 @@
           propagatedBuildInputs = with pkgs; { };
 
           lspsAndRuntimeDeps = with pkgs; {
-            base = [ ripgrep ];
+
+            core = [ ripgrep ];
             git = [ git ];
-            integrations.tmux = [
+            tmux = [
               tmux
               tmux-sessionizer
             ];
@@ -73,125 +79,39 @@
               ripgrep
               fd
             ];
-            language-support = {
-              treesitter = [
-                gnutar
-                curl
-                git
-                tree-sitter
-                nodejs_latest
-                zig
-              ];
-              lsp = [
-                lua-language-server
-                nixd
-                vscode-langservers-extracted
-                yaml-language-server
-                basedpyright
-                ruff
-                htmx-lsp
-                emmet-language-server
-                basedpyright
-                svelte-language-server
-                astro-language-server
-                tailwindcss-language-server
-                biome
-                taplo
-                typescript
-                rust-analyzer
-                gopls
-                gofumpt
-                golangci-lint
-                golines
-                gotools
-                gomodifytags
-                gotests
-                gotestsum
-                iferr
-                impl
-                reftools
-                ginkgo
-                richgo
-                govulncheck
-              ];
-              formatters = [
-                prettierd
-                nixfmt-rfc-style
-                stylua
-                djlint
-              ];
-              linters = [
-                selene
-                djlint
-              ];
-            };
+            treesitter = [
+              gnutar
+              curl
+              git
+              tree-sitter
+              nodejs_latest
+              zig
+            ];
           };
 
           startupPlugins = with pkgs.vimPlugins; {
-            base = [
-              plenary-nvim
-              lualine-nvim
+            core = [ plenary-nvim ];
+            editor = [
               which-key-nvim
-              mini-icons
               mini-files
+            ];
+            ui = [
               indent-blankline-nvim
               rainbow-delimiters-nvim
-              nvim-autopairs
             ];
-            git = [
-              gitsigns-nvim
-              neogit
-              diffview-nvim
-              cmp-git
-            ];
-            integrations.tmux = [ tmux-nvim ];
-            telescope = [
-              telescope-nvim
-              telescope-fzf-native-nvim
-              telescope-ui-select-nvim
-            ];
-            language-support = {
-              treesitter = [
-                nvim-treesitter.withAllGrammars
-                nvim-treesitter-textobjects
-                nvim-ts-autotag
-                helpview-nvim
-                markview-nvim
-                pkgs.neovimPlugins.nvim-puppeteer
-                otter-nvim
-              ];
-              lsp = [
-                nvim-lspconfig
-                trouble-nvim
-                cmp-nvim-lsp
-                SchemaStore-nvim
-                fidget-nvim
-                typescript-tools-nvim
-                tailwind-tools-nvim
-                rustaceanvim
-                go-nvim
-              ];
-              completion = [
-                nvim-cmp
-                cmp-buffer
-                cmp-path
-                cmp-cmdline
-              ];
-              snippets = [
-                luasnip
-                friendly-snippets
-                pkgs.neovimPlugins.cmp-luasnip
-              ];
-              formatters = [ conform-nvim ];
-              linters = [ nvim-lint ];
-            };
+            git = [ ];
+            telescope = [ ];
+            treesitter = [ nvim-treesitter.withAllGrammars ];
           };
 
           optionalPlugins = with pkgs.vimPlugins; {
-            language-support.lsp = [
-              lazydev-nvim
-              luvit-meta
-            ];
+            core = [ ];
+            editor = [ ];
+            ui = [ ];
+            git = [ ];
+            telescope = [ ];
+            treesitter = [ ];
+            tmux = [ tmux-nvim ];
           };
 
           sharedLibraries = { };
