@@ -68,7 +68,6 @@
           propagatedBuildInputs = with pkgs; { };
 
           lspsAndRuntimeDeps = with pkgs; {
-
             core = [ ripgrep ];
             git = [ git ];
             tmux = [
@@ -90,18 +89,29 @@
           };
 
           startupPlugins = with pkgs.vimPlugins; {
-            core = [ plenary-nvim ];
+            core = [
+              plenary-nvim
+              lazy-nvim
+            ];
             editor = [
               which-key-nvim
               mini-files
             ];
             ui = [
+              mini-icons
+              lualine-nvim
               indent-blankline-nvim
               rainbow-delimiters-nvim
             ];
             git = [ ];
-            telescope = [ ];
-            treesitter = [ nvim-treesitter.withAllGrammars ];
+            telescope = [
+              telescope-nvim
+              telescope-fzf-native-nvim
+            ];
+            treesitter = [
+              nvim-treesitter.withAllGrammars
+              nvim-ts-autotag
+            ];
           };
 
           optionalPlugins = with pkgs.vimPlugins; {
@@ -139,19 +149,13 @@
             neovim-unwrapped = neovim-nightly-overlay.packages.${pkgs.system}.neovim;
           };
           categories = {
-            extras.nixpkgs = nixpkgs.outPath;
-            base = true;
+            core = true;
+            editor = true;
+            ui = true;
             git = true;
-            integrations.tmux = true;
             telescope = true;
-            language-support = {
-              treesitter = true;
-              lsp = true;
-              completion = true;
-              snippets = true;
-              formatters = true;
-              linters = true;
-            };
+            treesitter = true;
+            tmux = true;
           };
         };
     in
