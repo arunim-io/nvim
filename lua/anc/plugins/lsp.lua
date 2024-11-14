@@ -2,9 +2,13 @@
 --- @field servers table<string, lspconfig.Config>
 --- @field keys { [1]: string; [2]: function; desc: string?; }[]
 
+local completion_enabled = nixCats("completion") ~= nil
+local formatting_disabled = nixCats("formatting") == nil
+
 return {
   {
     "neovim/nvim-lspconfig",
+    dependencies = { "saghen/blink.cmp" },
     --- @param opts LSPConfig
     config = function(_, opts)
       vim.api.nvim_create_autocmd("LspAttach", {
@@ -21,7 +25,8 @@ return {
       local capabilities = vim.tbl_deep_extend("force", {}, vim.lsp.protocol.make_client_capabilities())
 
       for name, config in pairs(opts.servers) do
-        config.capabilities = vim.tbl_deep_extend("keep", config.capabilities or {}, capabilities)
+        config.capabilities = completion_enabled and require("blink.cmp").get_lsp_capabilities(config.capabilities)
+          or capabilities
 
         require("lspconfig")[name].setup(config)
       end
@@ -62,7 +67,7 @@ return {
           end,
           settings = {
             json = {
-              format = { enable = nixCats("formatting") == nil },
+              format = { enable = formatting_disabled },
               validate = { enable = true },
             },
           },
@@ -135,11 +140,11 @@ return {
         },
         html = {
           filetypes = { "html", "htmldjango", "djangohtml" },
-          init_options = { provideFormatter = nixCats("formatting") == nil },
+          init_options = { provideFormatter = formatting_disabled },
         },
         emmet_language_server = {},
         cssls = {
-          init_options = { provideFormatter = nixCats("formatting") == nil },
+          init_options = { provideFormatter = formatting_disabled },
         },
         astro = {},
         svelte = {},

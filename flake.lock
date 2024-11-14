@@ -311,22 +311,6 @@
         "type": "github"
       }
     },
-    "plugins-cmp-luasnip": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1730707109,
-        "narHash": "sha256-86lKQPPyqFz8jzuLajjHMKHrYnwW6+QOcPyQEx6B+gw=",
-        "owner": "saadparwaiz1",
-        "repo": "cmp_luasnip",
-        "rev": "98d9cb5c2c38532bd9bdb481067b20fea8f32e90",
-        "type": "github"
-      },
-      "original": {
-        "owner": "saadparwaiz1",
-        "repo": "cmp_luasnip",
-        "type": "github"
-      }
-    },
     "plugins-nvim-puppeteer": {
       "flake": false,
       "locked": {
@@ -350,7 +334,6 @@
         "nixCats": "nixCats",
         "nixpkgs": "nixpkgs",
         "plguins-snacks-nvim": "plguins-snacks-nvim",
-        "plugins-cmp-luasnip": "plugins-cmp-luasnip",
         "plugins-nvim-puppeteer": "plugins-nvim-puppeteer",
         "systems": "systems",
         "treefmt": "treefmt",
