@@ -1,6 +1,5 @@
 {
   description = "Arunim's Neovim config, configured using NixCats-nvim.";
-  
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
@@ -95,6 +94,16 @@
               svelte-language-server
               htmx-lsp
             ];
+            formatting = [
+              prettierd
+              stylua
+              djlint
+              nixfmt-rfc-style
+            ];
+            linting = [
+              selene
+              djlint
+            ];
           };
 
           startupPlugins = with pkgs.vimPlugins; {
@@ -130,6 +139,8 @@
               blink-cmp
               friendly-snippets
             ];
+            formatting = [ conform-nvim ];
+            linting = [ nvim-lint ];
             git = [ ];
           };
 
@@ -140,6 +151,9 @@
             git = [ ];
             telescope = [ ];
             treesitter = [ ];
+            lsp = [ ];
+            completion = [ ];
+            formatting = [ ];
             tmux = [ tmux-nvim ];
           };
 
@@ -175,6 +189,8 @@
             treesitter = true;
             lsp = true;
             completion = true;
+            formatting = true;
+            linting = true;
             git = true;
             tmux = true;
           };
