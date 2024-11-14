@@ -64,4 +64,5 @@ return {
     event = "VimEnter",
     config = true,
   },
+  { "j-hui/fidget.nvim", config = true },
 }

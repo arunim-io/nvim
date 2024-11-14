@@ -47,4 +47,18 @@ return {
       },
     },
   },
+  {
+    "folke/trouble.nvim",
+    cmd = "Trouble",
+    config = true,
+    keys = {
+      { "<leader>dl", "<cmd>lua vim.diagnostic.open_float()<cr>", desc = "Show [D]iagnostics for current line" },
+      { "<leader>dw", "<cmd>Trouble diagnostics toggle<cr>", desc = "Show [D]iagnostics for current [W]orkspace" },
+      {
+        "<leader>dd",
+        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+        desc = "Show [D]iagnostics for current buffer",
+      },
+    },
+  },
 }
