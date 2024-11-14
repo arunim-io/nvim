@@ -86,6 +86,19 @@
               nodejs_latest
               zig
             ];
+            lsp = [
+              lua-language-server
+              nixd
+              vscode-langservers-extracted
+              yaml-language-server
+              basedpyright
+              ruff
+              taplo-lsp
+              emmet-language-server
+              astro-language-server
+              svelte-language-server
+              htmx-lsp
+            ];
           };
 
           startupPlugins = with pkgs.vimPlugins; {
@@ -96,14 +109,15 @@
             editor = [
               which-key-nvim
               mini-files
+              trouble-nvim
             ];
             ui = [
               mini-icons
               lualine-nvim
               indent-blankline-nvim
               rainbow-delimiters-nvim
+              fidget-nvim
             ];
-            git = [ ];
             telescope = [
               telescope-nvim
               telescope-fzf-native-nvim
@@ -112,6 +126,15 @@
               nvim-treesitter.withAllGrammars
               nvim-ts-autotag
             ];
+            lsp = [
+              nvim-lspconfig
+              SchemaStore-nvim
+            ];
+            completion = [
+              blink-cmp
+              friendly-snippets
+            ];
+            git = [ ];
           };
 
           optionalPlugins = with pkgs.vimPlugins; {
@@ -152,9 +175,11 @@
             core = true;
             editor = true;
             ui = true;
-            git = true;
             telescope = true;
             treesitter = true;
+            lsp = true;
+            completion = true;
+            git = true;
             tmux = true;
           };
         };
