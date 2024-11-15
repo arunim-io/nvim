@@ -195,4 +195,16 @@ return {
     },
   },
   { "b0o/SchemaStore.nvim", version = false },
+  {
+    "folke/lazydev.nvim",
+    ft = "lua",
+    cmd = "LazyDev",
+    opts = {
+      library = {
+        { path = "luvit-meta/library", mods = { "libuv", "luv" }, words = { "vim%.uv", "uv", "luv" } },
+        { path = (require("nixCats").nixCatsPath or "") .. "/lua", words = { "nixCats" } },
+      },
+    },
+  },
+  { "Bilal2453/luvit-meta", lazy = true },
 }

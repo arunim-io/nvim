@@ -14,6 +14,12 @@ return {
     end,
   },
   {
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    opts = {
+      enable_autocmd = false,
+    },
+  },
+  {
     "windwp/nvim-ts-autotag",
     opts = {
       opts = {

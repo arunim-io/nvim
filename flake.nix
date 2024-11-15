@@ -115,6 +115,13 @@
               which-key-nvim
               mini-files
               trouble-nvim
+              mini-pairs
+              ts-comments-nvim
+              mini-ai
+              grug-far-nvim
+              todo-comments-nvim
+              mini-comment
+              mini-surround
             ];
             ui = [
               mini-icons
@@ -130,10 +137,10 @@
             treesitter = [
               nvim-treesitter.withAllGrammars
               nvim-ts-autotag
+              nvim-ts-context-commentstring
             ];
             lsp = [
               nvim-lspconfig
-              SchemaStore-nvim
             ];
             completion = [
               blink-cmp
@@ -151,7 +158,11 @@
             git = [ ];
             telescope = [ ];
             treesitter = [ ];
-            lsp = [ ];
+            lsp = [
+              SchemaStore-nvim
+              lazydev-nvim
+              luvit-meta
+            ];
             completion = [ ];
             formatting = [ ];
             tmux = [ tmux-nvim ];
