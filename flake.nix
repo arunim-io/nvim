@@ -90,6 +90,9 @@
               htmx-lsp
               gopls
               rust-analyzer
+              typescript
+              typescript-language-server
+              tailwindcss-language-server
             ];
             formatting = [
               prettierd
@@ -167,6 +170,7 @@
               luvit-meta
               crates-nvim
               rustaceanvim
+              tailwind-tools-nvim
             ];
             completion = [ ];
             formatting = [ ];
