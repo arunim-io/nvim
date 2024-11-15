@@ -16,9 +16,11 @@ return {
       file = {
         [".keep"] = { glyph = "󰊢", hl = "MiniIconsGrey" },
         ["devcontainer.json"] = { glyph = "", hl = "MiniIconsAzure" },
+        [".go-version"] = { glyph = "", hl = "MiniIconsBlue" },
       },
       filetype = {
         dotenv = { glyph = "", hl = "MiniIconsYellow" },
+        gotmpl = { glyph = "󰟓", hl = "MiniIconsGrey" },
       },
     },
     init = function()

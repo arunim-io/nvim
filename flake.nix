@@ -93,12 +93,15 @@
               astro-language-server
               svelte-language-server
               htmx-lsp
+              gopls
             ];
             formatting = [
               prettierd
               stylua
               djlint
               nixfmt-rfc-style
+              gofumpt
+              gotools
             ];
             linting = [
               selene

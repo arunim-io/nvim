@@ -8,7 +8,7 @@ local formatting_disabled = nixCats("formatting") == nil
 return {
   {
     "neovim/nvim-lspconfig",
-    dependencies = { "saghen/blink.cmp" },
+    dependencies = { completion_enabled and "saghen/blink.cmp" },
     --- @param opts LSPConfig
     config = function(_, opts)
       vim.api.nvim_create_autocmd("LspAttach", {
@@ -189,6 +189,43 @@ return {
               { rule = "*semi", severity = "off", fixable = true },
             },
             workingDirectories = { mode = "auto" },
+          },
+        },
+        gopls = {
+          -- workaround for gopls not supporting semanticTokensProvider
+          -- https://github.com/golang/go/issues/54531#issuecomment-1464982242
+          on_attach = function(client)
+            if not client.server_capabilities.semanticTokensProvider then
+              local semantic = client.config.capabilities.textDocument.semanticTokens
+
+              if semantic then
+                client.server_capabilities.semanticTokensProvider = {
+                  full = true,
+                  legend = {
+                    tokenTypes = semantic.tokenTypes,
+                    tokenModifiers = semantic.tokenModifiers,
+                  },
+                  range = true,
+                }
+              end
+            end
+          end,
+          settings = {
+            gopls = {
+              gofumpt = true,
+              analyses = {
+                fieldalignment = true,
+                nilness = true,
+                unusedparams = true,
+                unusedwrite = true,
+                useany = true,
+              },
+              usePlaceholders = true,
+              completeUnimported = true,
+              staticcheck = true,
+              directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
+              semanticTokens = true,
+            },
           },
         },
       },
