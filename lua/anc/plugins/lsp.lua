@@ -228,6 +228,7 @@ return {
             },
           },
         },
+        ts_ls = {},
       },
     },
   },
@@ -269,7 +270,7 @@ return {
         on_attach = function(_, bufnr)
           vim.keymap.set("n", "<leader>ca", function()
             vim.cmd.RustLsp("codeAction")
-          end, { desc = "Code Action", buffer = bufnr, remap = true })
+          end, { desc = "Code Action", buffer = bufnr, remap = true, silent = true })
         end,
         default_settings = {
           ["rust-analyzer"] = {
@@ -279,6 +280,9 @@ return {
               buildScripts = {
                 enable = true,
               },
+            },
+            check = {
+              command = "clippy",
             },
             checkOnSave = true,
             procMacro = {
@@ -296,5 +300,26 @@ return {
     config = function(_, opts)
       vim.g.rustaceanvim = vim.tbl_deep_extend("keep", vim.g.rustaceanvim or {}, opts or {})
     end,
+  },
+  {
+    "luckasRanarison/tailwind-tools.nvim",
+    name = "tailwind-tools",
+    build = require("nixCatsUtils").lazyAdd(":UpdateRemotePlugins"),
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    opts = {
+      server = {
+        on_attach = function(_, bufnr)
+          vim.api.nvim_create_autocmd("BufWritePre", { buffer = bufnr, command = "TailwindSortSync" })
+        end,
+        settings = {
+          experimental = {
+            classRegex = {
+              { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+              { "cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+            },
+          },
+        },
+      },
+    },
   },
 }
