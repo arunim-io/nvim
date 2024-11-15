@@ -148,7 +148,10 @@
             ];
             formatting = [ conform-nvim ];
             linting = [ nvim-lint ];
-            git = [ ];
+            git = [
+              gitsigns-nvim
+              mini-diff
+            ];
           };
 
           optionalPlugins = with pkgs.vimPlugins; {
