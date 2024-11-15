@@ -94,6 +94,7 @@
               svelte-language-server
               htmx-lsp
               gopls
+              rust-analyzer
             ];
             formatting = [
               prettierd
@@ -165,6 +166,8 @@
               SchemaStore-nvim
               lazydev-nvim
               luvit-meta
+              crates-nvim
+              rustaceanvim
             ];
             completion = [ ];
             formatting = [ ];
