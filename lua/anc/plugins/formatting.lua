@@ -47,6 +47,7 @@ return {
       djangohtml = { "djlint" },
       htmldjango = { "djlint" },
       nix = { "nixfmt" },
+      go = { "goimports", "gofumpt" },
     },
   },
 }
