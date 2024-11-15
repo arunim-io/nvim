@@ -38,14 +38,15 @@ return {
       function()
         require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ") })
       end,
+      desc = "[S]earch in current directory",
     },
     {
-      "<leader>pbl",
+      "<leader>bl",
       function()
         require("telescope.builtin").buffers({ only_cwd = true, sort_lastused = true })
       end,
-      desc = "[L]earch [B]uffers",
+      desc = "[L]ist [B]uffers",
     },
-    { "<leader>pbs", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "[S]earch in current [B]uffer" },
+    { "<leader>sb", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "[S]earch in current [B]uffer" },
   },
 }
