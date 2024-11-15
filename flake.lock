@@ -295,35 +295,19 @@
         "type": "github"
       }
     },
-    "plguins-snacks-nvim": {
+    "plugins-snacks-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1731319755,
-        "narHash": "sha256-WkYz09wtfBn6QoWkWCAPldMveuLCRUdjG5BxTgXatB4=",
+        "lastModified": 1731625084,
+        "narHash": "sha256-VpgZbCf1j2uyg8d4olQYm+GWkaWnFPwCSWOZ/2Jm0Us=",
         "owner": "folke",
         "repo": "snacks.nvim",
-        "rev": "bc0cf370915ac4e8d5b1bd8188b5091a4a0ee22c",
+        "rev": "f126609b57c0ec07cfd7bcef7085e3905adb4d42",
         "type": "github"
       },
       "original": {
         "owner": "folke",
         "repo": "snacks.nvim",
-        "type": "github"
-      }
-    },
-    "plugins-nvim-puppeteer": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1728294291,
-        "narHash": "sha256-7xf8kL+CTz47S1Z/Q/RlQChcfvy5opG10nD722hnbrw=",
-        "owner": "chrisgrieser",
-        "repo": "nvim-puppeteer",
-        "rev": "52fbb657f91c1fffc66f76ffce22a484e67ef200",
-        "type": "github"
-      },
-      "original": {
-        "owner": "chrisgrieser",
-        "repo": "nvim-puppeteer",
         "type": "github"
       }
     },
@@ -333,8 +317,7 @@
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixCats": "nixCats",
         "nixpkgs": "nixpkgs",
-        "plguins-snacks-nvim": "plguins-snacks-nvim",
-        "plugins-nvim-puppeteer": "plugins-nvim-puppeteer",
+        "plugins-snacks-nvim": "plugins-snacks-nvim",
         "systems": "systems",
         "treefmt": "treefmt",
         "vscode-langservers-extracted": "vscode-langservers-extracted"

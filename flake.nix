@@ -25,12 +25,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    plugins-nvim-puppeteer = {
-      url = "github:chrisgrieser/nvim-puppeteer";
-      flake = false;
-    };
-
-    plguins-snacks-nvim = {
+    plugins-snacks-nvim = {
       url = "github:folke/snacks.nvim";
       flake = false;
     };
@@ -114,6 +109,7 @@
             core = [
               plenary-nvim
               lazy-nvim
+              pkgs.neovimPlugins.snacks-nvim
             ];
             editor = [
               which-key-nvim
