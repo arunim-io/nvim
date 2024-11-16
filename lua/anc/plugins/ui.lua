@@ -69,7 +69,9 @@ return {
     opts = function(_, opts)
       local trouble_loaded, trouble = pcall(require, "trouble")
 
-      if trouble_loaded then
+      local sections = opts.sections or {}
+
+      if trouble_loaded and vim.tbl_get(sections, "lualine_c") then
         local symbols = trouble.statusline({
           mode = "lsp_document_symbols",
           groups = {},
@@ -78,16 +80,11 @@ return {
           format = "{kind_icon}{symbol.name:Normal}",
           hl_group = "lualine_c_normal",
         })
-        table.insert(opts.sections.lualine_c, {
-          symbols.get,
-          cond = symbols.has,
-        })
+        table.insert(sections.lualine_c, { symbols.get, cond = symbols.has })
       end
 
-      if pcall(require, "mini.diff") then
-        local x = opts.sections.lualine_x
-
-        for _, comp in ipairs(x) do
+      if pcall(require, "mini.diff") and vim.tbl_get(sections, "lualine_x") then
+        for _, comp in ipairs(sections.lualine_x) do
           if comp[1] == "diff" then
             comp.source = function()
               local summary = vim.b.minidiff_summary
