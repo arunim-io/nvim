@@ -55,10 +55,13 @@
       categoryDefinitions =
         { pkgs, ... }:
         {
-          propagatedBuildInputs = with pkgs; { };
-
           lspsAndRuntimeDeps = with pkgs; {
-            core = [ ripgrep ];
+            core = [
+              ripgrep
+              python3
+              lua5_1
+              luarocks
+            ];
             git = [ git ];
             tmux = [
               tmux
@@ -158,12 +161,6 @@
           };
 
           optionalPlugins = with pkgs.vimPlugins; {
-            core = [ ];
-            editor = [ ];
-            ui = [ ];
-            git = [ ];
-            telescope = [ ];
-            treesitter = [ ];
             lsp = [
               SchemaStore-nvim
               lazydev-nvim
@@ -172,19 +169,8 @@
               rustaceanvim
               tailwind-tools-nvim
             ];
-            completion = [ ];
-            formatting = [ ];
             tmux = [ tmux-nvim ];
           };
-
-          sharedLibraries = { };
-
-          environmentVariables = { };
-
-          extraWrapperArgs = { };
-
-          extraPython3Packages = { };
-          extraLuaPackages = { };
         };
 
       defaultPackageName = "anc";
@@ -194,11 +180,13 @@
         {
           settings = {
             wrapRc = true;
-            aliases = [
-              "nvim"
-              "vim"
-              "vi"
-            ];
+            extraName = "nvim";
+            aliases = [ "nvim" ];
+            viAlias = true;
+            vimAlias = true;
+            withPython3 = true;
+            withNodeJs = true;
+            withRuby = false;
             neovim-unwrapped = neovim-nightly-overlay.packages.${pkgs.system}.neovim;
           };
           categories = {

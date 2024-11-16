@@ -303,7 +303,6 @@ return {
   },
   {
     "luckasRanarison/tailwind-tools.nvim",
-    name = "tailwind-tools",
     build = require("nixCatsUtils").lazyAdd(":UpdateRemotePlugins"),
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     opts = {
