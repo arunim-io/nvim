@@ -135,6 +135,7 @@
               indent-blankline-nvim
               rainbow-delimiters-nvim
               fidget-nvim
+              dressing-nvim
             ];
             telescope = [
               telescope-nvim
@@ -145,9 +146,7 @@
               nvim-ts-autotag
               nvim-ts-context-commentstring
             ];
-            lsp = [
-              nvim-lspconfig
-            ];
+            lsp = [ nvim-lspconfig ];
             completion = [
               blink-cmp
               friendly-snippets
@@ -171,6 +170,8 @@
             ];
             tmux = [ tmux-nvim ];
           };
+
+          environmentVariables.LIBSQLITE = "${pkgs.sqlite.out}/lib/libsqlite3.dylib";
         };
 
       defaultPackageName = "anc";

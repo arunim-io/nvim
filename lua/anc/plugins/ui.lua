@@ -103,4 +103,5 @@ return {
     end,
   },
   { "j-hui/fidget.nvim", config = true },
+  { "stevearc/dressing.nvim", config = true },
 }
