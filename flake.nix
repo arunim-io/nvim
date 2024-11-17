@@ -96,7 +96,6 @@
               typescript
               typescript-language-server
               tailwindcss-language-server
-              templ
             ];
             formatting = [
               prettierd

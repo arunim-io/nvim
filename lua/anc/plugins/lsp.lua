@@ -57,7 +57,7 @@ return {
           settings = {
             nixd = {
               nixpkgs = { expr = "import <nixpkgs> {}" },
-              -- formatting = { command = { "nixfmt" } },
+              formatting = { command = { "nixfmt" } },
             },
           },
         },
@@ -140,25 +140,28 @@ return {
           },
         },
         html = {
-          filetypes = { "html", "htmldjango", "djangohtml" },
-          init_options = { provideFormatter = formatting_disabled },
+          filetypes = vim.list_extend(
+            require("lspconfig.configs.html").default_config.filetypes,
+            { "htmldjango", "djangohtml" }
+          ),
+          init_options = {
+            provideFormatter = formatting_disabled,
+          },
+          on_attach = function(client)
+            client.capabilities.textDocument.completion.completionItem.snippetSupport = true
+          end,
         },
         emmet_language_server = {},
         cssls = {
-          init_options = { provideFormatter = formatting_disabled },
+          init_options = {
+            provideFormatter = formatting_disabled,
+          },
         },
         astro = {},
         svelte = {},
         htmx = {},
         eslint = {
-          filetypes = {
-            "javascript",
-            "javascriptreact",
-            "javascript.jsx",
-            "typescript",
-            "typescriptreact",
-            "typescript.tsx",
-            "vue",
+          filetypes = vim.list_extend(require("lspconfig.configs.eslint").default_config.filetypes, {
             "html",
             "markdown",
             "json",
@@ -168,15 +171,15 @@ return {
             "xml",
             "gql",
             "graphql",
-            "astro",
-            "svelte",
             "css",
             "less",
             "scss",
             "pcss",
             "postcss",
-          },
+          }),
           settings = {
+            codeActionOnSave = { enable = true },
+            experimental = { useFlatConfig = true },
             rulesCustomizations = {
               { rule = "style/*", severity = "off", fixable = true },
               { rule = "format/*", severity = "off", fixable = true },
@@ -238,6 +241,7 @@ return {
     "folke/lazydev.nvim",
     ft = "lua",
     cmd = "LazyDev",
+    --- @module 'lazydev'
     --- @type lazydev.Config
     opts = {
       library = {
@@ -308,6 +312,8 @@ return {
     "luckasRanarison/tailwind-tools.nvim",
     build = require("nixCatsUtils").lazyAdd(":UpdateRemotePlugins"),
     dependencies = { "nvim-treesitter/nvim-treesitter" },
+    --- @module 'tailwind-tools'
+    --- @type TailwindTools.Option
     opts = {
       server = {
         on_attach = function(_, bufnr)
