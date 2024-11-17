@@ -5,10 +5,11 @@
 local completion_enabled = nixCats("completion") ~= nil
 local formatting_disabled = nixCats("formatting") == nil
 
+--- @type LazySpec
 return {
   {
     "neovim/nvim-lspconfig",
-    dependencies = { completion_enabled and "saghen/blink.cmp" },
+    dependencies = "saghen/blink.cmp",
     --- @param opts LSPConfig
     config = function(_, opts)
       vim.api.nvim_create_autocmd("LspAttach", {
@@ -48,7 +49,7 @@ return {
         lua_ls = {
           settings = {
             Lua = {
-              format = { enable = nixCats("formatting") == nil },
+              format = { enable = formatting_disabled },
             },
           },
         },
@@ -237,8 +238,10 @@ return {
     "folke/lazydev.nvim",
     ft = "lua",
     cmd = "LazyDev",
+    --- @type lazydev.Config
     opts = {
       library = {
+        "lazy.nvim",
         { path = "luvit-meta/library", mods = { "libuv", "luv" }, words = { "vim%.uv", "uv", "luv" } },
         { path = (require("nixCats").nixCatsPath or "") .. "/lua", words = { "nixCats" } },
       },

@@ -3,6 +3,7 @@
 --- @field linters_by_ft table<string, string[]>
 --- @field linters table<string, fun():lint.Linter|lint.Linter>?
 
+--- @type LazySpec
 return {
   "mfussenegger/nvim-lint",
   event = "BufEnter",

@@ -1,10 +1,10 @@
+--- @type LazySpec
 return {
   "saghen/blink.cmp",
   name = "blink-cmp",
   lazy = false,
   dependencies = { "rafamadriz/friendly-snippets" },
   version = "v0.*",
-  --- @type blink.cmp.Config
   opts = {
     highlight = { use_nvim_cmp_as_default = true },
     keymap = { preset = "enter" },

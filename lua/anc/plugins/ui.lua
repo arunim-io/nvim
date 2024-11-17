@@ -8,6 +8,7 @@ local highlight = {
   "RainbowCyan",
 }
 
+--- @type LazySpec
 return {
   {
     "echasnovski/mini.icons",
