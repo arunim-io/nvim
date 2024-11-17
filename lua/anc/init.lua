@@ -14,6 +14,7 @@ if is_nix_cats then
 
   plugins["blink.cmp"] = ""
   plugins["snacks.nvim"] = ""
+  plugins["LuaSnip"] = ""
 
   lazy_path = cat_plugins.start["lazy.nvim"]
 end

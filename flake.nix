@@ -96,6 +96,7 @@
               typescript
               typescript-language-server
               tailwindcss-language-server
+              templ
             ];
             formatting = [
               prettierd
@@ -149,6 +150,7 @@
             lsp = [ nvim-lspconfig ];
             completion = [
               blink-cmp
+              luasnip
               friendly-snippets
             ];
             formatting = [ conform-nvim ];
