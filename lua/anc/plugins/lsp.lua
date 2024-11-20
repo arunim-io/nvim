@@ -140,10 +140,6 @@ return {
           },
         },
         html = {
-          filetypes = vim.list_extend(
-            require("lspconfig.configs.html").default_config.filetypes,
-            { "htmldjango", "djangohtml" }
-          ),
           init_options = {
             provideFormatter = formatting_disabled,
           },
@@ -157,6 +153,7 @@ return {
             provideFormatter = formatting_disabled,
           },
         },
+        templ = {},
         astro = {},
         svelte = {},
         htmx = {},

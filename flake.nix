@@ -18,8 +18,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    vscode-langservers-extracted.url = "github:arunim-io/vscode-langservers-extracted";
-
     gh-actions = {
       url = "github:nix-community/nix-github-actions";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -47,10 +45,7 @@
       luaPath = "${./.}";
       eachSystem = utils.eachSystem (import systems);
       extra_pkg_config = { };
-      dependencyOverlays = [
-        (utils.standardPluginOverlay inputs)
-        inputs.vscode-langservers-extracted.overlays.default
-      ];
+      dependencyOverlays = [ (utils.standardPluginOverlay inputs) ];
 
       categoryDefinitions =
         { pkgs, ... }:
@@ -96,6 +91,7 @@
               typescript
               typescript-language-server
               tailwindcss-language-server
+              templ
             ];
             formatting = [
               prettierd
