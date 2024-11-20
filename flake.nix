@@ -22,11 +22,6 @@
       url = "github:nix-community/nix-github-actions";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    plugins-snacks-nvim = {
-      url = "github:folke/snacks.nvim";
-      flake = false;
-    };
   };
 
   outputs =
@@ -111,7 +106,7 @@
             core = [
               plenary-nvim
               lazy-nvim
-              pkgs.neovimPlugins.snacks-nvim
+              snacks-nvim
             ];
             editor = [
               which-key-nvim
