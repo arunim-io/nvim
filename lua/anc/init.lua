@@ -13,7 +13,7 @@ if is_nix_cats then
   plugins = nix_lazy_cats_utils.mergePluginTables(cat_plugins.start, cat_plugins.opt)
 
   plugins["blink.cmp"] = ""
-  plugins["snacks.nvim"] = ""
+  plugins["blink.compat"] = ""
   plugins["LuaSnip"] = ""
 
   lazy_path = cat_plugins.start["lazy.nvim"]

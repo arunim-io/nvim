@@ -6,4 +6,4 @@ name = 'vim'
 any = true
 
 [globals]
-nixCats={type="function",required=true}
+nixCats = { type = "function", required = true }

@@ -23,11 +23,11 @@ return {
           end
         end,
       })
-      local capabilities = vim.tbl_deep_extend("force", {}, vim.lsp.protocol.make_client_capabilities())
 
       for name, config in pairs(opts.servers) do
-        config.capabilities = completion_enabled and require("blink.cmp").get_lsp_capabilities(config.capabilities)
-          or capabilities
+        if completion_enabled then
+          config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities, true)
+        end
 
         require("lspconfig")[name].setup(config)
       end
@@ -53,6 +53,7 @@ return {
             },
           },
         },
+        nil_ls = {},
         nixd = {
           settings = {
             nixd = {

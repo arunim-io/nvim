@@ -2,7 +2,6 @@
 return {
   {
     "folke/snacks.nvim",
-    name = "snacks-nvim",
     priority = 1000,
     lazy = false,
     init = function()
@@ -18,6 +17,7 @@ return {
       bigfile = { enabled = true },
       quickfile = { enabled = true },
       words = { enabled = true },
+      notifier = { enabled = false },
     },
     keys = {
       {

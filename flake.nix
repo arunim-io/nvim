@@ -22,6 +22,11 @@
       url = "github:nix-community/nix-github-actions";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    plugins-blink-compat = {
+      url = "github:Saghen/blink.compat";
+      flake = false;
+    };
   };
 
   outputs =
@@ -44,6 +49,9 @@
 
       categoryDefinitions =
         { pkgs, ... }:
+        let
+          inherit (pkgs.neovimPlugins) blink-compat;
+        in
         {
           lspsAndRuntimeDeps = with pkgs; {
             core = [
@@ -72,6 +80,7 @@
             lsp = [
               lua-language-server
               nixd
+              nil
               vscode-langservers-extracted
               yaml-language-server
               basedpyright
@@ -140,6 +149,7 @@
             lsp = [ nvim-lspconfig ];
             completion = [
               blink-cmp
+              blink-compat
               luasnip
               friendly-snippets
             ];

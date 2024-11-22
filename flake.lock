@@ -237,19 +237,19 @@
         "type": "github"
       }
     },
-    "plugins-snacks-nvim": {
+    "plugins-blink-compat": {
       "flake": false,
       "locked": {
-        "lastModified": 1732122477,
-        "narHash": "sha256-KyWrXNgxrNAosjHQqtgUvtkGVVqnO8eYY1BX61zw77I=",
-        "owner": "folke",
-        "repo": "snacks.nvim",
-        "rev": "7a061de75f758db23cf2c2ee0822a76356b54035",
+        "lastModified": 1732254151,
+        "narHash": "sha256-F6bBsFTco381d3D3YSIul4mgemqg6BZnXFmQV0MGhfg=",
+        "owner": "Saghen",
+        "repo": "blink.compat",
+        "rev": "08943fdf2eb00432d6205db6d0239434135416bd",
         "type": "github"
       },
       "original": {
-        "owner": "folke",
-        "repo": "snacks.nvim",
+        "owner": "Saghen",
+        "repo": "blink.compat",
         "type": "github"
       }
     },
@@ -259,7 +259,7 @@
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixCats": "nixCats",
         "nixpkgs": "nixpkgs",
-        "plugins-snacks-nvim": "plugins-snacks-nvim",
+        "plugins-blink-compat": "plugins-blink-compat",
         "systems": "systems",
         "treefmt": "treefmt"
       }
