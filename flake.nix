@@ -194,7 +194,7 @@
             viAlias = true;
             vimAlias = true;
             withPython3 = true;
-            withNodeJs = true;
+            withNodeJs = false;
             withRuby = false;
             neovim-unwrapped = neovim-nightly-overlay.packages.${pkgs.system}.neovim;
           };
