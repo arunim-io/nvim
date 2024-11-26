@@ -19,7 +19,7 @@ return {
         delete_check_events = "TextChanged",
       },
     },
-    "saadparwaiz1/cmp_luasnip",
+    { "leiserfg/blink_luasnip", name = "blink-luasnip" },
     { "saghen/blink.compat", name = "blink-compat", opts = { impersonate_nvim_cmp = true } },
   },
   version = "v0.*",
@@ -49,7 +49,7 @@ return {
       providers = {
         luasnip = {
           name = "luasnip",
-          module = "blink.compat.source",
+          module = "blink_luasnip",
 
           score_offset = -3,
 

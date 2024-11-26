@@ -253,6 +253,22 @@
         "type": "github"
       }
     },
+    "plugins-blink-luasnip": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1732567818,
+        "narHash": "sha256-RHyU/mGefM6wJh4NfBmfOS5CdlJJzyqk7YpiNzGlubE=",
+        "owner": "leiserfg",
+        "repo": "blink_luasnip",
+        "rev": "21390b62589302dd8b4fed99a8e035b5d2aaefe3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "leiserfg",
+        "repo": "blink_luasnip",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "gh-actions": "gh-actions",
@@ -260,6 +276,7 @@
         "nixCats": "nixCats",
         "nixpkgs": "nixpkgs",
         "plugins-blink-compat": "plugins-blink-compat",
+        "plugins-blink-luasnip": "plugins-blink-luasnip",
         "systems": "systems",
         "treefmt": "treefmt"
       }

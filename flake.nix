@@ -1,5 +1,5 @@
 {
-  description = "Arunim's Neovim config, configured using NixCats-nvim.";
+  description = "Arunim's Neovim config, configured using NixCats-nvim";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
@@ -27,6 +27,11 @@
       url = "github:Saghen/blink.compat";
       flake = false;
     };
+
+    plugins-blink-luasnip = {
+      url = "github:leiserfg/blink_luasnip";
+      flake = false;
+    };
   };
 
   outputs =
@@ -50,7 +55,7 @@
       categoryDefinitions =
         { pkgs, ... }:
         let
-          inherit (pkgs.neovimPlugins) blink-compat;
+          inherit (pkgs.neovimPlugins) blink-compat blink-luasnip;
         in
         {
           lspsAndRuntimeDeps = with pkgs; {
@@ -151,6 +156,7 @@
               blink-cmp
               blink-compat
               luasnip
+              blink-luasnip
               friendly-snippets
             ];
             formatting = [ conform-nvim ];
