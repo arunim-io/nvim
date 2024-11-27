@@ -22,16 +22,6 @@
       url = "github:nix-community/nix-github-actions";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    plugins-blink-compat = {
-      url = "github:Saghen/blink.compat";
-      flake = false;
-    };
-
-    plugins-blink-luasnip = {
-      url = "github:leiserfg/blink_luasnip";
-      flake = false;
-    };
   };
 
   outputs =
@@ -54,9 +44,6 @@
 
       categoryDefinitions =
         { pkgs, ... }:
-        let
-          inherit (pkgs.neovimPlugins) blink-compat blink-luasnip;
-        in
         {
           lspsAndRuntimeDeps = with pkgs; {
             core = [
@@ -154,9 +141,6 @@
             lsp = [ nvim-lspconfig ];
             completion = [
               blink-cmp
-              blink-compat
-              luasnip
-              blink-luasnip
               friendly-snippets
             ];
             formatting = [ conform-nvim ];

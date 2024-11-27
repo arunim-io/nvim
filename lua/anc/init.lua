@@ -13,9 +13,6 @@ if is_nix_cats then
   plugins = nix_lazy_cats_utils.mergePluginTables(cat_plugins.start, cat_plugins.opt)
 
   plugins["blink.cmp"] = ""
-  plugins["blink.compat"] = ""
-  plugins["blink_luasnip"] = ""
-  plugins["LuaSnip"] = ""
 
   lazy_path = cat_plugins.start["lazy.nvim"]
 end
@@ -32,25 +29,4 @@ local function get_lazy_lock_path()
   return cfg_path .. "/lazy-lock.json"
 end
 
-local lazy_opts = {
-  lockfile = get_lazy_lock_path(),
-  ui = {
-    icons = vim.g.have_nerd_font and {} or {
-      cmd = "⌘",
-      config = "🛠",
-      event = "📅",
-      ft = "📂",
-      init = "⚙",
-      keys = "🗝",
-      plugin = "🔌",
-      runtime = "💻",
-      require = "🌙",
-      source = "📄",
-      start = "🚀",
-      task = "📌",
-      lazy = "💤 ",
-    },
-  },
-}
-
-nix_lazy_cats_utils.setup(plugins, lazy_path, "anc.plugins", lazy_opts)
+nix_lazy_cats_utils.setup(plugins, lazy_path, "anc.plugins", { lockfile = get_lazy_lock_path() })
