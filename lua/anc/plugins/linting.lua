@@ -32,6 +32,7 @@ return {
       lua = { "selene" },
       djangohtml = { "djlint" },
       htmldjango = { "djlint" },
+      python = { "mypy" },
     },
   },
   keys = {

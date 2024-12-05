@@ -48,7 +48,7 @@
           lspsAndRuntimeDeps = with pkgs; {
             core = [
               ripgrep
-              python3
+              python313
               lua5_1
               luarocks
             ];
