@@ -1,3 +1,5 @@
+local nixCatsUtils = require("nixCatsUtils")
+---@diagnostic disable: missing-fields
 --- @class LSPConfig
 --- @field servers table<string, lspconfig.Config>
 --- @field keys { [1]: string; [2]: function; desc: string?; }[]
@@ -64,6 +66,7 @@ return {
         },
         jsonls = {
           on_new_config = function(new_config)
+            ---@diagnostic disable-next-line: inject-field
             new_config.settings.json.schemas = new_config.settings.json.schemas or {}
             vim.list_extend(new_config.settings.json.schemas, require("schemastore").json.schemas())
           end,
@@ -84,6 +87,7 @@ return {
             },
           },
           on_new_config = function(new_config)
+            ---@diagnostic disable-next-line: inject-field
             new_config.settings.yaml.schemas = vim.tbl_deep_extend(
               "force",
               new_config.settings.yaml.schemas or {},
@@ -155,7 +159,6 @@ return {
           },
         },
         templ = {},
-        astro = {},
         svelte = {},
         htmx = {},
         eslint = {
@@ -231,6 +234,43 @@ return {
           },
         },
         ts_ls = {},
+        astro = {
+          on_new_config = function(new_config, new_root_dir)
+            if not new_config.init_options.typescript.tsdk then
+              local ts_path = ""
+
+              local project_root = vim.fs.find("node_modules", {
+                type = "directory",
+                path = new_root_dir,
+                upward = true,
+              })[1]
+
+              if nixCatsUtils.isNixCats then
+                ts_path = nixCatsUtils.getCatOrDefault("extras.typescript_path", "")
+              end
+
+              if project_root then
+                if
+                  vim.fs.find("pnpm-lock.yaml", {
+                    type = "file",
+                    path = new_root_dir,
+                  })[1]
+                then
+                  ts_path = vim.fs.find(function(name)
+                    return name:match("typescript@[^/]+/")
+                  end, { type = "directory", path = vim.fs.joinpath(project_root, ".pnpm/") })
+                else
+                  ts_path = vim.fs.find("typescript", { type = "directory", path = project_root, upward = true })[1]
+                end
+              end
+
+              if ts_path then
+                ---@diagnostic disable-next-line: inject-field
+                new_config.init_options.typescript.tsdk = require("lspconfig.util").path.join(ts_path, "lib")
+              end
+            end
+          end,
+        },
       },
     },
   },

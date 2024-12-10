@@ -183,6 +183,7 @@
             neovim-unwrapped = neovim-nightly-overlay.packages.${pkgs.system}.neovim;
           };
           categories = {
+            extras.typescript_path = "${pkgs.typescript}/lib/node_modules/typescript";
             core = true;
             editor = true;
             ui = true;
