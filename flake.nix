@@ -77,6 +77,7 @@
               yaml-language-server
               basedpyright
               ruff
+              mypy
               taplo-lsp
               emmet-language-server
               astro-language-server
