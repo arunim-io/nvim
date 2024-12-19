@@ -271,6 +271,9 @@ return {
             end
           end,
         },
+        bashls = {},
+        dockerls = {},
+        docker_compose_language_service = {},
       },
     },
   },

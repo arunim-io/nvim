@@ -89,6 +89,9 @@
               typescript-language-server
               tailwindcss-language-server
               templ
+              bash-language-server
+              docker-compose-language-service
+              dockerfile-language-server-nodejs
             ];
             formatting = [
               prettierd
