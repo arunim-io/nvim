@@ -6,7 +6,7 @@ vim.o.backup=false
 vim.o.mouse='a'
 vim.o.mousescroll='ver:25,hor:6'
 vim.o.switchbuf='usetab'
---vim.o.writebackup=false
+vim.o.writebackup=false
 vim.o.undofile=true
 
 vim.o.shada= "'100,<50,s10,:1000,/100,@100,h"
