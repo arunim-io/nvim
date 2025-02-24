@@ -1,5 +1,6 @@
 --[[ Map Leader ]]
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 --[[ General ]]
 vim.o.undofile = true
@@ -13,8 +14,8 @@ vim.o.mousescroll = "ver:25,hor:6"
 vim.cmd("filetype plugin indent on")
 
 vim.o.switchbuf = "usetab"
-vim.o.shada = { "100", "<50", "s10", ":1000", "/100;", "@100", "h" }
-vim.o.swapfile=false
+vim.o.shada = "'100,<50,s10,:1000,/100,@100,h"
+vim.o.swapfile = false
 
 --[[ UI ]]
 vim.o.breakindent = true
