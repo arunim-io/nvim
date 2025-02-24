@@ -13,7 +13,8 @@ vim.o.mousescroll = "ver:25,hor:6"
 vim.cmd("filetype plugin indent on")
 
 vim.o.switchbuf = "usetab"
-vim.o.shada = "'100,<50,s10,:1000,/100,@100,h"
+vim.o.shada = { "100", "<50", "s10", ":1000", "/100;", "@100", "h" }
+vim.o.swapfile=false
 
 --[[ UI ]]
 vim.o.breakindent = true
@@ -30,20 +31,17 @@ vim.o.wrap = true
 
 vim.o.signcolumn = "yes"
 vim.o.colorcolumn = "+1"
-vim.o.fillchars = table.concat(
-  {
-    "eob: ",
-    "fold:╌",
-    "horiz:═",
-    "horizdown:╦",
-    "horizup:╩",
-    "vert:║",
-    "verthoriz:╬",
-    "vertleft:╣",
-    "vertright:╠",
-  },
-  ","
-)
+vim.o.fillchars = table.concat({
+  "eob: ",
+  "fold:╌",
+  "horiz:═",
+  "horizdown:╦",
+  "horizup:╩",
+  "vert:║",
+  "verthoriz:╬",
+  "vertleft:╣",
+  "vertright:╠",
+}, ",")
 
 vim.o.pumblend = 10
 vim.o.pumheight = 10
@@ -57,6 +55,9 @@ vim.o.splitkeep = "screen"
 
 vim.o.cursorlineopt = "screenline,number"
 vim.o.breakindentopt = "list:-1"
+
+vim.o.title = true
+vim.o.titlestring = '%t%( %M%)%( (%{expand("%:~:h")})%)%a (nvim)'
 
 -- [[ Colours ]]
 if vim.fn.exists("syntax_on") ~= 1 then
@@ -78,6 +79,7 @@ vim.o.virtualedit = "block"
 
 vim.o.iskeyword = "@,48-57,_,192-255,-"
 vim.o.formatlistpat = [[^\s*[0-9\-\+\*]\+[\.\)]*\s\+]]
+vim.o.inccommand = "split"
 
 -- [[ Spelling ]]
 vim.o.spelllang = "en,uk"
@@ -101,7 +103,7 @@ vim.api.nvim_create_autocmd("FileType", {
     If don't do this on `FileType`, this keeps reappearing due to being set in filetype plugins.
     --]]
   command = "setlocal formatoptions-=c formatoptions-=o",
-  desc = [[Ensure proper 'formatoptions']],
+  desc = "Ensure proper 'formatoptions'",
 })
 
 --[[ Diagnostics ]]
