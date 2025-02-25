@@ -40,6 +40,11 @@ require("blink.cmp").setup({
   sources = {
     default = { "lazydev", "lsp", "path", "snippets", "buffer" },
     providers = {
+      snippets = {
+        should_show_items = function(ctx)
+          return ctx.trigger.initial_kind ~= "trigger_character"
+        end,
+      },
       lazydev = {
         name = "LazyDev",
         module = "lazydev.integrations.blink",
