@@ -1,7 +1,3 @@
---[[ Map Leader ]]
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
 --[[ General ]]
 vim.o.undofile = true
 
