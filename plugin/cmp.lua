@@ -14,6 +14,25 @@ require("blink.cmp").setup({
   keymap = { preset = "enter" },
   cmdline = { enabled = false },
   snippets = { preset = "mini_snippets" },
+  completion = {
+    menu = {
+      draw = {
+        components = {
+          kind_icon = {
+            ellipsis = false,
+            text = function(ctx)
+              local icon, _, _ = require("mini.icons").get("lsp", ctx.kind)
+              return icon
+            end,
+            highlight = function(ctx)
+              local _, hl, _ = require("mini.icons").get("lsp", ctx.kind)
+              return hl
+            end,
+          },
+        },
+      },
+    },
+  },
   signature = {
     enabled = true,
     trigger = { show_on_insert = true },

@@ -1,5 +1,5 @@
 vim.cmd([[
-  colorscheme default 
+  colorscheme default
 
   highlight Normal  guibg=none
   highlight NonText guibg=none
@@ -8,7 +8,16 @@ vim.cmd([[
 ]])
 
 require("mini.hipatterns").setup()
-require("mini.icons").setup()
+
+local mini_icons = require("mini.icons")
+
+mini_icons.setup()
+
+package.preload["nvim-web-devicons"] = function()
+  mini_icons.mock_nvim_web_devicons()
+  return package.loaded["nvim-web-devicons"]
+end
+
 require("mini.indentscope").setup()
 require("mini.notify").setup()
 require("mini.starter").setup()

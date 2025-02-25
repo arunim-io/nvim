@@ -16,6 +16,8 @@ servers.lua_ls = {
 }
 
 for name, config in pairs(servers) do
+  config.capabilities=require('blink.cmp').get_lsp_capabilities(config.capabilities, true)
+
   require("lspconfig")[name].setup(config)
 end
 
