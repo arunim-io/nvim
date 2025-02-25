@@ -4,7 +4,23 @@ require("mini.pairs").setup()
 require("mini.splitjoin").setup()
 require("mini.surround").setup()
 require("mini.bracketed").setup()
-require("mini.files").setup()
+
+local mini_files = require("mini.files")
+
+mini_files.setup({
+  options = { use_as_default_explorer = true },
+  mappings = {
+    synchronize = "s",
+    go_in = "<Right>",
+    go_out = "<Left>",
+    go_in_plus = "",
+    go_out_plus = "",
+  },
+})
+
+vim.keymap.set("n", "<leader>pv", function()
+  mini_files.open()
+end, { desc = "Show files explorer" })
 
 MiniDeps.add("folke/which-key.nvim")
 
