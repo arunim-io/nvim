@@ -26,7 +26,7 @@ mini_files.setup({
 })
 
 vim.keymap.set("n", "<leader>pv", function()
-  mini_files.open()
+  mini_files.open(vim.api.nvim_buf_get_name(0), false)
 end, { desc = "Show files explorer" })
 
 MiniDeps.add("folke/which-key.nvim")
@@ -35,7 +35,9 @@ require("which-key").setup({
   preset = "helix",
 })
 
-MiniDeps.add("MagicDuck/grug-far.nvim")
+local add = MiniDeps.add
+
+add("MagicDuck/grug-far.nvim")
 
 local grug_far = require("grug-far")
 
@@ -46,6 +48,23 @@ vim.keymap.set({ "n", "v" }, "<leader>rw", function()
 
   grug_far.open({
     transient = true,
-    prefills = { filesFilter = ext and ext ~= "" and "*." .. ext or nil },
+    prefills = {
+      filesFilter = ext and ext ~= "" and "*." .. ext or nil,
+    },
   })
 end, { desc = "Search & replace" })
+
+add("folke/trouble.nvim")
+
+vim.keymap.set(
+  "n",
+  "<leader>dw",
+  "<cmd>Trouble diagnostics toggle<cr>",
+  { desc = "Show diagnostics for current workspace" }
+)
+vim.keymap.set(
+  "n",
+  "<leader>dd",
+  "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+  { desc = "Show diagnostics for current file" }
+)
