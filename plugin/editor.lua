@@ -1,9 +1,16 @@
 require("mini.ai").setup()
-require("mini.comment").setup()
 require("mini.pairs").setup()
 require("mini.splitjoin").setup()
 require("mini.surround").setup()
 require("mini.bracketed").setup()
+
+require("mini.comment").setup({
+  options = {
+    custom_commentstring = function()
+      return require("ts_context_commentstring").calculate_commentstring() or vim.bo.commentstring
+    end,
+  },
+})
 
 local mini_files = require("mini.files")
 
