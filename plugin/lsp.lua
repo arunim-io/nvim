@@ -1,8 +1,54 @@
 local add = MiniDeps.add
 
 add("neovim/nvim-lspconfig")
+add("b0o/schemastore.nvim")
 
 local servers = {}
+
+servers.jsonls = {
+  on_new_config = function(new_config)
+    ---@diagnostic disable-next-line: inject-field
+    new_config.settings.json.schemas = new_config.settings.json.schemas or {}
+    vim.list_extend(new_config.settings.json.schemas, require("schemastore").json.schemas())
+  end,
+  settings = {
+    json = {
+      format = { enable = false },
+      validate = { enable = true },
+    },
+  },
+}
+
+servers.yamlls = {
+  capabilities = {
+    textDocument = {
+      foldingRange = {
+        dynamicRegistration = false,
+        lineFoldingOnly = true,
+      },
+    },
+  },
+  on_new_config = function(new_config)
+    new_config.settings.yaml.schemas =
+      vim.tbl_deep_extend("force", new_config.settings.yaml.schemas or {}, require("schemastore").yaml.schemas())
+  end,
+  on_attach = function(client)
+    client.server_capabilities.documentFormattingProvider = true
+  end,
+  settings = {
+    redhat = {
+      telemetry = {
+        enabled = false,
+      },
+    },
+    yaml = {
+      schemaStore = {
+        enable = false,
+        url = "",
+      },
+    },
+  },
+}
 
 servers.lua_ls = {
   settings = {
