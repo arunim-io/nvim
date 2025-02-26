@@ -13,6 +13,13 @@ vim.o.switchbuf = "usetab"
 vim.o.shada = "'100,<50,s10,:1000,/100,@100,h"
 vim.o.swapfile = false
 
+--[[ GUI ]]
+vim.o.guifont = "JetBrainsMonoNL NF:h13:#e-subpixelantialias"
+vim.g.neovide_opacity = 0.5
+vim.g.neovide_normal_opacity = 0.75
+vim.g.neovide_hide_mouse_when_typing = true
+vim.g.neovide_cursor_animation_length = 0
+
 --[[ UI ]]
 vim.o.breakindent = true
 vim.o.cursorline = true
