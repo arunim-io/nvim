@@ -4,6 +4,13 @@ require("snacks").setup({
   bigfile = { enabled = true },
   toggle = { enabled = true },
   lazygit = {},
+  picker = {
+    matcher = {
+      cwd_bonus = true,
+      frecency = true,
+      history_bonus = true,
+    },
+  },
   quickfile = {},
   words = { enabled = true },
 })

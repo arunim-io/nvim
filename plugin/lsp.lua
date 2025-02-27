@@ -3,6 +3,24 @@ local add = MiniDeps.add
 add("neovim/nvim-lspconfig")
 add("b0o/schemastore.nvim")
 
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local function map(key, action, desc_suffix)
+      vim.keymap.set("n", key, vim.lsp.buf[action], { buffer = args.buf, desc = "LSP: " .. desc_suffix })
+    end
+
+    map("K", "hover", "hover documentation")
+    map("gs", "signature_help", "signature help")
+    map("gd", "definition", "go to definition")
+    map("gD", "declaration", "go to declaration")
+    map("gi", "implementation", "go to implementation")
+    map("gt", "type_definition", "go to type definition")
+    map("gr", "references", "go to references")
+    map("<leader>ca", "code_action", "show code actions")
+    map("<leader>rn", "rename", "rename")
+  end,
+})
+
 local servers = {}
 
 servers.jsonls = {
