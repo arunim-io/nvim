@@ -115,9 +115,14 @@ end
 
 add("folke/lazydev.nvim")
 
+---@diagnostic disable-next-line: missing-fields
 require("lazydev").setup({
   library = {
-    { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+    {
+      path = "${3rd}/luv/library",
+      words = { "vim%.uv" },
+    },
     _G.Config.mini_path,
+    { path = "snacks.nvim", words = { "Snacks" } },
   },
 })
