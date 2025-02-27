@@ -16,6 +16,20 @@ require("snacks").setup({
 })
 
 Snacks.toggle.dim():map("<leader>td")
+if vim.g.neovide then
+  Snacks.toggle
+    .new({
+      id = "neovide_fullscreen",
+      name = "Set NeoVide to fullscreen",
+      get = function()
+        return vim.g.neovide_fullscreen or false
+      end,
+      set = function(state)
+        vim.g.neovide_fullscreen = state
+      end,
+    })
+    :map("<F11>")
+end
 
 vim.keymap.set("n", "<leader>bdd", Snacks.bufdelete.delete, { desc = "Delete current buffer" })
 vim.keymap.set("n", "<leader>bda", Snacks.bufdelete.all, { desc = "Delete all buffers" })
