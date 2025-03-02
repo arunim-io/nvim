@@ -125,6 +125,8 @@ servers.cssls = {
 
 servers.ts_ls = {}
 
+servers.nushell = {}
+
 for name, config in pairs(servers) do
   config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities, true)
 
