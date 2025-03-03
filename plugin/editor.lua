@@ -26,7 +26,7 @@ mini_files.setup({
 })
 
 vim.keymap.set("n", "<leader>pv", function()
-  mini_files.open(vim.api.nvim_buf_get_name(0), false)
+  mini_files.open(nil, false)
 end, { desc = "Show files explorer" })
 
 MiniDeps.add("folke/which-key.nvim")
