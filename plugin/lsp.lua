@@ -111,6 +111,7 @@ servers.taplo = {
 }
 
 servers.html = {
+  filetypes = { "html", "templ", "django-html", "htmldjango" },
   init_options = { provideFormatter = false },
   on_attach = function(client)
     client.capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -123,9 +124,13 @@ servers.cssls = {
   init_options = { provideFormatter = false },
 }
 
+servers.tailwindcss = {}
+
 servers.ts_ls = {}
 
 servers.nushell = {}
+
+servers.zls = {}
 
 for name, config in pairs(servers) do
   config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities, true)
