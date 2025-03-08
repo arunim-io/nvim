@@ -15,7 +15,20 @@ require("snacks").setup({
   words = { enabled = true },
 })
 
+-- [[ Toggles ]]
 Snacks.toggle.dim():map("<leader>td")
+Snacks.toggle
+  .new({
+    name = "Toggle folding",
+    get = function()
+      return vim.o.foldenable
+    end,
+    set = function(state)
+      vim.o.foldenable = state
+    end,
+  })
+  :map("<leader>tF")
+
 if vim.g.neovide then
   Snacks.toggle
     .new({
@@ -35,7 +48,7 @@ vim.keymap.set("n", "<leader>bdd", Snacks.bufdelete.delete, { desc = "Delete cur
 vim.keymap.set("n", "<leader>bda", Snacks.bufdelete.all, { desc = "Delete all buffers" })
 vim.keymap.set("n", "<leader>bdo", Snacks.bufdelete.other, { desc = "Delete all buffers except current one" })
 
-vim.keymap.set("n", "<leader>gg", Snacks.lazygit.open, { desc = "Delete all buffers except current one" })
+vim.keymap.set("n", "<leader>gg", Snacks.lazygit.open, { desc = "Open LazyGit" })
 
 vim.api.nvim_create_autocmd("User", {
   pattern = "MiniFilesActionRename",

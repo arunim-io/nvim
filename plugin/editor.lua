@@ -29,13 +29,13 @@ vim.keymap.set("n", "<leader>pv", function()
   mini_files.open(nil, false)
 end, { desc = "Show files explorer" })
 
-MiniDeps.add("folke/which-key.nvim")
+local add = MiniDeps.add
+
+add("folke/which-key.nvim")
 
 require("which-key").setup({
   preset = "helix",
 })
-
-local add = MiniDeps.add
 
 add("MagicDuck/grug-far.nvim")
 

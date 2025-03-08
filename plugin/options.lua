@@ -103,7 +103,7 @@ vim.o.foldtext = ""
 local augroup = vim.api.nvim_create_augroup("CustomSettings", {})
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup,
-  --[[ Don't auto-wrap comments and don't insert comment leader after hitting 'o'. 
+  --[[ Don't auto-wrap comments and don't insert comment leader after hitting 'o'.
     If don't do this on `FileType`, this keeps reappearing due to being set in filetype plugins.
     --]]
   command = "setlocal formatoptions-=c formatoptions-=o",
