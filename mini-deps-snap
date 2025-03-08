@@ -14,6 +14,7 @@ return {
   ["nvim-treesitter"] = "ee8e149a4ff75ebd5f1b065831746ddaf0e480ec",
   ["nvim-ts-autotag"] = "a1d526af391f6aebb25a8795cbc05351ed3620b5",
   ["nvim-ts-context-commentstring"] = "1b212c2eee76d787bbea6aa5e92a2b534e7b4f8f",
+  ["otter.nvim"] = "e37053d2c6a17463e705483122eee04d41e3d4af",
   ["plenary.nvim"] = "857c5ac632080dba10aae49dba902ce3abf91b35",
   ["schemastore.nvim"] = "50cbf5ebbdf27940a76455bb0fc58a10711d73b1",
   ["snacks.nvim"] = "bc0630e43be5699bb94dadc302c0d21615421d93",
