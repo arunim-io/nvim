@@ -151,3 +151,15 @@ require("lazydev").setup({
     { path = "snacks.nvim", words = { "Snacks" } },
   },
 })
+
+add({
+  source = "jmbuhr/otter.nvim",
+  depends = { "nvim-treesitter/nvim-treesitter" },
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "toml" },
+  callback = function()
+    require("otter").activate()
+  end,
+})
