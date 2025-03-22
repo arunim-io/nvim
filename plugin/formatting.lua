@@ -8,6 +8,7 @@ conform.setup({
     lua = { "stylua" },
     fish = { "fish_indent" },
     sh = { "shfmt" },
+    htmldjango = { "djlint" },
   },
   default_format_opts = {
     async = false,

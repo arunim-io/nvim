@@ -132,6 +132,8 @@ servers.nushell = {}
 
 servers.zls = {}
 
+servers.rust_analyzer = {}
+
 for name, config in pairs(servers) do
   config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities, true)
 

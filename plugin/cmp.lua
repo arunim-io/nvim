@@ -1,7 +1,7 @@
 MiniDeps.add({
   source = "saghen/blink.cmp",
   depends = { "rafamadriz/friendly-snippets", "saghen/blink.compat" },
-  checkout = "v0.12.4",
+  checkout = "v0.14.0",
 })
 
 local mini_snippets = require("mini.snippets")
