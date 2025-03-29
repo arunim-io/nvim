@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 local add = MiniDeps.add
 
 add("neovim/nvim-lspconfig")
@@ -21,6 +22,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
+--- @type table<string, lspconfig.Config>
 local servers = {}
 
 servers.jsonls = {
@@ -47,6 +49,7 @@ servers.yamlls = {
     },
   },
   on_new_config = function(new_config)
+    ---@diagnostic disable-next-line: inject-field
     new_config.settings.yaml.schemas =
       vim.tbl_deep_extend("force", new_config.settings.yaml.schemas or {}, require("schemastore").yaml.schemas())
   end,
@@ -123,8 +126,6 @@ servers.emmet_language_server = {}
 servers.cssls = {
   init_options = { provideFormatter = false },
 }
-
-servers.tailwindcss = {}
 
 servers.ts_ls = {}
 
