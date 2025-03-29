@@ -20,3 +20,7 @@ require("mini.deps").setup()
 _G.Config = {}
 
 _G.Config.mini_path = mini_path
+
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider = 0
