@@ -7,6 +7,12 @@ MiniDeps.add({
 local mini_snippets = require("mini.snippets")
 
 mini_snippets.setup({
+  mappings = {
+    expand = nil,
+    jump_next = "<C-Right>",
+    jump_prev = "<C-Left>",
+    stop = "<Esc>",
+  },
   snippets = { mini_snippets.gen_loader.from_lang() },
 })
 
