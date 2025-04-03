@@ -1,25 +1,19 @@
 MiniDeps.add({
   source = "saghen/blink.cmp",
-  depends = { "rafamadriz/friendly-snippets", "saghen/blink.compat" },
+  depends = {
+    "rafamadriz/friendly-snippets",
+    "saghen/blink.compat",
+    { source = "L3MON4D3/LuaSnip", checkout = "v2.3.0" },
+  },
   checkout = "v1.0.0",
 })
 
-local mini_snippets = require("mini.snippets")
-
-mini_snippets.setup({
-  mappings = {
-    expand = nil,
-    jump_next = "<C-Right>",
-    jump_prev = "<C-Left>",
-    stop = "<Esc>",
-  },
-  snippets = { mini_snippets.gen_loader.from_lang() },
-})
+require("luasnip.loaders.from_vscode").lazy_load()
 
 require("blink.cmp").setup({
   keymap = { preset = "enter" },
   cmdline = { enabled = false },
-  snippets = { preset = "mini_snippets" },
+  snippets = { preset = "luasnip" },
   completion = {
     menu = {
       draw = {
