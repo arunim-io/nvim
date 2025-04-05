@@ -13,11 +13,11 @@ conform.setup({
   default_format_opts = {
     async = false,
     quiet = false,
-    lsp_format = "fallback",
+    lsp_format = "first",
     timeout_ms = 3000,
   },
   format_on_save = {
-    lsp_format = "fallback",
+    lsp_format = "first",
     timeout_ms = 500,
   },
   formatters = {
