@@ -56,6 +56,8 @@ end, { desc = "Search & replace" })
 
 add("folke/trouble.nvim")
 
+require("trouble").setup()
+
 vim.keymap.set(
   "n",
   "<leader>dw",
