@@ -5,7 +5,7 @@ MiniDeps.add({
     "saghen/blink.compat",
     { source = "L3MON4D3/LuaSnip", checkout = "v2.3.0" },
   },
-  checkout = "v1.0.0",
+  checkout = "v1.1.1",
 })
 
 require("luasnip.loaders.from_vscode").lazy_load()
