@@ -51,7 +51,7 @@ Snacks.toggle
   })
   :map("<leader>tts")
 
----@diagnostic disable-next-line: missing-fields
+--- @diagnostic disable: missing-fields
 require("tailwind-tools").setup({
   server = {
     --- @param client vim.lsp.Client
@@ -66,3 +66,4 @@ require("tailwind-tools").setup({
     end,
   },
 })
+--- @diagnostic enable: missing-fields

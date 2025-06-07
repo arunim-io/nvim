@@ -58,15 +58,31 @@ add("folke/trouble.nvim")
 
 require("trouble").setup()
 
+vim.api.nvim_create_autocmd("QuickFixCmdPost", {
+  command = "Trouble qflist open",
+})
+
+vim.api.nvim_create_autocmd("BufRead", {
+  callback = function(ev)
+    if vim.bo[ev.buf].buftype == "quickfix" then
+      vim.schedule(function()
+        vim.cmd("cclose")
+        vim.cmd("Trouble qflist open")
+      end)
+    end
+  end,
+})
+
+vim.keymap.set("n", "<leader>dq", "<cmd>Trouble qflist toggle<cr>", { desc = "Toggle quickfix list" })
 vim.keymap.set(
   "n",
   "<leader>dw",
   "<cmd>Trouble diagnostics toggle<cr>",
-  { desc = "Show diagnostics for current workspace" }
+  { desc = "Toggle diagnostics for current workspace" }
 )
 vim.keymap.set(
   "n",
-  "<leader>dd",
+  "<leader>db",
   "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-  { desc = "Show diagnostics for current file" }
+  { desc = "Toggle diagnostics for current file" }
 )
