@@ -86,3 +86,9 @@ vim.keymap.set(
   "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
   { desc = "Toggle diagnostics for current file" }
 )
+
+add("tris203/precognition.nvim")
+
+local precognition = require("precognition")
+
+precognition.setup({})
