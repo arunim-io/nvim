@@ -1,3 +1,5 @@
+local add = MiniDeps.add
+
 require("mini.hipatterns").setup()
 
 local mini_icons = require("mini.icons")
@@ -15,12 +17,14 @@ require("mini.starter").setup()
 require("mini.statusline").setup()
 require("mini.trailspace").setup()
 
-MiniDeps.add("EdenEast/nightfox.nvim")
+add("scottmckendry/cyberdream.nvim")
 
-require("nightfox").setup({
-  options = {
-    transparent = true,
-  },
+require("cyberdream").setup({
+  transparent = true,
+  italic_comments = true,
+  hide_fillchars = true,
+  borderless_pickers = true,
+  cache = true,
 })
 
-vim.cmd.colorscheme("carbonfox")
+vim.cmd.colorscheme("cyberdream")
