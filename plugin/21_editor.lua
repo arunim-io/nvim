@@ -92,3 +92,10 @@ add("tris203/precognition.nvim")
 local precognition = require("precognition")
 
 precognition.setup({})
+
+add("otavioschwanck/arrow.nvim")
+
+require("arrow").setup({
+  leader_key = "<leader>mp",
+  buffer_leader_key = "<leader>mb",
+})
