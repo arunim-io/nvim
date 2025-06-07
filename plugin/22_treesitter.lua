@@ -1,3 +1,4 @@
+--- @diagnostic disable: missing-fields
 local add = MiniDeps.add
 
 add({
@@ -11,7 +12,6 @@ add({
   },
 })
 
---- @diagnostic disable-next-line: missing-fields
 require("nvim-treesitter.configs").setup({
   ensure_installed = { "vimdoc", "lua", "toml" },
   auto_install = true,
@@ -35,7 +35,10 @@ require("ts_context_commentstring").setup({
 
 add("windwp/nvim-ts-autotag")
 
----@diagnostic disable-next-line: missing-fields
 require("nvim-ts-autotag").setup({
   opts = { enable_close_on_slash = true },
 })
+
+add("m-demare/hlargs.nvim")
+
+require("hlargs").setup()
