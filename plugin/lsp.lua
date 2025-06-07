@@ -16,18 +16,17 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("gD", "declaration", "go to declaration")
     map("gi", "implementation", "go to implementation")
     map("gt", "type_definition", "go to type definition")
-    map("gr", "references", "go to references")
+    map("gR", "references", "go to references")
     map("<leader>ca", "code_action", "show code actions")
     map("<leader>rn", "rename", "rename")
   end,
 })
 
---- @type table<string, lspconfig.Config>
+--- @type table<string, vim.lsp.Config>
 local servers = {}
 
 servers.jsonls = {
   on_new_config = function(new_config)
-    ---@diagnostic disable-next-line: inject-field
     new_config.settings.json.schemas = new_config.settings.json.schemas or {}
     vim.list_extend(new_config.settings.json.schemas, require("schemastore").json.schemas())
   end,
@@ -49,7 +48,6 @@ servers.yamlls = {
     },
   },
   on_new_config = function(new_config)
-    ---@diagnostic disable-next-line: inject-field
     new_config.settings.yaml.schemas =
       vim.tbl_deep_extend("force", new_config.settings.yaml.schemas or {}, require("schemastore").yaml.schemas())
   end,
@@ -184,10 +182,10 @@ servers.zls = {}
 servers.rust_analyzer = {}
 
 for name, config in pairs(servers) do
-  config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities, true)
-
-  require("lspconfig")[name].setup(config)
+  vim.lsp.config(name, config)
 end
+
+vim.lsp.enable(vim.tbl_keys(servers))
 
 add("folke/lazydev.nvim")
 
