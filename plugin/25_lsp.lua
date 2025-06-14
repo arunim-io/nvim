@@ -128,12 +128,6 @@ servers.cssls = {
 servers.ts_ls = {}
 
 servers.eslint = {
-  on_attach = function(_, bufnr)
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      buffer = bufnr,
-      command = "EslintFixAll",
-    })
-  end,
   filetypes = {
     "javascript",
     "javascriptreact",
@@ -160,6 +154,12 @@ servers.eslint = {
     "postcss",
   },
   settings = {
+    codeActionOnSave = {
+      enable = true,
+    },
+    problems = {
+      shortenToSingleLine = true,
+    },
     rulesCustomizations = {
       { rule = "style/*", severity = "off", fixable = true },
       { rule = "format/*", severity = "off", fixable = true },
