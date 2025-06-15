@@ -91,7 +91,9 @@ add("tris203/precognition.nvim")
 
 local precognition = require("precognition")
 
-precognition.setup({})
+precognition.setup({
+  showBlankVirtLine = false,
+})
 
 add("otavioschwanck/arrow.nvim")
 
