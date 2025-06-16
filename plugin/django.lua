@@ -25,12 +25,11 @@ vim.api.nvim_create_autocmd("FileType", {
 
 vim.api.nvim_create_autocmd("FileType", {
   desc = "Enable django snippets",
-  pattern = { "htmldjango", "python" },
+  pattern = "python",
   callback = function()
-    if check_django_install() then
-      local luasnip = require("luasnip")
+    local luasnip = require("luasnip")
 
-      luasnip.filetype_extend("htmldjango", "djangohtml")
+    if check_django_install() then
       luasnip.filetype_extend("python", "django")
     end
   end,
