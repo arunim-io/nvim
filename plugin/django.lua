@@ -1,3 +1,7 @@
+--[[
+  This plugin contains some customization related to django.
+]]
+
 --- Check if the current directory contains a django project by either checking for the `DJANGO_SETTINGS_MODULE` env variable or searching for django's `manage.py` file.
 ---@return boolean|nil
 local function check_django_install()
@@ -19,18 +23,6 @@ vim.api.nvim_create_autocmd("FileType", {
       if check_django_install() then
         vim.bo[args.buf].filetype = "htmldjango"
       end
-    end
-  end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-  desc = "Enable django snippets",
-  pattern = "python",
-  callback = function()
-    local luasnip = require("luasnip")
-
-    if check_django_install() then
-      luasnip.filetype_extend("python", "django")
     end
   end,
 })

@@ -3,25 +3,14 @@ MiniDeps.add({
   depends = {
     "rafamadriz/friendly-snippets",
     "saghen/blink.compat",
-    {
-      source = "L3MON4D3/LuaSnip",
-      checkout = "v2.4.0",
-      hooks = {
-        post_checkout = function()
-          vim.cmd("make install_jsregexp")
-        end,
-      },
-    },
   },
   checkout = "v1.3.1",
 })
 
-require("luasnip.loaders.from_vscode").lazy_load()
-
 require("blink.cmp").setup({
   keymap = { preset = "enter" },
   cmdline = { enabled = false },
-  snippets = { preset = "luasnip" },
+  snippets = { preset = "mini_snippets" },
   completion = {
     menu = {
       draw = {
