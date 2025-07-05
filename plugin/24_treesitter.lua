@@ -4,7 +4,7 @@ local add = MiniDeps.add
 add({
   source = "nvim-treesitter/nvim-treesitter",
   checkout = "master",
-  depends = {},
+  main = "main",
   hooks = {
     post_checkout = function()
       vim.cmd("TSUpdate")
