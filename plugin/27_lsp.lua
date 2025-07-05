@@ -181,6 +181,8 @@ servers.zls = {}
 
 servers.rust_analyzer = {}
 
+servers.astro = {}
+
 for name, config in pairs(servers) do
   vim.lsp.config(name, config)
 end
