@@ -183,6 +183,8 @@ servers.rust_analyzer = {}
 
 servers.astro = {}
 
+servers.unocss = {}
+
 for name, config in pairs(servers) do
   vim.lsp.config(name, config)
 end
