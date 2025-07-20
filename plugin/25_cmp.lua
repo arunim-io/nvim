@@ -4,7 +4,7 @@ MiniDeps.add({
     "rafamadriz/friendly-snippets",
     "saghen/blink.compat",
   },
-  checkout = "v1.4.1",
+  checkout = "v1.5.1",
 })
 
 require("blink.cmp").setup({
