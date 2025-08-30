@@ -186,6 +186,7 @@ servers.astro = {}
 servers.unocss = {}
 
 servers.gopls = {}
+servers.templ = {}
 
 for name, config in pairs(servers) do
   vim.lsp.config(name, config)
