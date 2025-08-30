@@ -115,10 +115,16 @@ vim.diagnostic.config({
   float = { border = "double" },
   signs = {
     priority = 9999,
-    severity = { min = "WARN", max = "ERROR" },
+    severity = {
+      min = vim.diagnostic.severity.WARN,
+      max = vim.diagnostic.severity.ERROR,
+    },
   },
   virtual_text = {
-    severity = { min = "WARN", max = "ERROR" },
+    severity = {
+      min = vim.diagnostic.severity.WARN,
+      max = vim.diagnostic.severity.ERROR,
+    },
   },
 })
 
