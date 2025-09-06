@@ -1,4 +1,3 @@
----@diagnostic disable: missing-fields
 local add = MiniDeps.add
 
 add("neovim/nvim-lspconfig")
@@ -187,6 +186,16 @@ servers.unocss = {}
 
 servers.gopls = {}
 servers.templ = {}
+
+servers.docker_compose_language_service = {}
+servers.dockerls = {}
+servers.docker_language_server = {
+  init_options = {
+    dockerfileExperimental = {
+      removeOverlappingIssues = true,
+    },
+  },
+}
 
 for name, config in pairs(servers) do
   vim.lsp.config(name, config)
