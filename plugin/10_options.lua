@@ -79,6 +79,7 @@ vim.o.expandtab = true
 vim.o.formatoptions = "rqnl1j"
 vim.o.shiftwidth = 2
 vim.o.tabstop = 2
+vim.o.expandtab = true
 vim.o.virtualedit = "block"
 
 vim.o.iskeyword = "@,48-57,_,192-255,-"
