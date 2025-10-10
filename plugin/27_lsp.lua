@@ -186,6 +186,7 @@ servers.unocss = {}
 
 servers.gopls = {}
 servers.templ = {}
+servers.golangci_lint_ls = {}
 
 servers.docker_compose_language_service = {}
 servers.dockerls = {}
@@ -197,6 +198,7 @@ servers.docker_language_server = {
   },
 }
 servers.biome = {}
+servers.sqruff = {}
 
 for name, config in pairs(servers) do
   vim.lsp.config(name, config)
