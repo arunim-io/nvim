@@ -124,8 +124,6 @@ servers.cssls = {
   init_options = { provideFormatter = false },
 }
 
-servers.ts_ls = {}
-
 servers.eslint = {
   filetypes = {
     "javascript",
@@ -199,6 +197,7 @@ servers.docker_language_server = {
 }
 servers.biome = {}
 servers.sqruff = {}
+servers.tailwindcss = {}
 
 for name, config in pairs(servers) do
   vim.lsp.config(name, config)
@@ -231,3 +230,10 @@ vim.api.nvim_create_autocmd("FileType", {
     require("otter").activate()
   end,
 })
+
+add({
+  source = "pmizio/typescript-tools.nvim",
+  depends = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+})
+
+require("typescript-tools").setup({})

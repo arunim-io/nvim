@@ -9,6 +9,7 @@ conform.setup({
     fish = { "fish_indent" },
     sh = { "shfmt" },
     htmldjango = { "djlint" },
+    html = { "biome" },
   },
   default_format_opts = {
     async = false,
