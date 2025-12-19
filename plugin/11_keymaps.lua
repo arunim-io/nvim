@@ -1,38 +1,28 @@
 -- Many of the mappings here use 'mini.nvim' modules.
 
-local function map(mode, lhs, rhs, desc)
-  vim.keymap.set(mode, lhs, rhs, { desc = desc })
-end
-local function nmap(lhs, rhs, desc)
-  map("n", lhs, rhs, desc)
-end
-local function xmap(lhs, rhs, desc)
-  map("x", lhs, rhs, desc)
-end
+local function map(mode, lhs, rhs, desc) vim.keymap.set(mode, lhs, rhs, { desc = desc }) end
+local function nmap(lhs, rhs, desc) map("n", lhs, rhs, desc) end
+local function xmap(lhs, rhs, desc) map("x", lhs, rhs, desc) end
 
-local function map_leader(mode, suffix, rhs, desc)
-  vim.keymap.set(mode, "<Leader>" .. suffix, rhs, { desc = desc })
-end
-local function nmap_leader(suffix, rhs, desc)
-  map_leader("n", suffix, rhs, desc)
-end
+local function map_leader(mode, suffix, rhs, desc) vim.keymap.set(mode, "<Leader>" .. suffix, rhs, { desc = desc }) end
+local function nmap_leader(suffix, rhs, desc) map_leader("n", suffix, rhs, desc) end
 
 -- Create a global table with information about Leader groups in certain modes.
 -- This is used to provide 'mini.clue' with extra clues.
 _G.Config.leader_group_clues = {
-  { mode = "n", keys = "<Leader>b", desc = "+Buffer" },
-  { mode = "n", keys = "<Leader>e", desc = "+Explore/Edit" },
-  { mode = "n", keys = "<Leader>f", desc = "+Find" },
-  { mode = "n", keys = "<Leader>g", desc = "+Git" },
-  { mode = "n", keys = "<Leader>l", desc = "+Language" },
-  { mode = "n", keys = "<Leader>m", desc = "+Map" },
-  { mode = "n", keys = "<Leader>o", desc = "+Other" },
-  { mode = "n", keys = "<Leader>s", desc = "+Session" },
-  { mode = "n", keys = "<Leader>t", desc = "+Terminal" },
-  { mode = "n", keys = "<Leader>v", desc = "+Visits" },
+	{ mode = "n", keys = "<Leader>b", desc = "+Buffer" },
+	{ mode = "n", keys = "<Leader>e", desc = "+Explore/Edit" },
+	{ mode = "n", keys = "<Leader>f", desc = "+Find" },
+	{ mode = "n", keys = "<Leader>g", desc = "+Git" },
+	{ mode = "n", keys = "<Leader>l", desc = "+Language" },
+	{ mode = "n", keys = "<Leader>m", desc = "+Map" },
+	{ mode = "n", keys = "<Leader>o", desc = "+Other" },
+	{ mode = "n", keys = "<Leader>s", desc = "+Session" },
+	{ mode = "n", keys = "<Leader>t", desc = "+Terminal" },
+	{ mode = "n", keys = "<Leader>v", desc = "+Visits" },
 
-  { mode = "x", keys = "<Leader>g", desc = "+Git" },
-  { mode = "x", keys = "<Leader>l", desc = "+Language" },
+	{ mode = "x", keys = "<Leader>g", desc = "+Git" },
+	{ mode = "x", keys = "<Leader>l", desc = "+Language" },
 }
 
 --[[ Clipboard ]]
@@ -57,7 +47,7 @@ nmap_leader("bW", "<Cmd>lua MiniBufremove.wipeout(0, true)<CR>", "Wipeout!")
 --- @param filename string
 --- @return string
 local function edit_plugin_file(filename)
-  return string.format("<Cmd>edit %s/plugin/%s<CR>", vim.fn.stdpath("config"), filename)
+	return string.format("<Cmd>edit %s/plugin/%s<CR>", vim.fn.stdpath("config"), filename)
 end
 
 nmap_leader("ed", "<Cmd>lua MiniFiles.open()<CR>", "Directory")
@@ -69,12 +59,10 @@ nmap_leader("en", "<Cmd>lua MiniNotify.show_history()<CR>", "Notifications")
 nmap_leader("eo", edit_plugin_file("10_options.lua"), "Options config")
 nmap_leader("ep", edit_plugin_file("30_plugins.lua"), "Plugins config")
 nmap_leader("eq", function()
-  for _, win_id in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
-    if vim.fn.getwininfo(win_id)[1].quickfix == 1 then
-      return vim.cmd("cclose")
-    end
-  end
-  vim.cmd("copen")
+	for _, win_id in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+		if vim.fn.getwininfo(win_id)[1].quickfix == 1 then return vim.cmd("cclose") end
+	end
+	vim.cmd("copen")
 end, "Quickfix")
 
 --[[ Fuzzy Find (`f`) ]]

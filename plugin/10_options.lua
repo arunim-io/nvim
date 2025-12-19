@@ -8,16 +8,14 @@ vim.g.loaded_ruby_provider = 0
 
 vim.o.mouse = "a" -- Enable mouse
 vim.o.mousescroll = "ver:25,hor:60" -- Customize mouse scroll
-vim.o.switchbuf = "usetab"
-vim.o.undofile = true
+vim.o.switchbuf = "usetab" -- treat windows like they're tabs
+vim.o.undofile = true -- Make undo history persistent
 
 vim.o.shada = "'100,<50,s10,:1000,/100,@100,h" -- Limit ShaDa file (for startup)
 
 -- Enable all filetype plugins and syntax (if not enabled, for better startup)
 vim.cmd("filetype plugin indent on")
-if vim.fn.exists("syntax_on") ~= 1 then
-  vim.cmd("syntax enable")
-end
+if vim.fn.exists("syntax_on") ~= 1 then vim.cmd("syntax enable") end
 
 --[[ UI ]]
 vim.o.breakindent = true -- Indent wrapped lines to match line start
@@ -83,39 +81,30 @@ vim.o.completeopt = "menuone,noselect,fuzzy,nosort" -- Use custom behavior
 
 --[[ Autocommands ]]
 _G.Config.new_autocmd("FileType", {
-  command = "setlocal formatoptions-=c formatoptions-=o",
-  desc = "Proper `formatoptions`",
+	desc = "Proper `formatoptions`",
+	command = "setlocal formatoptions-=c formatoptions-=o",
 })
 
 --[[ Diagnostics ]]
 MiniDeps.later(function()
-  local ERROR, WARN, HINT = vim.diagnostic.severity.ERROR, vim.diagnostic.severity.WARN, vim.diagnostic.severity.HINT
-  vim.diagnostic.config({
-    -- Show signs on top of any other sign, but only for warnings and errors
-    signs = {
-      priority = 9999,
-      severity = {
-        min = WARN,
-        max = ERROR,
-      },
-    },
-    -- Show all diagnostics as underline (for their messages type `<Leader>ld`)
-    underline = {
-      severity = {
-        min = HINT,
-        max = ERROR,
-      },
-    },
-    -- Show more details immediately for errors on the current line
-    virtual_lines = false,
-    -- Don't update diagnostics when typing
-    virtual_text = {
-      current_line = true,
-      severity = {
-        min = ERROR,
-        max = ERROR,
-      },
-    },
-    update_in_insert = false,
-  })
+	local ERROR, WARN, HINT = vim.diagnostic.severity.ERROR, vim.diagnostic.severity.WARN, vim.diagnostic.severity.HINT
+	vim.diagnostic.config({
+		-- Show signs on top of any other sign, but only for warnings and errors
+		signs = {
+			priority = 9999,
+			severity = { min = WARN, max = ERROR },
+		},
+		-- Show all diagnostics as underline (for their messages type `<Leader>ld`)
+		underline = {
+			severity = { min = HINT, max = ERROR },
+		},
+		-- Show more details immediately for errors on the current line
+		virtual_lines = false,
+		-- Don't update diagnostics when typing
+		virtual_text = {
+			current_line = true,
+			severity = { min = ERROR, max = ERROR },
+		},
+		update_in_insert = false,
+	})
 end)
