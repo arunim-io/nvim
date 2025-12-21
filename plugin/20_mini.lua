@@ -109,7 +109,13 @@ later(function()
 end)
 
 --[[ Setup `mini.comment` for commenting code ]]
-later(function() require("mini.comment").setup() end)
+later(function()
+	require("mini.comment").setup({
+		custom_commentstring = function()
+			return require("ts_context_commentstring").calculate_commentstring() or vim.bo.commentstring
+		end,
+	})
+end)
 
 --[[ Setup `mini.completion` for code completion & signature help ]]
 later(function()
