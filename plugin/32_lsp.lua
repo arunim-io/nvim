@@ -1,0 +1,15 @@
+local add = MiniDeps.add
+
+Config.now_if_args(function()
+	add("neovim/nvim-lspconfig")
+	add("folke/lazydev.nvim")
+
+	vim.lsp.enable({ "lua_ls" })
+
+	require("lazydev").setup({
+		library = {
+			{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
+      Config.mini_path,
+		},
+	})
+end)

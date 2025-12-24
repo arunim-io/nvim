@@ -145,7 +145,6 @@ later(function() require("mini.diff").setup() end)
 --[[ Setup `mini.files` for managing the filesystem ]]
 later(function()
 	require("mini.files").setup({
-		options = { use_as_default_explorer = true },
 		mappings = {
 			synchronize = "s",
 			go_in = "<Right>",

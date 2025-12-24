@@ -22,6 +22,9 @@ require("mini.deps").setup({
 --- A config table containing useful helpers for configuring neovim
 _G.Config = {}
 
+--- The path where `mini.nvim` is used.
+_G.Config.mini_path = mini_path
+
 --- A custom augroup for grouping custom autocmds.
 _G.Config.augroup = vim.api.nvim_create_augroup("custom-config", { clear = true })
 
