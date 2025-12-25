@@ -9,7 +9,7 @@ Config.now_if_args(function()
 	require("lazydev").setup({
 		library = {
 			{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
-      Config.mini_path,
+			Config.mini_path,
 		},
 	})
 end)
