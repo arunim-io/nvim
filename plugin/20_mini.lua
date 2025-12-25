@@ -137,6 +137,14 @@ later(function()
 	})
 
 	vim.lsp.config("*", { capabilities = MiniCompletion.get_lsp_capabilities() })
+
+	function _G.Config.cmp_cr_action()
+		if vim.fn.complete_info()["selected"] ~= -1 then return "\25" end
+
+		return MiniPairs.cr()
+	end
+
+	vim.keymap.set("i", "<CR>", "v:lua.Config.cmp_cr_action()", { expr = true })
 end)
 
 --[[ Setup `mini.diff` for working with diffs ]]
@@ -210,6 +218,8 @@ later(function() require("mini.pick").setup() end)
 
 --[[ Setup `mini.snippets` for handling snippets ]]
 later(function()
+	MiniDeps.add("rafamadriz/friendly-snippets")
+
 	local snippets = require("mini.snippets")
 	local latex_patterns = { "latex/**/*.json", "**/latex.json" }
 
@@ -217,7 +227,11 @@ later(function()
 		expand = {
 			match = function(snips) return snippets.default_match(snips, { pattern_fuzzy = "%S+" }) end,
 		},
-		mappings = { stop = "<ESC>" },
+		mappings = {
+			jump_next = "<Tab>",
+			jump_prev = "<S-Tab>",
+			stop = "<ESC>",
+		},
 		snippets = {
 			snippets.gen_loader.from_file(vim.fn.stdpath("config") .. "/snippets/global.json"),
 			snippets.gen_loader.from_lang({
