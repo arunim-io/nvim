@@ -43,27 +43,15 @@ nmap_leader("bw", "<Cmd>lua MiniBufremove.wipeout()<CR>", "Wipeout")
 nmap_leader("bW", "<Cmd>lua MiniBufremove.wipeout(0, true)<CR>", "Wipeout!")
 
 --[[ Explore/Edit (`e`) ]]
-
---- @param filename string
---- @return string
-local function edit_plugin_file(filename)
-	return string.format("<Cmd>edit %s/plugin/%s<CR>", vim.fn.stdpath("config"), filename)
-end
-
 nmap_leader("ed", "<Cmd>lua MiniFiles.open()<CR>", "Directory")
 nmap_leader("ef", "<Cmd>lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<CR>", "File directory")
-nmap_leader("ei", "<Cmd>edit $MYVIMRC<CR>", "init.lua")
-nmap_leader("ek", edit_plugin_file("11_keymaps.lua"), "Keymaps config")
-nmap_leader("em", edit_plugin_file("20_mini.lua"), "MINI config")
 nmap_leader("en", "<Cmd>lua MiniNotify.show_history()<CR>", "Notifications")
-nmap_leader("eo", edit_plugin_file("10_options.lua"), "Options config")
-nmap_leader("ep", edit_plugin_file("30_plugins.lua"), "Plugins config")
 nmap_leader("eq", function()
 	for _, win_id in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
 		if vim.fn.getwininfo(win_id)[1].quickfix == 1 then return vim.cmd("cclose") end
 	end
 	vim.cmd("copen")
-end, "Quickfix")
+end, "Quickfix (Toggle)")
 
 --[[ Fuzzy Find (`f`) ]]
 nmap_leader("f/", '<Cmd>Pick history scope="/"<CR>', '"/" history')
@@ -107,13 +95,13 @@ nmap_leader("go", "<Cmd>lua MiniDiff.toggle_overlay()<CR>", "Toggle overlay")
 map_leader({ "n", "x" }, "gs", "<Cmd>lua MiniGit.show_at_cursor()<CR>", "Show at cursor/selection")
 
 --[[ Language (`l`) ]]
-local formatting_cmd = '<Cmd>lua require("conform").format({lsp_fallback=true})<CR>'
 
 nmap_leader("la", "<Cmd>lua vim.lsp.buf.code_action()<CR>", "Actions")
 nmap_leader("ld", "<Cmd>lua vim.diagnostic.open_float()<CR>", "Diagnostic popup")
-map_leader({ "n", "x" }, "lf", formatting_cmd, "Format buffer/selection")
+map_leader({ "n", "x" }, "lf", '<Cmd>lua require("conform").format()<CR>', "Format buffer/selection")
 nmap_leader("li", "<Cmd>lua vim.lsp.buf.implementation()<CR>", "Implementation")
 nmap_leader("lh", "<Cmd>lua vim.lsp.buf.hover()<CR>", "Hover")
+nmap_leader("ll", '<Cmd>lua require("lint").try_lint()<CR>', "Lint buffer")
 nmap_leader("lr", "<Cmd>lua vim.lsp.buf.rename()<CR>", "Rename")
 nmap_leader("lR", "<Cmd>lua vim.lsp.buf.references()<CR>", "References")
 nmap_leader("ls", "<Cmd>lua vim.lsp.buf.definition()<CR>", "Source definition")

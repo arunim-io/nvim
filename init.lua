@@ -29,7 +29,7 @@ _G.Config.mini_path = mini_path
 _G.Config.augroup = vim.api.nvim_create_augroup("custom-config", { clear = true })
 
 --- Helper for creating autocmds
---- @param event string|string[]
+--- @param event vim.api.keyset.events|vim.api.keyset.events[]
 --- @param opts vim.api.keyset.create_autocmd
 function _G.Config.new_autocmd(event, opts)
 	if opts.group == nil then opts.group = _G.Config.augroup end
