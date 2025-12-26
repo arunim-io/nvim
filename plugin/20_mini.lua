@@ -282,3 +282,6 @@ later(function() require("mini.trailspace").setup() end)
 
 --[[ Setup `mini.visits` to handle filesystem visits ]]
 later(function() require("mini.visits").setup() end)
+
+--[[ Setup `mini.statusline` for a great status bar ]]
+later(function() require("mini.statusline").setup() end)
