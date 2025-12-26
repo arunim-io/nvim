@@ -3,8 +3,9 @@ local add = MiniDeps.add
 Config.now_if_args(function()
 	add("neovim/nvim-lspconfig")
 	add("folke/lazydev.nvim")
+	add("b0o/schemastore.nvim")
 
-	vim.lsp.enable({ "lua_ls" })
+	vim.lsp.enable({ "lua_ls", "jsonls", "yamlls" })
 
 	require("lazydev").setup({
 		library = {
