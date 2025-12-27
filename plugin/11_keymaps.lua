@@ -96,13 +96,12 @@ nmap_leader("go", "<Cmd>lua MiniDiff.toggle_overlay()<CR>", "Toggle overlay")
 map_leader({ "n", "x" }, "gs", "<Cmd>lua MiniGit.show_at_cursor()<CR>", "Show at cursor/selection")
 
 --[[ Language (`l`) ]]
-
 nmap_leader("la", "<Cmd>lua vim.lsp.buf.code_action()<CR>", "Actions")
 nmap_leader("ld", "<Cmd>lua vim.diagnostic.open_float()<CR>", "Diagnostic popup")
-map_leader({ "n", "x" }, "lf", '<Cmd>lua require("conform").format()<CR>', "Format buffer/selection")
+map_leader({ "n", "v", "x" }, "lf", "<Cmd>lua Config.fmt_func()<CR>", "Format buffer/selection")
 nmap_leader("li", "<Cmd>lua vim.lsp.buf.implementation()<CR>", "Implementation")
 nmap_leader("lh", "<Cmd>lua vim.lsp.buf.hover()<CR>", "Hover")
-nmap_leader("ll", '<Cmd>lua require("lint").try_lint()<CR>', "Lint buffer")
+nmap_leader("ll", "<Cmd>lua Config.lint_func()<CR>", "Lint buffer")
 nmap_leader("lr", "<Cmd>lua vim.lsp.buf.rename()<CR>", "Rename")
 nmap_leader("lR", "<Cmd>lua vim.lsp.buf.references()<CR>", "References")
 nmap_leader("ls", "<Cmd>lua vim.lsp.buf.definition()<CR>", "Source definition")
