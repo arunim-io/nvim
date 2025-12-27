@@ -56,6 +56,7 @@ end, "Quickfix (Toggle)")
 --[[ Fuzzy Find (`f`) ]]
 nmap_leader("f/", '<Cmd>Pick history scope="/"<CR>', '"/" history')
 nmap_leader("f:", '<Cmd>Pick history scope=":"<CR>', '":" history')
+nmap_leader("f.", "<Cmd>lua Config.search_replace_func()<CR>", "Search & Replace")
 nmap_leader("fa", '<Cmd>Pick git_hunks scope="staged"<CR>', "Added hunks (all)")
 nmap_leader("fA", '<Cmd>Pick git_hunks path="%" scope="staged"<CR>', "Added hunks (buf)")
 nmap_leader("fb", "<Cmd>Pick buffers<CR>", "Buffers")
