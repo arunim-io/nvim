@@ -15,11 +15,7 @@ _G.Config.leader_group_clues = {
 	{ mode = "n", keys = "<Leader>f", desc = "+Find" },
 	{ mode = "n", keys = "<Leader>g", desc = "+Git" },
 	{ mode = "n", keys = "<Leader>l", desc = "+Language" },
-	{ mode = "n", keys = "<Leader>m", desc = "+Map" },
-	{ mode = "n", keys = "<Leader>o", desc = "+Other" },
-	{ mode = "n", keys = "<Leader>s", desc = "+Session" },
-	{ mode = "n", keys = "<Leader>t", desc = "+Terminal" },
-	{ mode = "n", keys = "<Leader>v", desc = "+Visits" },
+	{ mode = "n", keys = "<Leader>t", desc = "+Toggles" },
 
 	{ mode = "x", keys = "<Leader>g", desc = "+Git" },
 	{ mode = "x", keys = "<Leader>l", desc = "+Language" },
@@ -45,6 +41,7 @@ nmap_leader("bW", "<Cmd>lua MiniBufremove.wipeout(0, true)<CR>", "Wipeout!")
 --[[ Explore/Edit (`e`) ]]
 nmap_leader("ed", "<Cmd>lua MiniFiles.open()<CR>", "Directory")
 nmap_leader("ef", "<Cmd>lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<CR>", "File directory")
+nmap_leader("eF", "<CMD>lua Snacks.rename.rename_file()<CR>", "Rename current buffer/file")
 nmap_leader("en", "<Cmd>lua MiniNotify.show_history()<CR>", "Notifications")
 nmap_leader("eq", function()
 	for _, win_id in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
@@ -52,6 +49,7 @@ nmap_leader("eq", function()
 	end
 	vim.cmd("copen")
 end, "Quickfix (Toggle)")
+nmap_leader("es", "<CMD>lua Snacks.scratch.open()<CR>", "Scratch Buffer")
 
 --[[ Fuzzy Find (`f`) ]]
 nmap_leader("f/", '<Cmd>Pick history scope="/"<CR>', '"/" history')
@@ -60,6 +58,7 @@ nmap_leader("f.", "<Cmd>lua Config.search_replace_func()<CR>", "Search & Replace
 nmap_leader("fa", '<Cmd>Pick git_hunks scope="staged"<CR>', "Added hunks (all)")
 nmap_leader("fA", '<Cmd>Pick git_hunks path="%" scope="staged"<CR>', "Added hunks (buf)")
 nmap_leader("fb", "<Cmd>Pick buffers<CR>", "Buffers")
+nmap_leader("fB", "<Cmd>lua Snacks.buffer.select()<CR>", "Scratch Buffers")
 nmap_leader("fc", "<Cmd>Pick git_commits<CR>", "Commits (all)")
 nmap_leader("fC", '<Cmd>Pick git_commits path="%"<CR>', "Commits (buf)")
 nmap_leader("fd", '<Cmd>Pick diagnostic scope="all"<CR>', "Diagnostic workspace")
@@ -90,6 +89,7 @@ nmap_leader("gc", "<Cmd>Git commit<CR>", "Commit")
 nmap_leader("gC", "<Cmd>Git commit --amend<CR>", "Commit amend")
 nmap_leader("gd", "<Cmd>Git diff<CR>", "Diff")
 nmap_leader("gD", "<Cmd>Git diff -- %<CR>", "Diff buffer")
+nmap_leader("gg", "<Cmd>lua Snacks.lazygit()<CR>", "Open LazyGit")
 nmap_leader("gl", "<Cmd>" .. git_log_cmd .. "<CR>", "Log")
 nmap_leader("gL", "<Cmd>" .. git_log_buf_cmd .. "<CR>", "Log buffer")
 nmap_leader("go", "<Cmd>lua MiniDiff.toggle_overlay()<CR>", "Toggle overlay")
@@ -109,3 +109,5 @@ nmap_leader("lt", "<Cmd>lua vim.lsp.buf.type_definition()<CR>", "Type definition
 
 --[[ Misc. ]]
 nmap("<Esc>", "<CMD>nohlsearch<CR>", "Clear search highlights")
+nmap("[[", "<CMD>lua Snacks.words.jump(vim.v.count1)", "Previous reference")
+nmap("]]", "<CMD>lua Snacks.words.jump(-vim.v.count1)", "Next reference")

@@ -1,6 +1,8 @@
+local add = MiniDeps.add
+
 --[[ Setup `grug-far.nvim` for Find and Replace. ]]
 Config.now_or_later(function()
-	MiniDeps.add("MagicDuck/grug-far.nvim")
+	add("MagicDuck/grug-far.nvim")
 
 	local grug_far = require("grug-far")
 
@@ -16,4 +18,24 @@ Config.now_or_later(function()
 			},
 		})
 	end
+end)
+
+--[[ Setup `snacks.nvim` for some QoL features ]]
+MiniDeps.now(function()
+	add("folke/snacks.nvim")
+
+	require("snacks").setup({
+		bigfile = { enabled = true },
+		image = { enabled = true },
+		quickfile = {},
+		scratch = { enabled = true },
+		scroll = {},
+	})
+
+	Config.new_autocmd("User", {
+		pattern = "MiniFilesActionRename",
+		callback = function(event) Snacks.rename.on_rename_file(event.data.from, event.data.to) end,
+	})
+
+	Snacks.toggle.option("wrap", { name = "Wrap" }):map("<Leader>tw")
 end)
