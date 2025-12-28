@@ -1,6 +1,6 @@
 local add = MiniDeps.add
 
-Config.now_if_args(function()
+Config.now_or_later(function()
 	add({
 		source = "nvim-treesitter/nvim-treesitter",
 		hooks = { post_checkout = function() vim.cmd("TSUpdate") end },

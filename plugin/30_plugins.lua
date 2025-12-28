@@ -1,5 +1,5 @@
 --[[ Setup `grug-far.nvim` for Find and Replace. ]]
-Config.now_if_args(function()
+Config.now_or_later(function()
 	MiniDeps.add("MagicDuck/grug-far.nvim")
 
 	local grug_far = require("grug-far")

@@ -1,6 +1,6 @@
 local add = MiniDeps.add
 
-Config.now_if_args(function()
+Config.now_or_later(function()
 	add("neovim/nvim-lspconfig")
 	add("folke/lazydev.nvim")
 	add("b0o/schemastore.nvim")

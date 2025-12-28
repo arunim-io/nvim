@@ -1,4 +1,4 @@
-local now, later, now_if_args = MiniDeps.now, MiniDeps.later, Config.now_if_args
+local now, later, now_or_later = MiniDeps.now, MiniDeps.later, Config.now_or_later
 
 --[[ colorschemes ]]
 now(function() vim.cmd.colorscheme("minispring") end)
@@ -32,7 +32,7 @@ now(function()
 end)
 
 --[[ Setup `mini.misc` for some small but useful functions. ]]
-now_if_args(function()
+now_or_later(function()
 	require("mini.misc").setup()
 
 	MiniMisc.setup_auto_root()

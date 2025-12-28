@@ -38,4 +38,4 @@ function _G.Config.new_autocmd(event, opts)
 end
 
 --- A helper function to load plugins depending on the case if nvim is started with a file path.
-_G.Config.now_if_args = vim.fn.argc(-1) > 0 and MiniDeps.now or MiniDeps.later
+_G.Config.now_or_later = vim.fn.argc(-1) > 0 and MiniDeps.now or MiniDeps.later
