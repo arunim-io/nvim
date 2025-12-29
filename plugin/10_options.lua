@@ -22,6 +22,7 @@ if vim.fn.exists("syntax_on") ~= 1 then vim.cmd("syntax enable") end
 vim.o.breakindent = true -- Indent wrapped lines to match line start
 vim.o.breakindentopt = "list:-1" -- Add padding for lists (if 'wrap' is set)
 vim.o.colorcolumn = "+1" -- Draw column on the right of maximum width
+vim.o.conceallevel = 2 -- Hide * markup for bold & italic, but not markers with subsitutions
 vim.o.cursorline = true -- Enable current line highlighting
 vim.o.linebreak = true -- Wrap lines at 'breakat' (if 'wrap' is set)
 vim.o.list = true -- Show helpful text indicators
@@ -32,6 +33,7 @@ vim.o.ruler = false -- Don't show cursor coordinates
 vim.o.shortmess = "CFOSWaco" -- Disable some built-in completion messages
 vim.o.showmode = false -- Don't show mode in command line
 vim.o.signcolumn = "yes" -- Always show signcolumn (less flicker)
+vim.o.scrolloff = 4 -- Set lines of context to 4
 vim.o.splitbelow = true -- Horizontal splits will be below
 vim.o.splitkeep = "screen" -- Reduce scroll during window split
 vim.o.splitright = true -- Vertical splits will be to the right
@@ -57,11 +59,14 @@ vim.o.foldtext = "" -- Show text under fold with its highlighting
 
 --[[ Editing ]]
 vim.o.autoindent = true -- Use auto indent
+vim.o.confirm = true -- Confirm to save changes before exiting modified buffer
 vim.o.expandtab = true -- Convert tabs to spaces
+vim.o.formatexpr = "v:lua.require'conform'.formatexpr()" -- use conform.nvim for formatting
 vim.o.formatoptions = "rqnl1j" -- Improve comment editing
 vim.o.ignorecase = true -- Ignore case during search
 vim.o.incsearch = true -- Show search matches while typing
 vim.o.infercase = true -- Infer case in built-in completion
+vim.o.shiftround = true -- Make indents rounded
 vim.o.shiftwidth = 2 -- Use this number of spaces for indentation
 vim.o.smartcase = true -- Respect case if search pattern has upper case
 vim.o.smartindent = true -- Make indenting smart
@@ -80,11 +85,8 @@ vim.o.formatlistpat = [[^\s*[0-9\-\+\*]\+[\.\)]*\s\+]]
 vim.o.complete = ".,w,b,kspell" -- Use less sources
 vim.o.completeopt = "menuone,noselect,fuzzy,nosort" -- Use custom behavior
 
---[[ Autocommands ]]
-_G.Config.new_autocmd("FileType", {
-	desc = "Proper `formatoptions`",
-	command = "setlocal formatoptions-=c formatoptions-=o",
-})
+--[[ Clipboard ]]
+vim.o.clipboard = vim.env.SSH_CONNECTION and "" or "unnamedplus"
 
 --[[ Diagnostics ]]
 MiniDeps.later(function()
@@ -109,3 +111,69 @@ MiniDeps.later(function()
 		update_in_insert = false,
 	})
 end)
+
+--[[ Autocommands ]]
+Config.new_autocmd("FileType", {
+	desc = "Proper `formatoptions`",
+	command = "setlocal formatoptions-=c formatoptions-=o",
+})
+
+Config.new_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
+	desc = "Check if we need to reload the file when it changed",
+	callback = function()
+		if vim.o.buftype ~= "nofile" then vim.cmd.checktime() end
+	end,
+})
+
+Config.new_autocmd("TextYankPost", {
+	desc = "Highlight on yank",
+	callback = function() vim.hl.on_yank() end,
+})
+
+Config.new_autocmd("VimResized", {
+	desc = "resize splits if window got resized",
+	callback = function()
+		local current = vim.fn.tabpagenr()
+		vim.cmd("tabdo wincmd =")
+		vim.cmd("tabnext " .. current)
+	end,
+})
+
+Config.new_autocmd("FileType", {
+	desc = "close some filetypes with <q>",
+	pattern = {
+		"checkhealth",
+		"dbout",
+		"grug-far",
+		"help",
+		"mininotify-history",
+		"qf",
+		"startuptime",
+	},
+	callback = function(args)
+		vim.bo[args.buf].buflisted = false
+
+		vim.schedule(function()
+			vim.keymap.set("n", "q", function()
+				vim.cmd.close()
+				pcall(vim.api.nvim_buf_delete, args.buf, { force = true })
+			end, {
+				buffer = args.buf,
+				silent = true,
+				desc = "Quit buffer",
+			})
+		end)
+	end,
+})
+
+Config.new_autocmd("FileType", {
+	desc = "wrap & check for spell in text filetypes",
+	pattern = { "text", "plaintex", "typst", "gitcommit", "markdown" },
+	command = "setlocal wrap spell",
+})
+
+Config.new_autocmd("FileType", {
+	desc = "Fix conceallevel for json files",
+	pattern = { "json", "jsonc", "json5" },
+	command = "setlocal conceallevel=0",
+})

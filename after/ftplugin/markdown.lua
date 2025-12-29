@@ -1,5 +1,3 @@
-vim.cmd("setlocal spell")
-
 vim.keymap.del("n", "gO", { buffer = 0 })
 
 vim.b.minisurround_config = {
