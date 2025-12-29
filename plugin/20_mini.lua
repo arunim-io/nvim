@@ -202,6 +202,25 @@ later(function()
 	MiniKeymap.map_multistep("i", "<BS>", { "minipairs_bs" })
 end)
 
+--[[ Setup `mini.move` for moving lines ]]
+later(
+	function()
+		require("mini.move").setup({
+			mappings = {
+				left = "<S-Tab>",
+				right = "<Tab>",
+				down = "<M-Down>",
+				up = "<M-Up>",
+
+				line_left = "<S-Tab>",
+				line_right = "<Tab>",
+				line_down = "<M-Down>",
+				line_up = "<M-Up>",
+			},
+		})
+	end
+)
+
 --[[ Setup `mini.operators` for text edit operators ]]
 later(function()
 	require("mini.operators").setup()
