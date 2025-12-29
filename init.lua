@@ -19,23 +19,32 @@ require("mini.deps").setup({
 	path = { package = package_path },
 })
 
---- A config table containing useful helpers for configuring neovim
-_G.Config = {}
+--- A table containing useful helpers for configuring neovim
+_G.anc = {}
 
 --- The path where `mini.nvim` is used.
-_G.Config.mini_path = mini_path
+anc.mini_path = mini_path
 
 --- A custom augroup for grouping custom autocmds.
-_G.Config.augroup = vim.api.nvim_create_augroup("custom-config", { clear = true })
+anc.augroup = vim.api.nvim_create_augroup("custom-config", { clear = true })
 
 --- Helper for creating autocmds
 --- @param event vim.api.keyset.events|vim.api.keyset.events[]
 --- @param opts vim.api.keyset.create_autocmd
-function _G.Config.new_autocmd(event, opts)
-	if opts.group == nil then opts.group = _G.Config.augroup end
+function anc.new_autocmd(event, opts)
+	if opts.group ~= nil then
+		vim.notify(
+			[[
+      You can't set the `group` in this function.
+      If you want to use a custom augroup, then use `nvim.api.nvim_create_autocmd()`.
+      ]],
+			vim.log.levels.WARN
+		)
+	end
+	opts.group = anc.augroup
 
 	vim.api.nvim_create_autocmd(event, opts)
 end
 
 --- A helper function to load plugins depending on the case if nvim is started with a file path.
-_G.Config.now_or_later = vim.fn.argc(-1) > 0 and MiniDeps.now or MiniDeps.later
+_G.anc.now_or_later = vim.fn.argc(0) > 0 and MiniDeps.now or MiniDeps.later

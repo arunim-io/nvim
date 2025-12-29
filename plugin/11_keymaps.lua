@@ -9,7 +9,7 @@ local function nmap_leader(suffix, rhs, desc) map_leader("n", suffix, rhs, desc)
 
 -- Create a global table with information about Leader groups in certain modes.
 -- This is used to provide 'mini.clue' with extra clues.
-_G.Config.leader_group_clues = {
+_G.anc.leader_group_clues = {
 	{ mode = "n", keys = "<Leader>b", desc = "+Buffer" },
 	{ mode = "n", keys = "<Leader>e", desc = "+Explore/Edit" },
 	{ mode = "n", keys = "<Leader>f", desc = "+Find" },
@@ -54,7 +54,7 @@ nmap_leader("es", "<CMD>lua Snacks.scratch.open()<CR>", "Scratch Buffer")
 --[[ Fuzzy Find (`f`) ]]
 nmap_leader("f/", '<Cmd>Pick history scope="/"<CR>', '"/" history')
 nmap_leader("f:", '<Cmd>Pick history scope=":"<CR>', '":" history')
-nmap_leader("f.", "<Cmd>lua Config.search_replace_func()<CR>", "Search & Replace")
+nmap_leader("f.", "<Cmd>lua anc.search_replace_func()<CR>", "Search & Replace")
 nmap_leader("fa", '<Cmd>Pick git_hunks scope="staged"<CR>', "Added hunks (all)")
 nmap_leader("fA", '<Cmd>Pick git_hunks path="%" scope="staged"<CR>', "Added hunks (buf)")
 nmap_leader("fb", "<Cmd>Pick buffers<CR>", "Buffers")
@@ -98,10 +98,10 @@ map_leader({ "n", "x" }, "gs", "<Cmd>lua MiniGit.show_at_cursor()<CR>", "Show at
 --[[ Language (`l`) ]]
 nmap_leader("la", "<Cmd>lua vim.lsp.buf.code_action()<CR>", "Actions")
 nmap_leader("ld", "<Cmd>lua vim.diagnostic.open_float()<CR>", "Diagnostic popup")
-map_leader({ "n", "v", "x" }, "lf", "<Cmd>lua Config.fmt_func()<CR>", "Format buffer/selection")
+map_leader({ "n", "v", "x" }, "lf", "<Cmd>lua anc.fmt_func()<CR>", "Format buffer/selection")
 nmap_leader("li", "<Cmd>lua vim.lsp.buf.implementation()<CR>", "Implementation")
 nmap_leader("lh", "<Cmd>lua vim.lsp.buf.hover()<CR>", "Hover")
-nmap_leader("ll", "<Cmd>lua Config.lint_func()<CR>", "Lint buffer")
+nmap_leader("ll", "<Cmd>lua anc.lint_func()<CR>", "Lint buffer")
 nmap_leader("lr", "<Cmd>lua vim.lsp.buf.rename()<CR>", "Rename")
 nmap_leader("lR", "<Cmd>lua vim.lsp.buf.references()<CR>", "References")
 nmap_leader("ls", "<Cmd>lua vim.lsp.buf.definition()<CR>", "Source definition")

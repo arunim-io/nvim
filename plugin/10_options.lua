@@ -113,24 +113,24 @@ MiniDeps.later(function()
 end)
 
 --[[ Autocommands ]]
-Config.new_autocmd("FileType", {
+anc.new_autocmd("FileType", {
 	desc = "Proper `formatoptions`",
 	command = "setlocal formatoptions-=c formatoptions-=o",
 })
 
-Config.new_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
+anc.new_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
 	desc = "Check if we need to reload the file when it changed",
 	callback = function()
 		if vim.o.buftype ~= "nofile" then vim.cmd.checktime() end
 	end,
 })
 
-Config.new_autocmd("TextYankPost", {
+anc.new_autocmd("TextYankPost", {
 	desc = "Highlight on yank",
 	callback = function() vim.hl.on_yank() end,
 })
 
-Config.new_autocmd("VimResized", {
+anc.new_autocmd("VimResized", {
 	desc = "resize splits if window got resized",
 	callback = function()
 		local current = vim.fn.tabpagenr()
@@ -139,7 +139,7 @@ Config.new_autocmd("VimResized", {
 	end,
 })
 
-Config.new_autocmd("FileType", {
+anc.new_autocmd("FileType", {
 	desc = "close some filetypes with <q>",
 	pattern = {
 		"checkhealth",
@@ -166,13 +166,13 @@ Config.new_autocmd("FileType", {
 	end,
 })
 
-Config.new_autocmd("FileType", {
+anc.new_autocmd("FileType", {
 	desc = "wrap & check for spell in text filetypes",
 	pattern = { "text", "plaintex", "typst", "gitcommit", "markdown" },
 	command = "setlocal wrap spell",
 })
 
-Config.new_autocmd("FileType", {
+anc.new_autocmd("FileType", {
 	desc = "Fix conceallevel for json files",
 	pattern = { "json", "jsonc", "json5" },
 	command = "setlocal conceallevel=0",

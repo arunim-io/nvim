@@ -18,7 +18,7 @@ MiniDeps.later(function()
 		if #linters > 0 then require("lint").try_lint(linters) end
 	end
 
-	_G.Config.lint_func = try_lint
+	_G.anc.lint_func = try_lint
 
-	Config.new_autocmd("BufWritePost", { callback = function() try_lint() end })
+	anc.new_autocmd("BufWritePost", { callback = function() try_lint() end })
 end)

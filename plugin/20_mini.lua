@@ -1,4 +1,4 @@
-local now, later, now_or_later = MiniDeps.now, MiniDeps.later, Config.now_or_later
+local now, later, now_or_later = MiniDeps.now, MiniDeps.later, anc.now_or_later
 
 --[[ colorschemes ]]
 now(function() vim.cmd.colorscheme("minispring") end)
@@ -74,7 +74,7 @@ later(function()
 
 	clue.setup({
 		clues = {
-			Config.leader_group_clues,
+			anc.leader_group_clues,
 			clue.gen_clues.builtin_completion(),
 			clue.gen_clues.g(),
 			clue.gen_clues.marks(),
@@ -131,14 +131,14 @@ later(function()
 		},
 	})
 
-	Config.new_autocmd("LspAttach", {
+	anc.new_autocmd("LspAttach", {
 		desc = "Set 'omnifunc' for code completion",
 		callback = function(args) vim.bo[args.buf].omnifunc = "v:lua.MiniCompletion.completefunc_lsp" end,
 	})
 
 	vim.lsp.config("*", { capabilities = MiniCompletion.get_lsp_capabilities() })
 
-	function _G.Config.cmp_cr_action()
+	function _G.anc.cmp_cr_action()
 		if vim.fn.complete_info()["selected"] ~= -1 then return "\25" end
 
 		return MiniPairs.cr()
@@ -163,7 +163,7 @@ later(function()
 		windows = { preview = true },
 	})
 
-	Config.new_autocmd("User", {
+	anc.new_autocmd("User", {
 		pattern = "MiniFilesExplorerOpen",
 		desc = "Add bookmarks",
 		callback = function() MiniFiles.set_bookmark("w", vim.fn.getcwd, { desc = "Working directory" }) end,
@@ -246,7 +246,7 @@ later(function()
 
 	MiniSnippets.start_lsp_server()
 
-	Config.new_autocmd("User", {
+	anc.new_autocmd("User", {
 		desc = "Stop session immediately after jumping to final tabstop",
 		pattern = "MiniSnippetsSessionJump",
 		callback = function(args)
@@ -254,7 +254,7 @@ later(function()
 		end,
 	})
 
-	Config.new_autocmd("User", {
+	anc.new_autocmd("User", {
 		desc = "Stop all sessions on Normal mode exit",
 		pattern = "MiniSnippetsSessionStart",
 		callback = function()
@@ -274,6 +274,9 @@ end)
 --[[ Setup `mini.splitjoin` for argument splitting/joining ]]
 later(function() require("mini.splitjoin").setup() end)
 
+--[[ Setup `mini.statusline` for a great status bar ]]
+later(function() require("mini.statusline").setup() end)
+
 --[[ Setup `mini.surround` for surround actions ]]
 later(function() require("mini.surround").setup() end)
 
@@ -282,6 +285,3 @@ later(function() require("mini.trailspace").setup() end)
 
 --[[ Setup `mini.visits` to handle filesystem visits ]]
 later(function() require("mini.visits").setup() end)
-
---[[ Setup `mini.statusline` for a great status bar ]]
-later(function() require("mini.statusline").setup() end)

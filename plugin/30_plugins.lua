@@ -1,14 +1,14 @@
 local add = MiniDeps.add
 
 --[[ Setup `grug-far.nvim` for Find and Replace. ]]
-Config.now_or_later(function()
+anc.now_or_later(function()
 	add("MagicDuck/grug-far.nvim")
 
 	local grug_far = require("grug-far")
 
 	grug_far.setup()
 
-	function _G.Config.search_replace_func()
+	function _G.anc.search_replace_func()
 		local ext = vim.bo.buftype == "" and vim.fn.expand("%:e")
 
 		grug_far.open({
@@ -27,15 +27,18 @@ MiniDeps.now(function()
 	require("snacks").setup({
 		bigfile = { enabled = true },
 		image = { enabled = true },
+		input = {},
 		quickfile = {},
 		scratch = { enabled = true },
 		scroll = {},
 	})
 
-	Config.new_autocmd("User", {
+	anc.new_autocmd("User", {
 		pattern = "MiniFilesActionRename",
 		callback = function(event) Snacks.rename.on_rename_file(event.data.from, event.data.to) end,
 	})
 
 	Snacks.toggle.option("wrap", { name = "Wrap" }):map("<Leader>tw")
 end)
+
+-- TODO: Setup Neogen, refactoring.nvim, a project config loader, chezmoi.nvim

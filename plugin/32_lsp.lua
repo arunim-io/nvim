@@ -1,6 +1,6 @@
 local add = MiniDeps.add
 
-Config.now_or_later(function()
+anc.now_or_later(function()
 	add("neovim/nvim-lspconfig")
 	add("folke/lazydev.nvim")
 	add("b0o/schemastore.nvim")
@@ -10,7 +10,7 @@ Config.now_or_later(function()
 	require("lazydev").setup({
 		library = {
 			{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
-			Config.mini_path,
+			anc.mini_path,
 		},
 	})
 end)
