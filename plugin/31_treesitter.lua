@@ -14,8 +14,28 @@ anc.now_or_later(function()
 	add("m-demare/hlargs.nvim")
 
 	local ts = require("nvim-treesitter")
+
 	--- @type string[]
-	anc.required_ts_parsers = { "lua", "vimdoc", "markdown" }
+	anc.required_ts_parsers = {
+		"astro",
+		"css",
+		"dockerfile",
+		"go",
+		"html",
+		"json",
+		"json5",
+		"lua",
+		"markdown",
+		"nu",
+		"python",
+		"rust",
+		"sql",
+		"templ",
+		"toml",
+		"vimdoc",
+		"yaml",
+		"zig",
+	}
 
 	local parsers_to_install = vim.tbl_filter(
 		function(lang) return #vim.api.nvim_get_runtime_file("parser/" .. lang .. ".*", false) == 0 end,

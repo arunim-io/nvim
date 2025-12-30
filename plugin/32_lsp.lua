@@ -5,7 +5,30 @@ anc.now_or_later(function()
 	add("folke/lazydev.nvim")
 	add("b0o/schemastore.nvim")
 
-	vim.lsp.enable({ "lua_ls", "jsonls", "yamlls" })
+	vim.lsp.enable({
+		"astro",
+		"basedpyright",
+		"biome",
+		"cssls",
+		"docker_compose_language_service",
+		"docker_language_server",
+		"dockerls",
+		"emmet_language_server",
+		"eslint",
+		"gopls",
+		"html",
+		"jsonls",
+		"lua_ls",
+		"nushell",
+		"ruff",
+		"rust_analyzer",
+		"sqruff",
+		"tailwindcss",
+		"taplo",
+		"templ",
+		"yamlls",
+		"zls",
+	})
 
 	require("lazydev").setup({
 		library = {

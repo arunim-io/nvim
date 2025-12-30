@@ -41,4 +41,4 @@ MiniDeps.now(function()
 	Snacks.toggle.option("wrap", { name = "Wrap" }):map("<Leader>tw")
 end)
 
--- TODO: Setup Neogen, refactoring.nvim, a project config loader, chezmoi.nvim
+-- TODO: Setup Neogen, refactoring.nvim, a project config loader, chezmoi.nvim, otter.nvim
