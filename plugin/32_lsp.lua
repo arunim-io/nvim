@@ -20,6 +20,7 @@ anc.now_or_later(function()
 		"jsonls",
 		"lua_ls",
 		"nushell",
+		"qmlls",
 		"ruff",
 		"rust_analyzer",
 		"sqruff",
