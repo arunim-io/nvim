@@ -2,7 +2,6 @@
 return {
 	settings = {
 		bashIde = {
-			enableSourceErrorDiagnostics = true,
 			shfmt = {
 				caseIndent = true,
 				simplifyCode = true,
