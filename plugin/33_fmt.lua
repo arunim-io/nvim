@@ -13,6 +13,7 @@ MiniDeps.later(function()
 			["*"] = { "trim_newlines", "trim_whitespace" },
 			go = { "golangci-lint", lsp_format = "last" },
 			lua = { "stylua" },
+			toml = { "taplo" },
 		},
 	})
 

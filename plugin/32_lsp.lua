@@ -8,6 +8,7 @@ anc.now_or_later(function()
 	vim.lsp.enable({
 		"astro",
 		"basedpyright",
+		"bashls",
 		"biome",
 		"cssls",
 		"docker_compose_language_service",
