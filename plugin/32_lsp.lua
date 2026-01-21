@@ -19,6 +19,7 @@ anc.now_or_later(function()
 		"gopls",
 		"html",
 		"jsonls",
+		"kdl",
 		"lua_ls",
 		"nushell",
 		"qmlls",

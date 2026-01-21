@@ -32,6 +32,8 @@ go = "latest"
 shfmt = "latest"
 shellcheck = "latest"
 "npm:bash-language-server" = "latest"
+"cargo:kdlfmt" = "latest"
+"cargo:kdl-lsp" = "latest"
 
 [settings.npm]
 bun = true
