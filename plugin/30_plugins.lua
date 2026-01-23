@@ -41,4 +41,10 @@ MiniDeps.now(function()
 	Snacks.toggle.option("wrap", { name = "Wrap" }):map("<Leader>tw")
 end)
 
+MiniDeps.later(function()
+	add("chomosuke/typst-preview.nvim")
+
+	require("typst-preview").setup({})
+end)
+
 -- TODO: Setup Neogen, refactoring.nvim, a project config loader, chezmoi.nvim, otter.nvim

@@ -34,6 +34,8 @@ shellcheck = "latest"
 "npm:bash-language-server" = "latest"
 "cargo:kdlfmt" = "latest"
 "cargo:kdl-lsp" = "latest"
+tinymist = "latest"
+typst = "latest"
 
 [settings.npm]
 bun = true

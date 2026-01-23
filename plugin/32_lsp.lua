@@ -29,6 +29,7 @@ anc.now_or_later(function()
 		"tailwindcss",
 		"taplo",
 		"templ",
+		"typst",
 		"yamlls",
 		"zls",
 	})
