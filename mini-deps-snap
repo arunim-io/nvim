@@ -1,16 +1,17 @@
 return {
   ["conform.nvim"] = "c2526f1cde528a66e086ab1668e996d162c75f4f",
-  ["friendly-snippets"] = "572f5660cf05f8cd8834e096d7b4c921ba18e175",
+  ["friendly-snippets"] = "6cd7280adead7f586db6fccbd15d2cac7e2188b9",
   ["grug-far.nvim"] = "1f7a722a9b9f0206a345377c13e62542f484398a",
   ["hlargs.nvim"] = "0b29317c944fb1f76503ce4540d6dceffbb5ccd2",
   ["lazydev.nvim"] = "5231c62aa83c2f8dc8e7ba957aa77098cda1257d",
-  ["mini.nvim"] = "c163117900c17d4abf30bc09452a261c8536060c",
+  ["mini.nvim"] = "9b935c218ddba02e5dc75c94f90143bce1f7c646",
   ["nvim-lint"] = "ca6ea12daf0a4d92dc24c5c9ae22a1f0418ade37",
   ["nvim-lspconfig"] = "419b082102fa813739588dd82e19a8b6b2442855",
-  ["nvim-treesitter"] = "ec034813775d7e2974c7551c8c34499a828963f8",
-  ["nvim-treesitter-textobjects"] = "4d55f63252e04c5212daed958e4e940915ff16ce",
+  ["nvim-treesitter"] = "275b9fe801d56d5fea6d34f5bfea8bb24887b805",
+  ["nvim-treesitter-textobjects"] = "52bda74e087034408e2d563cb4499c1601038f9d",
   ["nvim-ts-autotag"] = "db15f2e0df2f5db916e511e3fffb682ef2f6354f",
   ["nvim-ts-context-commentstring"] = "1b212c2eee76d787bbea6aa5e92a2b534e7b4f8f",
-  ["schemastore.nvim"] = "a0375eb6f7f944723162ef41c200ac6b364f53ac",
-  ["snacks.nvim"] = "fe7cfe9800a182274d0f868a74b7263b8c0c020b"
+  ["schemastore.nvim"] = "083602d8fedd7230bd6f0b164b7c4f9d1ff3a9c3",
+  ["snacks.nvim"] = "fe7cfe9800a182274d0f868a74b7263b8c0c020b",
+  ["typst-preview.nvim"] = "bf5d5eaf23bbfcca9f98a24ed29bd084abf89bf2"
 }
