@@ -79,34 +79,30 @@ later(function()
 			clue.gen_clues.g(),
 			clue.gen_clues.marks(),
 			clue.gen_clues.registers(),
+			clue.gen_clues.square_brackets(),
 			clue.gen_clues.windows({ submode_resize = true }),
 			clue.gen_clues.z(),
 		},
 		triggers = {
-			{ mode = "n", keys = "<Leader>" }, -- Leader triggers
-			{ mode = "x", keys = "<Leader>" },
+			{ mode = { "n", "x" }, keys = "<Leader>" }, -- Leader triggers
 			{ mode = "n", keys = "\\" }, -- mini.basics
-			{ mode = "n", keys = "[" }, -- mini.bracketed
-			{ mode = "n", keys = "]" },
-			{ mode = "x", keys = "[" },
-			{ mode = "x", keys = "]" },
+			{ mode = { "n", "x" }, keys = "[" }, -- mini.bracketed
+			{ mode = { "n", "x" }, keys = "]" },
 			{ mode = "i", keys = "<C-x>" }, -- Built-in completion
-			{ mode = "n", keys = "g" }, -- `g` key
-			{ mode = "x", keys = "g" },
-			{ mode = "n", keys = "'" }, -- Marks
-			{ mode = "n", keys = "`" },
-			{ mode = "x", keys = "'" },
-			{ mode = "x", keys = "`" },
-			{ mode = "n", keys = '"' }, -- Registers
-			{ mode = "x", keys = '"' },
-			{ mode = "i", keys = "<C-r>" },
-			{ mode = "c", keys = "<C-r>" },
+			{ mode = { "n", "x" }, keys = "g" }, -- `g` key
+			{ mode = { "n", "x" }, keys = "'" }, -- Marks
+			{ mode = { "n", "x" }, keys = "`" },
+			{ mode = { "n", "x" }, keys = '"' }, -- Registers
+			{ mode = { "i", "c" }, keys = "<C-r>" },
 			{ mode = "n", keys = "<C-w>" }, -- Window commands
-			{ mode = "n", keys = "z" }, -- `z` key
-			{ mode = "x", keys = "z" },
+			{ mode = { "n", "x" }, keys = "s" }, -- `s` key (mini.surround, etc.)
+			{ mode = { "n", "x" }, keys = "z" }, -- `z` key
 		},
 	})
 end)
+
+--[[ Setup `mini.cmdline` for enchancing neovim's commandline ]]
+later(function() require("mini.cmdline").setup() end)
 
 --[[ Setup `mini.comment` for commenting code ]]
 later(function()
@@ -118,7 +114,7 @@ later(function()
 end)
 
 --[[ Setup `mini.completion` for code completion & signature help ]]
-later(function()
+now_or_later(function()
 	require("mini.completion").setup({
 		lsp_completion = {
 			source_func = "omnifunc",

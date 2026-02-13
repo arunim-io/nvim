@@ -48,7 +48,13 @@ nmap_leader("eq", function()
 		if vim.fn.getwininfo(win_id)[1].quickfix == 1 then return vim.cmd("cclose") end
 	end
 	vim.cmd("copen")
-end, "Quickfix (Toggle)")
+	vim.cmd(vim.fn.getqflist({ winid = true }).winid ~= 0 and "cclose" or "copen")
+end, "Quickfix list")
+nmap_leader(
+	"eQ",
+	function() vim.cmd(vim.fn.getloclist(0, { winid = true }).winid ~= 0 and "lclose" or "lopen") end,
+	"Location list"
+)
 nmap_leader("es", "<CMD>lua Snacks.scratch.open()<CR>", "Scratch Buffer")
 
 --[[ Fuzzy Find (`f`) ]]

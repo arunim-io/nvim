@@ -2,7 +2,7 @@ MiniDeps.later(function()
 	MiniDeps.add("stevearc/conform.nvim")
 
 	require("conform").setup({
-		default_format_opts = { lsp_format = "first", timeout_ms = 3000 },
+		default_format_opts = { lsp_format = "fallback", timeout_ms = 3000 },
 		format_on_save = { timeout_ms = 500 },
 		formatters = {
 			injected = {
