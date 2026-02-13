@@ -16,6 +16,7 @@ ANC.leader_group_clues = {
 	{ mode = "n", keys = "<Leader>g", desc = "+Git" },
 	{ mode = "n", keys = "<Leader>l", desc = "+Language" },
 	{ mode = "n", keys = "<Leader>t", desc = "+Toggles" },
+	{ mode = "n", keys = "<Leader>v", desc = "+Visits" },
 
 	{ mode = "x", keys = "<Leader>g", desc = "+Git" },
 	{ mode = "x", keys = "<Leader>l", desc = "+Language" },
@@ -60,7 +61,7 @@ nmap_leader("es", "<CMD>lua Snacks.scratch.open()<CR>", "Scratch Buffer")
 --[[ Fuzzy Find (`f`) ]]
 nmap_leader("f/", '<Cmd>Pick history scope="/"<CR>', '"/" history')
 nmap_leader("f:", '<Cmd>Pick history scope=":"<CR>', '":" history')
-nmap_leader("f.", "<Cmd>lua anc.search_replace_func()<CR>", "Search & Replace")
+nmap_leader("f.", "<Cmd>lua ANC.search_replace_func()<CR>", "Search & Replace")
 nmap_leader("fa", '<Cmd>Pick git_hunks scope="staged"<CR>', "Added hunks (all)")
 nmap_leader("fA", '<Cmd>Pick git_hunks path="%" scope="staged"<CR>', "Added hunks (buf)")
 nmap_leader("fb", "<Cmd>Pick buffers<CR>", "Buffers")
@@ -104,14 +105,31 @@ map_leader({ "n", "x" }, "gs", "<Cmd>lua MiniGit.show_at_cursor()<CR>", "Show at
 --[[ Language (`l`) ]]
 nmap_leader("la", "<Cmd>lua vim.lsp.buf.code_action()<CR>", "Actions")
 nmap_leader("ld", "<Cmd>lua vim.diagnostic.open_float()<CR>", "Diagnostic popup")
-map_leader({ "n", "v", "x" }, "lf", "<Cmd>lua anc.fmt_func()<CR>", "Format buffer/selection")
+map_leader({ "n", "v", "x" }, "lf", "<Cmd>lua ANC.fmt_func()<CR>", "Format buffer/selection")
 nmap_leader("li", "<Cmd>lua vim.lsp.buf.implementation()<CR>", "Implementation")
 nmap_leader("lh", "<Cmd>lua vim.lsp.buf.hover()<CR>", "Hover")
-nmap_leader("ll", "<Cmd>lua anc.lint_func()<CR>", "Lint buffer")
+nmap_leader("ll", "<Cmd>lua ANC.lint_func()<CR>", "Lint buffer")
 nmap_leader("lr", "<Cmd>lua vim.lsp.buf.rename()<CR>", "Rename")
 nmap_leader("lR", "<Cmd>lua vim.lsp.buf.references()<CR>", "References")
 nmap_leader("ls", "<Cmd>lua vim.lsp.buf.definition()<CR>", "Source definition")
 nmap_leader("lt", "<Cmd>lua vim.lsp.buf.type_definition()<CR>", "Type definition")
+
+--[[ Visits (`v`) ]]
+local make_pick_core = function(cwd, desc)
+	return function()
+		MiniExtra.pickers.visit_paths(
+			{ cwd = cwd, filter = "core", sort = MiniVisits.gen_sort.default({ recency_weight = 1 }) },
+			{ source = { name = desc } }
+		)
+	end
+end
+
+nmap_leader("vc", make_pick_core("", "Core visits (all)"), "Core visits (all)")
+nmap_leader("vC", make_pick_core(nil, "Core visits (cwd)"), "Core visits (cwd)")
+nmap_leader("vv", '<Cmd>lua MiniVisits.add_label("core")<CR>', 'Add "core" label')
+nmap_leader("vV", '<Cmd>lua MiniVisits.remove_label("core")<CR>', 'Remove "core" label')
+nmap_leader("vl", "<Cmd>lua MiniVisits.add_label()<CR>", "Add label")
+nmap_leader("vL", "<Cmd>lua MiniVisits.remove_label()<CR>", "Remove label")
 
 --[[ Misc. ]]
 nmap("<Esc>", "<CMD>nohlsearch<CR>", "Clear search highlights")
