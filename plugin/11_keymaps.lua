@@ -9,7 +9,7 @@ local function nmap_leader(suffix, rhs, desc) map_leader("n", suffix, rhs, desc)
 
 -- Create a global table with information about Leader groups in certain modes.
 -- This is used to provide 'mini.clue' with extra clues.
-_G.anc.leader_group_clues = {
+ANC.leader_group_clues = {
 	{ mode = "n", keys = "<Leader>b", desc = "+Buffer" },
 	{ mode = "n", keys = "<Leader>e", desc = "+Explore/Edit" },
 	{ mode = "n", keys = "<Leader>f", desc = "+Find" },

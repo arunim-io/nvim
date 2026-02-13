@@ -18,7 +18,7 @@ MiniDeps.later(function()
 		},
 	})
 
-	function anc.fmt_func()
+	function ANC.fmt_func()
 		require("conform").format({ async = true }, function(err)
 			if err then return end
 

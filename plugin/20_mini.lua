@@ -1,4 +1,4 @@
-local now, later, now_or_later = MiniDeps.now, MiniDeps.later, anc.now_or_later
+local now, later, now_or_later = MiniDeps.now, MiniDeps.later, ANC.now_or_later
 
 --[[ colorschemes ]]
 now(function() vim.cmd.colorscheme("minispring") end)
@@ -74,7 +74,7 @@ later(function()
 
 	clue.setup({
 		clues = {
-			anc.leader_group_clues,
+			ANC.leader_group_clues,
 			clue.gen_clues.builtin_completion(),
 			clue.gen_clues.g(),
 			clue.gen_clues.marks(),
@@ -131,14 +131,14 @@ later(function()
 		},
 	})
 
-	anc.new_autocmd("LspAttach", {
+	ANC.new_autocmd("LspAttach", {
 		desc = "Set 'omnifunc' for code completion",
 		callback = function(args) vim.bo[args.buf].omnifunc = "v:lua.MiniCompletion.completefunc_lsp" end,
 	})
 
 	vim.lsp.config("*", { capabilities = MiniCompletion.get_lsp_capabilities() })
 
-	function _G.anc.cmp_cr_action()
+	function ANC.cmp_cr_action()
 		if vim.fn.complete_info()["selected"] ~= -1 then return "\25" end
 
 		return MiniPairs.cr()
@@ -163,7 +163,7 @@ later(function()
 		windows = { preview = true },
 	})
 
-	anc.new_autocmd("User", {
+	ANC.new_autocmd("User", {
 		pattern = "MiniFilesExplorerOpen",
 		desc = "Add bookmarks",
 		callback = function() MiniFiles.set_bookmark("w", vim.fn.getcwd, { desc = "Working directory" }) end,
@@ -265,7 +265,7 @@ later(function()
 
 	MiniSnippets.start_lsp_server()
 
-	anc.new_autocmd("User", {
+	ANC.new_autocmd("User", {
 		desc = "Stop session immediately after jumping to final tabstop",
 		pattern = "MiniSnippetsSessionJump",
 		callback = function(args)
@@ -273,7 +273,7 @@ later(function()
 		end,
 	})
 
-	anc.new_autocmd("User", {
+	ANC.new_autocmd("User", {
 		desc = "Stop all sessions on Normal mode exit",
 		pattern = "MiniSnippetsSessionStart",
 		callback = function()

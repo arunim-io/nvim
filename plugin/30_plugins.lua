@@ -1,14 +1,14 @@
 local add = MiniDeps.add
 
 --[[ Setup `grug-far.nvim` for Find and Replace. ]]
-anc.now_or_later(function()
+ANC.now_or_later(function()
 	add("MagicDuck/grug-far.nvim")
 
 	local grug_far = require("grug-far")
 
 	grug_far.setup()
 
-	function _G.anc.search_replace_func()
+	function ANC.search_replace_func()
 		local ext = vim.bo.buftype == "" and vim.fn.expand("%:e")
 
 		grug_far.open({
@@ -33,7 +33,7 @@ MiniDeps.now(function()
 		scroll = {},
 	})
 
-	anc.new_autocmd("User", {
+	ANC.new_autocmd("User", {
 		pattern = "MiniFilesActionRename",
 		callback = function(event) Snacks.rename.on_rename_file(event.data.from, event.data.to) end,
 	})
