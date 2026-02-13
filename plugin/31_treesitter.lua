@@ -1,6 +1,6 @@
-local add = MiniDeps.add
+local add, now_or_later = MiniDeps.add, ANC.now_or_later
 
-ANC.now_or_later(function()
+now_or_later(function()
 	add({
 		source = "nvim-treesitter/nvim-treesitter",
 		hooks = { post_checkout = function() vim.cmd("TSUpdate") end },
@@ -68,19 +68,38 @@ ANC.now_or_later(function()
 	vim.wo[0][0].foldmethod = "expr"
 
 	vim.opt.updatetime = 100
-	require("ts_context_commentstring").setup({
-		enable_autocmd = package.loaded["mini.comment"],
-	})
+end)
 
+now_or_later(function()
+	require("vim.treesitter.query").add_predicate("is-mise?", function(_, _, bufnr, _)
+		local filepath = vim.api.nvim_buf_get_name(tonumber(bufnr) or 0)
+		local filename = vim.fn.fnamemodify(filepath, ":t")
+		return string.match(filename, ".*mise.*%.toml$") ~= nil
+	end, { force = true, all = false })
+end)
+
+now_or_later(
+	function()
+		require("ts_context_commentstring").setup({
+			enable_autocmd = package.loaded["mini.comment"],
+		})
+	end
+)
+
+now_or_later(function()
 	require("nvim-ts-autotag").setup({
 		opts = { enable_close_on_slash = true },
 	})
-
-	require("hlargs").setup({
-		paint_catch_blocks = {
-			declarations = true,
-			usages = true,
-		},
-		extras = { named_parameters = true },
-	})
 end)
+
+now_or_later(
+	function()
+		require("hlargs").setup({
+			paint_catch_blocks = {
+				declarations = true,
+				usages = true,
+			},
+			extras = { named_parameters = true },
+		})
+	end
+)
