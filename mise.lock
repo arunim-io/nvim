@@ -7,11 +7,11 @@ version = "6.5.0"
 backend = "cargo:kdl-lsp"
 
 [[tools."cargo:kdlfmt"]]
-version = "0.1.5"
+version = "0.1.6"
 backend = "cargo:kdlfmt"
 
 [[tools."cargo:selene"]]
-version = "0.29.0"
+version = "0.30.0"
 backend = "cargo:selene"
 
 [[tools.go]]
@@ -19,7 +19,7 @@ version = "1.26.0"
 backend = "core:go"
 
 [[tools."go:github.com/a-h/templ/cmd/templ"]]
-version = "0.3.977"
+version = "0.3.1001"
 backend = "go:github.com/a-h/templ/cmd/templ"
 
 [[tools."go:github.com/docker/docker-language-server/cmd/docker-language-server"]]
@@ -31,12 +31,18 @@ version = "0.21.1"
 backend = "go:golang.org/x/tools/gopls"
 
 [[tools.golangci-lint]]
-version = "2.9.0"
+version = "2.10.1"
 backend = "aqua:golangci/golangci-lint"
+"platforms.linux-x64" = { checksum = "sha256:dfa775874cf0561b404a02a8f4481fc69b28091da95aa697259820d429b09c99", url = "https://github.com/golangci/golangci-lint/releases/download/v2.10.1/golangci-lint-2.10.1-linux-amd64.tar.gz"}
 
 [[tools.golangci-lint-langserver]]
-version = "0.0.11"
+version = "0.0.12"
 backend = "aqua:nametake/golangci-lint-langserver"
+"platforms.linux-arm64" = { checksum = "sha256:4b1b582213978803bb215a36c88c2fbbd14e26bf15e0377c74f04dbe424c1063", url = "https://github.com/nametake/golangci-lint-langserver/releases/download/v0.0.12/golangci-lint-langserver_Linux_arm64.tar.gz"}
+"platforms.linux-x64" = { checksum = "sha256:7c4a200f34af3de4188a792ba676994ce5fdb181dd4731e10cd3cc501e722b28", url = "https://github.com/nametake/golangci-lint-langserver/releases/download/v0.0.12/golangci-lint-langserver_Linux_x86_64.tar.gz"}
+"platforms.macos-arm64" = { checksum = "sha256:e630712320bcc1c75a1584f2b46a5c7ee7b15e603bb180b8b42c2932302d2a95", url = "https://github.com/nametake/golangci-lint-langserver/releases/download/v0.0.12/golangci-lint-langserver_Darwin_arm64.tar.gz"}
+"platforms.macos-x64" = { checksum = "sha256:3ba8589115bb1b0d5df70f8139d774120830bf9dc9f716b60f5e0fb3269c504f", url = "https://github.com/nametake/golangci-lint-langserver/releases/download/v0.0.12/golangci-lint-langserver_Darwin_x86_64.tar.gz"}
+"platforms.windows-x64" = { checksum = "sha256:39b900b6b18bdc0328a9a58539af2bfc0bdaad9c2f217c1afa7921717d11e4d6", url = "https://github.com/nametake/golangci-lint-langserver/releases/download/v0.0.12/golangci-lint-langserver_Windows_x86_64.zip"}
 
 [[tools.lua-language-server]]
 version = "3.17.1"
@@ -59,7 +65,7 @@ version = "0.14.29"
 backend = "npm:@tailwindcss/language-server"
 
 [[tools."npm:@typescript/native-preview"]]
-version = "7.0.0-dev.20260213.1"
+version = "7.0.0-dev.20260301.1"
 backend = "npm:@typescript/native-preview"
 
 [[tools."npm:bash-language-server"]]
@@ -87,11 +93,11 @@ version = "4.10.0"
 backend = "npm:vscode-langservers-extracted"
 
 [[tools."npm:yaml-language-server"]]
-version = "1.19.2"
+version = "1.21.0"
 backend = "npm:yaml-language-server"
 
 [[tools."pipx:basedpyright"]]
-version = "1.38.0"
+version = "1.38.2"
 backend = "pipx:basedpyright"
 
 [[tools.ripgrep]]
@@ -99,8 +105,13 @@ version = "15.1.0"
 backend = "aqua:BurntSushi/ripgrep"
 
 [[tools.ruff]]
-version = "0.15.0"
+version = "0.15.4"
 backend = "aqua:astral-sh/ruff"
+"platforms.linux-arm64" = { checksum = "sha256:f34909dacbebaf3773ececc0d321e0fa0599729e9b4570f1dbcec91b4c435913", url = "https://github.com/astral-sh/ruff/releases/download/0.15.4/ruff-aarch64-unknown-linux-musl.tar.gz"}
+"platforms.linux-x64" = { checksum = "sha256:e39111195ef761569773562209bbb7f943c834c961f2c1ed28e2126a15c4cd35", url = "https://github.com/astral-sh/ruff/releases/download/0.15.4/ruff-x86_64-unknown-linux-musl.tar.gz"}
+"platforms.macos-arm64" = { checksum = "sha256:2d63cc9fd12c9cc3b524563bbeb50470cf3f68f3194002228a417a53a2a56164", url = "https://github.com/astral-sh/ruff/releases/download/0.15.4/ruff-aarch64-apple-darwin.tar.gz"}
+"platforms.macos-x64" = { checksum = "sha256:f40e16784c867b60850fbe96a2cccd123589c90d6db71ad8ade62efdeabccc84", url = "https://github.com/astral-sh/ruff/releases/download/0.15.4/ruff-x86_64-apple-darwin.tar.gz"}
+"platforms.windows-x64" = { checksum = "sha256:ca4db783ce3a1b942e67aa4002ca9f3c6ff1b150a85cb4ca1345c4299ad12a0f", url = "https://github.com/astral-sh/ruff/releases/download/0.15.4/ruff-x86_64-pc-windows-msvc.zip"}
 
 [[tools.shellcheck]]
 version = "0.11.0"
@@ -123,8 +134,13 @@ version = "0.14.10"
 backend = "aqua:Myriad-Dreamin/tinymist"
 
 [[tools.tree-sitter]]
-version = "0.26.5"
+version = "0.26.6"
 backend = "aqua:tree-sitter/tree-sitter"
+"platforms.linux-arm64" = { checksum = "sha256:7beef62e5d2683085b87188be83b1a73c59229110a125c5f12d922ae57789a7a", url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.6/tree-sitter-linux-arm64.gz"}
+"platforms.linux-x64" = { checksum = "sha256:2b9595064a7d9dbe208c6f09f521d73061f8039e4ffcc2fd08979d249aeabb54", url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.6/tree-sitter-linux-x64.gz"}
+"platforms.macos-arm64" = { checksum = "sha256:8f2a04aa0c787041d4fdf82d4146a9e141df57fd3260cb6ab6e799ad398ce589", url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.6/tree-sitter-macos-arm64.gz"}
+"platforms.macos-x64" = { checksum = "sha256:5dd5116ee7367e1fd3d117606df6187b04c5de1ebac200650c5a96c6a47a71f0", url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.6/tree-sitter-macos-x64.gz"}
+"platforms.windows-x64" = { checksum = "sha256:76d52345b1ef0d1f1b3f4357b42f39bc521c0bf7e87c9e18664bbb71da1577b8", url = "https://github.com/tree-sitter/tree-sitter/releases/download/v0.26.6/tree-sitter-windows-x64.gz"}
 
 [[tools.typst]]
 version = "0.14.2"
