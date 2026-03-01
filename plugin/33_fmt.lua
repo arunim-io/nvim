@@ -15,6 +15,7 @@ MiniDeps.later(function()
 			-- kdl = { "kdlfmt" },
 			lua = { "stylua" },
 			toml = { "taplo" },
+			zig = { "zigfmt" },
 		},
 	})
 
