@@ -9,7 +9,7 @@ now_or_later(function()
 		source = "nvim-treesitter/nvim-treesitter-textobjects",
 		checkout = "main",
 	})
-	add("JoosepAlviste/nvim-ts-context-commentstring")
+	-- add("JoosepAlviste/nvim-ts-context-commentstring")
 	add("windwp/nvim-ts-autotag")
 	add("m-demare/hlargs.nvim")
 
@@ -78,13 +78,13 @@ now_or_later(function()
 	end, { force = true, all = false })
 end)
 
-now_or_later(
-	function()
-		require("ts_context_commentstring").setup({
-			enable_autocmd = package.loaded["mini.comment"],
-		})
-	end
-)
+-- now_or_later(
+-- 	function()
+-- 		require("ts_context_commentstring").setup({
+-- 			enable_autocmd = package.loaded["mini.comment"],
+-- 		})
+-- 	end
+-- )
 
 now_or_later(function()
 	require("nvim-ts-autotag").setup({
