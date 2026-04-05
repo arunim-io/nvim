@@ -14,6 +14,7 @@ MiniDeps.later(function()
 			go = { "golangci-lint", lsp_format = "last" },
 			-- kdl = { "kdlfmt" },
 			lua = { "stylua" },
+			python = { "ruff_format", "ruff_organize_imports" },
 			toml = { "taplo" },
 			zig = { "zigfmt" },
 		},

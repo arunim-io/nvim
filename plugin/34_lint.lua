@@ -6,6 +6,7 @@ MiniDeps.later(function()
 	lint.linters_by_ft = {
 		go = { "golangcilint" },
 		lua = { "selene" },
+		python = { "mypy" },
 	}
 
 	local function try_lint()
