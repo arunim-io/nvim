@@ -5,6 +5,7 @@ MiniDeps.later(function()
 
 	lint.linters_by_ft = {
 		go = { "golangcilint" },
+		htmldjango = { "djlint" },
 		lua = { "selene" },
 		python = { "mypy" },
 	}

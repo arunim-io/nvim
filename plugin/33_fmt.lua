@@ -12,8 +12,9 @@ MiniDeps.later(function()
 		formatters_by_ft = {
 			["*"] = { "trim_newlines", "trim_whitespace" },
 			go = { "golangci-lint", lsp_format = "last" },
+			htmldjango = { "djlint" },
 			-- kdl = { "kdlfmt" },
-			lua = { "stylua" },
+			lua = { "stylua", lsp_format = "never" },
 		},
 	})
 

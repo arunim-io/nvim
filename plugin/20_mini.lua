@@ -236,6 +236,7 @@ later(function()
 	MiniDeps.add("rafamadriz/friendly-snippets")
 
 	local snippets = require("mini.snippets")
+	local gen_loader = snippets.gen_loader
 	local latex_patterns = { "latex/**/*.json", "**/latex.json" }
 
 	snippets.setup({
@@ -248,12 +249,14 @@ later(function()
 			stop = "<ESC>",
 		},
 		snippets = {
-			snippets.gen_loader.from_file(vim.fn.stdpath("config") .. "/snippets/global.json"),
-			snippets.gen_loader.from_lang({
+			gen_loader.from_file(vim.fn.stdpath("config") .. "/snippets/global.json"),
+			gen_loader.from_lang({
 				lang_patterns = {
+					htmldjango = { "html.json", "frameworks/djangohtml.json" },
 					markdown_inline = { "markdown.json" },
-					tex = latex_patterns,
 					plaintex = latex_patterns,
+					python = { "python.json", "frameworks/django/**/*.json" },
+					tex = latex_patterns,
 				},
 			}),
 		},

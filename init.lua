@@ -22,6 +22,9 @@ require("mini.deps").setup({
 --- A table containing useful helpers for configuring neovim
 ANC = {}
 
+--- The path where packages are stored.
+ANC.package_path = vim.fs.joinpath(package_path, "/pack/deps/opt")
+
 --- The path where `mini.nvim` is used.
 ANC.mini_path = mini_path
 
