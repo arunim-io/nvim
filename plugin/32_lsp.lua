@@ -19,6 +19,7 @@ ANC.now_or_later(function()
 		"eslint",
 		"gopls",
 		"html",
+		"jdtls",
 		"jsonls",
 		"kdl",
 		"lua_ls",
