@@ -31,7 +31,7 @@ ANC.now_or_later(function()
 		"tailwindcss",
 		"taplo",
 		"templ",
-		"typst",
+		"termux-language-server",
 		"yamlls",
 		"zls",
 	})

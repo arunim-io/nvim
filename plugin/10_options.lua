@@ -168,7 +168,7 @@ ANC.new_autocmd("FileType", {
 
 ANC.new_autocmd("FileType", {
 	desc = "wrap & check for spell in text filetypes",
-	pattern = { "text", "plaintex", "typst", "gitcommit", "markdown" },
+	pattern = { "text", "plaintex", "gitcommit", "markdown" },
 	command = "setlocal wrap spell",
 })
 

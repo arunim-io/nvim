@@ -41,12 +41,6 @@ MiniDeps.now(function()
 	Snacks.toggle.option("wrap", { name = "Wrap" }):map("<Leader>tw")
 end)
 
-MiniDeps.later(function()
-	add("chomosuke/typst-preview.nvim")
-
-	require("typst-preview").setup()
-end)
-
 --[[ Setup `nvim-jdtls` for Java ]]
 MiniDeps.later(function() add("mfussenegger/nvim-jdtls") end)
 
