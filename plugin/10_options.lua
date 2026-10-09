@@ -127,7 +127,7 @@ ANC.new_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
 
 ANC.new_autocmd("TextYankPost", {
 	desc = "Highlight on yank",
-	callback = function() vim.hl.on_yank() end,
+	callback = function() vim.hl.hl_op() end,
 })
 
 ANC.new_autocmd("VimResized", {

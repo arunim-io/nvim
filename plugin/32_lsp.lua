@@ -23,7 +23,6 @@ ANC.now_or_later(function()
 		"jsonls",
 		"kdl",
 		"lua_ls",
-		"nushell",
 		"qmlls",
 		"ruff",
 		"rust_analyzer",
