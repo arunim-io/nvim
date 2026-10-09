@@ -43,5 +43,3 @@ end)
 
 --[[ Setup `nvim-jdtls` for Java ]]
 MiniDeps.later(function() add("mfussenegger/nvim-jdtls") end)
-
--- TODO: Setup Neogen, refactoring.nvim, a project config loader, chezmoi.nvim, otter.nvim
